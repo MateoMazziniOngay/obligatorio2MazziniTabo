@@ -27,18 +27,104 @@ public class ventanaRegistros extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblDepo = new javax.swing.JLabel();
+        btnDepo = new javax.swing.JButton();
+        btnEmple = new javax.swing.JButton();
+        lblEmple = new javax.swing.JLabel();
+        btnClie = new javax.swing.JButton();
+        lblClie = new javax.swing.JLabel();
+        btnContr = new javax.swing.JButton();
+        lblContra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registros");
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTitulo.setText("REGISTROS");
+
+        lblDepo.setText("Depósitos");
+
+        btnDepo.setText("Registrar nuevo depósito");
+        btnDepo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepoActionPerformed(evt);
+            }
+        });
+
+        btnEmple.setText("Registrar nuevo empleado");
+        btnEmple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleActionPerformed(evt);
+            }
+        });
+
+        lblEmple.setText("Empleados");
+
+        btnClie.setText("Registrar nuevo cliente");
+        btnClie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClieActionPerformed(evt);
+            }
+        });
+
+        lblClie.setText("Clientes");
+
+        btnContr.setText("Registrar nuevo contrato");
+        btnContr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContrActionPerformed(evt);
+            }
+        });
+
+        lblContra.setText("Contratos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 325, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(lblTitulo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDepo)
+                            .addComponent(lblEmple)
+                            .addComponent(lblClie)
+                            .addComponent(lblContra))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnEmple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDepo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnClie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnContr, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDepo)
+                    .addComponent(btnDepo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmple)
+                    .addComponent(btnEmple))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClie)
+                    .addComponent(btnClie))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblContra)
+                    .addComponent(btnContr))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -46,20 +132,36 @@ public class ventanaRegistros extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
-        pack();
+        setBounds(0, 0, 416, 308);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepoActionPerformed
+
+    private void btnEmpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmpleActionPerformed
+
+    private void btnClieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClieActionPerformed
+
+    private void btnContrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +199,15 @@ public class ventanaRegistros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClie;
+    private javax.swing.JButton btnContr;
+    private javax.swing.JButton btnDepo;
+    private javax.swing.JButton btnEmple;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblClie;
+    private javax.swing.JLabel lblContra;
+    private javax.swing.JLabel lblDepo;
+    private javax.swing.JLabel lblEmple;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
