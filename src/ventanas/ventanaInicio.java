@@ -4,8 +4,6 @@
  */
 package ventanas;
 
-import ventanas.registros.ventanaRegistros;
-
 /**
  *
  * @author Mateo
