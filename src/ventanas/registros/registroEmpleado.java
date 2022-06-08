@@ -1,9 +1,8 @@
-package ventanas.registros;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package ventanas.registros;
 
 /**
  *
@@ -12,7 +11,7 @@ package ventanas.registros;
 public class registroEmpleado extends javax.swing.JFrame {
 
     /**
-     * Creates new form registroDepo
+     * Creates new form registroEmpleado
      */
     public registroEmpleado() {
         initComponents();
@@ -27,123 +26,157 @@ public class registroEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        comboEstantes = new javax.swing.JComboBox<>();
-        comboRefri = new javax.swing.JComboBox<>();
-        btnRegistrarDepo = new javax.swing.JButton();
-        btnCancelarRepo = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblEmpleado = new javax.swing.JLabel();
+        lblNombre_E = new javax.swing.JLabel();
+        lblCi_E = new javax.swing.JLabel();
+        lblDir_E = new javax.swing.JLabel();
+        lblAnio_E = new javax.swing.JLabel();
+        lblTel_E = new javax.swing.JLabel();
+        inputNombre_E = new javax.swing.JTextField();
+        InputCi_E = new javax.swing.JTextField();
+        inputAnio_E = new javax.swing.JTextField();
+        inputTel_E = new javax.swing.JTextField();
+        inputDirCalle_E = new javax.swing.JTextField();
+        inputDirNum_E = new javax.swing.JTextField();
+        btnCancelarR_E = new javax.swing.JButton();
+        btnRegistrar_E = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setText("REGISTRO DE DEPÓSITO");
+        lblEmpleado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblEmpleado.setText("REGISTRO DE EMPLEADO");
 
-        jLabel1.setText("ID Depósito");
+        lblNombre_E.setText("Nombre");
 
-        jLabel3.setText("Tamaño (m2)");
+        lblCi_E.setText("Cédula");
 
-        jLabel4.setText("Estantes ");
+        lblDir_E.setText("Dirección");
 
-        jLabel5.setText("Refrigeración");
+        lblAnio_E.setText("Año de Ingreso");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        lblTel_E.setText("Teléfono");
+
+        inputNombre_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                inputNombre_EActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        InputCi_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                InputCi_EActionPerformed(evt);
             }
         });
 
-        comboEstantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-        comboEstantes.addActionListener(new java.awt.event.ActionListener() {
+        inputAnio_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEstantesActionPerformed(evt);
+                inputAnio_EActionPerformed(evt);
             }
         });
 
-        comboRefri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-        comboRefri.addActionListener(new java.awt.event.ActionListener() {
+        inputTel_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboRefriActionPerformed(evt);
+                inputTel_EActionPerformed(evt);
             }
         });
 
-        btnRegistrarDepo.setText("Registrar");
-
-        btnCancelarRepo.setText("Cancelar");
-        btnCancelarRepo.addActionListener(new java.awt.event.ActionListener() {
+        inputDirCalle_E.setText("Calle");
+        inputDirCalle_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarRepoActionPerformed(evt);
+                inputDirCalle_EActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4))
-                                    .addGap(66, 66, 66)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                        .addComponent(jTextField1)
-                                        .addComponent(comboEstantes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboRefri, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnRegistrarDepo)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnCancelarRepo)
-                        .addGap(145, 145, 145)))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        inputDirNum_E.setText("Número");
+        inputDirNum_E.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDirNum_EActionPerformed(evt);
+            }
+        });
+
+        btnCancelarR_E.setText("Cancelar");
+        btnCancelarR_E.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarR_EActionPerformed(evt);
+            }
+        });
+
+        btnRegistrar_E.setText("Registrar");
+        btnRegistrar_E.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar_EActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNombre_E)
+                                    .addComponent(lblCi_E))
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(InputCi_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputNombre_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAnio_E)
+                                    .addComponent(lblTel_E)
+                                    .addComponent(lblDir_E))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputTel_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputAnio_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(inputDirCalle_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(inputDirNum_E, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 6, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCancelarR_E, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrar_E, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombre_E)
+                    .addComponent(inputNombre_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCi_E)
+                    .addComponent(InputCi_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(comboEstantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnio_E)
+                    .addComponent(inputAnio_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(comboRefri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarRepo)
-                    .addComponent(btnRegistrarDepo))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTel_E)
+                    .addComponent(inputTel_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDir_E)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inputDirCalle_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputDirNum_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelarR_E)
+                    .addComponent(btnRegistrar_E))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -153,39 +186,51 @@ public class registroEmpleado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 299, 339);
+        setBounds(0, 0, 314, 395);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void inputNombre_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombre_EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_inputNombre_EActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void InputCi_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputCi_EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_InputCi_EActionPerformed
 
-    private void comboEstantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstantesActionPerformed
+    private void inputAnio_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAnio_EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboEstantesActionPerformed
+    }//GEN-LAST:event_inputAnio_EActionPerformed
 
-    private void comboRefriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRefriActionPerformed
+    private void inputTel_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTel_EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboRefriActionPerformed
+    }//GEN-LAST:event_inputTel_EActionPerformed
 
-    private void btnCancelarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarRepoActionPerformed
+    private void inputDirCalle_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDirCalle_EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarRepoActionPerformed
+    }//GEN-LAST:event_inputDirCalle_EActionPerformed
+
+    private void inputDirNum_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDirNum_EActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDirNum_EActionPerformed
+
+    private void btnRegistrar_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_EActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrar_EActionPerformed
+
+    private void btnCancelarR_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_EActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarR_EActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,9 +258,6 @@ public class registroEmpleado extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(registroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -226,17 +268,20 @@ public class registroEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelarRepo;
-    private javax.swing.JButton btnRegistrarDepo;
-    private javax.swing.JComboBox<String> comboEstantes;
-    private javax.swing.JComboBox<String> comboRefri;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField InputCi_E;
+    private javax.swing.JButton btnCancelarR_E;
+    private javax.swing.JButton btnRegistrar_E;
+    private javax.swing.JTextField inputAnio_E;
+    private javax.swing.JTextField inputDirCalle_E;
+    private javax.swing.JTextField inputDirNum_E;
+    private javax.swing.JTextField inputNombre_E;
+    private javax.swing.JTextField inputTel_E;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblAnio_E;
+    private javax.swing.JLabel lblCi_E;
+    private javax.swing.JLabel lblDir_E;
+    private javax.swing.JLabel lblEmpleado;
+    private javax.swing.JLabel lblNombre_E;
+    private javax.swing.JLabel lblTel_E;
     // End of variables declaration//GEN-END:variables
 }
