@@ -10,5 +10,6 @@ public class Cliente extends Persona {
 
     public void setMail(String unMail) {
         this.mail = unMail;
-    }  
+    }
+    //Martin se la come
 }
