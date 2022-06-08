@@ -1,7 +1,11 @@
 package ventanas.registros;
 
+import clases .*;
+
 public class registroCliente extends javax.swing.JFrame {
 
+    Sistema sist = new Sistema();
+    Cliente clie = new Cliente();
     public registroCliente() {
         initComponents();
     }
@@ -169,11 +173,12 @@ public class registroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_inputTel_CActionPerformed
 
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
+        
         String nombre = this.inputNombre_C.getText();
         String mail = this.inputMail_C.getText();
-        
         String cedula = this.inputCi_C.getText();
         String telefono = this.inputTel_C.getText();
+        
         
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
