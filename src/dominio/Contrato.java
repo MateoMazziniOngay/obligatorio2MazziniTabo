@@ -1,13 +1,11 @@
-package clases;
+package dominio;
 
 
-public class Visita {
+public class Contrato {
     private Cliente cliente;
     private Empleado empleado;
-    private Contrato contrato;
     private Deposito deposito;
-    private int mes;
-    private int dia;
+    private int numContrato;
     
     public Cliente getCliente() {
         return cliente;
@@ -15,39 +13,25 @@ public class Visita {
     public void setCliente(Cliente unCliente) {
         this.cliente = unCliente;
     }
-    
+
     public Empleado getEmpleado() {
         return empleado;
     }
     public void setEmpleado(Empleado unEmpleado) {
         this.empleado = unEmpleado;
     }
-    
-    public Contrato getContrato() {
-        return contrato;
-    }
-    public void setContrato(Contrato unContrato) {
-        this.contrato = unContrato;
-    }
-    
+
     public Deposito getDeposito() {
         return deposito;
     }
     public void setDeposito(Deposito unDeposito) {
         this.deposito = unDeposito;
     }
-    
-    public int getMes() {
-        return mes;
+
+    public int getNumContrato() {
+        return numContrato;
     }
-    public void setMes(int unMes) {
-        this.mes = unMes;
-    }
-    
-    public int getDia() {
-        return dia;
-    }
-    public void setDia(int unDia) {
-        this.dia = unDia;
+    public void setNumContrato(int unNumContrato) {
+        this.numContrato = unNumContrato;
     }
 }

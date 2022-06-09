@@ -1,5 +1,6 @@
-package ventanas.registros;
-import clases.*;
+package interfaz;
+import dominio.Sistema;
+import dominio.Empleado;
 import javax.swing.*;
 
 public class registroEmpleado extends javax.swing.JFrame {

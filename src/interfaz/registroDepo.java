@@ -1,4 +1,4 @@
-package ventanas.registros;
+package interfaz;
 
 public class registroDepo extends javax.swing.JFrame {
 
