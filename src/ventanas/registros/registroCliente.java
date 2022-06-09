@@ -193,12 +193,9 @@ public class registroCliente extends javax.swing.JFrame {
             int cedulaNum = Integer.parseInt(cedula);
             int telefonoNum = Integer.parseInt(telefono);
             
-            if(sist.cedulaExistente(cedulaNum)){
+            if(sist.cedulaExistente(Integer.parseInt(cedula))){
                 JOptionPane.showMessageDialog(null, "La cédula ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.inputCi_C.setText("");
-                cedula = this.inputCi_C.getText();
-                while(!sist.es)
-                while()
                 
             }else{
                 
