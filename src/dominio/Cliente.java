@@ -13,7 +13,15 @@ public class Cliente extends Persona {
     }
     
     public Cliente(){
+        Persona persona = new Persona("",0,0);
+        this.mail = "";
     }
+    
+    public Cliente(String unNombre, int unaCedula, int unTelefono, String unMail){
+        Persona persona = new Persona(unNombre,unaCedula,unTelefono);
+        this.setMail(unMail);
+    }
+    
     public String vacios(String arg1, String arg2, String arg3, String arg4){
         
         String vacios = "Debe completar los siguientes campos: ";

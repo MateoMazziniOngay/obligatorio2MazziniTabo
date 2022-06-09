@@ -192,16 +192,25 @@ public class registroCliente extends javax.swing.JFrame {
         }else{
             
             int cedulaNum = Integer.parseInt(cedula);
+            int telefonoNum = Integer.parseInt(telefono);
+            
             if(sist.cedulaExistente(cedulaNum)){
                 JOptionPane.showMessageDialog(null, "La cédula ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.inputCi_C.setText("");
+                cedula = this.inputCi_C.getText();
+                while(!sist.es)
+                while()
+                
             }else{
                 
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
                 if(resp == 0){
                     
-                    //Cliente cl = new Cliente (nombre,cedulaNum,mail,telefono);
-                    //sist.agregarCliente(cl);
+                    Persona p1 = new Persona(nombre,cedulaNum,telefonoNum);
+                    sist.agregarPersona(p1);
+                    
+                    Cliente cl = new Cliente (nombre,cedulaNum,telefonoNum,mail);
+                    sist.agregarCliente(cl);
                 
                     JOptionPane.showMessageDialog(null, "Cliente registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
                 

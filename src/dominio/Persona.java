@@ -7,6 +7,18 @@ public class Persona {
     private int cedula;
     private int telefono;
     
+    public Persona(){
+        this.nombre = "";
+        this.cedula = 0;
+        this.telefono = 0;
+    }
+    
+    public Persona(String unNombre, int unaCedula, int unTelefono){
+        this.setNombre(unNombre);
+        this.setCedula(unaCedula);
+        this.setTelefono(unTelefono);
+    }
+    
     public String getNombre() {
         return nombre;
     }
