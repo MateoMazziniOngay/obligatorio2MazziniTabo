@@ -73,10 +73,10 @@ public class ventanaInicio extends javax.swing.JFrame {
                         .addComponent(lblTitulo))
                     .addGroup(pnlInicioLayout.createSequentialGroup()
                         .addGap(121, 121, 121)
-                        .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnInfo)
-                            .addComponent(btnVisitas, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(btnVisitas, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(btnInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
         pnlInicioLayout.setVerticalGroup(
@@ -105,7 +105,7 @@ public class ventanaInicio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -116,16 +116,19 @@ public class ventanaInicio extends javax.swing.JFrame {
     private void btnRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrosActionPerformed
         ventanaRegistros v = new ventanaRegistros();
         v.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnRegistrosActionPerformed
 
     private void btnVisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitasActionPerformed
         ventanaVisitas v = new ventanaVisitas();
         v.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnVisitasActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
         ventanaInfo v = new ventanaInfo();
         v.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnInfoActionPerformed
 
     /**
