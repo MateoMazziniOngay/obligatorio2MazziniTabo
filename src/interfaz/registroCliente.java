@@ -1,7 +1,6 @@
 package interfaz;
 
-import dominio.Sistema;
-import dominio.Cliente;
+import dominio.*;
 import javax.swing.*;
 public class registroCliente extends javax.swing.JFrame {
 
