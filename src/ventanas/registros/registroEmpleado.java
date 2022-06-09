@@ -3,7 +3,7 @@ import clases.*;
 import javax.swing.*;
 
 public class registroEmpleado extends javax.swing.JFrame {
-
+ 
     Sistema sist = new Sistema();
     Empleado empl = new Empleado();
     
@@ -190,27 +190,27 @@ public class registroEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputNombre_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombre_EActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputNombre_EActionPerformed
 
     private void inputCi_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCi_EActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_inputCi_EActionPerformed
 
     private void inputAnio_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAnio_EActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_inputAnio_EActionPerformed
 
     private void inputTel_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTel_EActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_inputTel_EActionPerformed
 
     private void inputDirCalle_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDirCalle_EActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_inputDirCalle_EActionPerformed
 
     private void inputDirNum_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDirNum_EActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_inputDirNum_EActionPerformed
 
     private void btnRegistrar_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_EActionPerformed
