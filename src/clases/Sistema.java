@@ -61,22 +61,6 @@ public class Sistema {
         listaVisitas.add(unaVisita);
     }
     
-    public static int validarNum(String num){
-        boolean valido = esNum(num);
-        
-        while(!valido || (valido && Integer.parseInt(num) < 1)){
-            
-            System.out.println("El valor ingresado debe ser un NÚMERO mayor a 0");
-            num = teclado.nextLine();
-            valido = esNum(num);
-            
-        }
-        
-        int newNum = Integer.parseInt(num);
-        
-        return newNum;
-    }
-    
     public static boolean esNum(String num){
         
         try {  
@@ -86,5 +70,10 @@ public class Sistema {
             return false;  
         }
         
+    }
+    
+    public static boolean cedulaExistente(int cedula){
+        boolean existe= false;
+        return existe;
     }
 }

@@ -1,11 +1,12 @@
 package ventanas.registros;
 
-import clases .*;
-
+import clases.*;
+import javax.swing.*;
 public class registroCliente extends javax.swing.JFrame {
 
-    Sistema sist = new Sistema();
-    Cliente clie = new Cliente();
+    static Sistema sist = new Sistema();
+    static Cliente clie = new Cliente();
+    
     public registroCliente() {
         initComponents();
     }
@@ -175,10 +176,43 @@ public class registroCliente extends javax.swing.JFrame {
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
         
         String nombre = this.inputNombre_C.getText();
-        String mail = this.inputMail_C.getText();
         String cedula = this.inputCi_C.getText();
+        String mail = this.inputMail_C.getText();
         String telefono = this.inputTel_C.getText();
         
+        String hayVacios = clie.vacios(nombre,cedula,mail,telefono);
+        String noNum = clie.noNum(cedula, telefono);
+        
+        if(!hayVacios.equals("") || !noNum.equals("")){
+            
+            JOptionPane.showMessageDialog(null, hayVacios + "\n" + noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
+            
+            if(!sist.esNum(cedula)){
+                this.inputCi_C.setText("");
+            }
+            
+            if(!sist.esNum(telefono)){
+                this.inputTel_C.setText("");
+            }
+        }else{
+            
+            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
+            if(resp == 0){
+                //Cliente cl = new Cliente (nombre,cedula,mail,telefono);
+                //sist.agregarCliente(cl);
+                
+                JOptionPane.showMessageDialog(null, "Cliente registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
+                
+                this.inputNombre_C.setText("");
+                this.inputCi_C.setText("");
+                this.inputMail_C.setText("");
+                this.inputTel_C.setText("");
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+            }
+            
+        }
         
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
