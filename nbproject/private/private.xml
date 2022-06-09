@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/ventanas/registros/registroCliente.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>193</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/C:/Users/tinti/OneDrive/Escritorio/obligatorio2MazziniTabo/src/ventanas/registros/registroEmpleado.java</file>
-            <file>file:/C:/Users/tinti/OneDrive/Escritorio/obligatorio2MazziniTabo/src/clases/Empleado.java</file>
-            <file>file:/C:/Users/tinti/OneDrive/Escritorio/obligatorio2MazziniTabo/src/ventanas/registros/registroCliente.java</file>
-            <file>file:/C:/Users/tinti/OneDrive/Escritorio/obligatorio2MazziniTabo/src/clases/Sistema.java</file>
-            <file>file:/C:/Users/tinti/OneDrive/Escritorio/obligatorio2MazziniTabo/src/clases/Cliente.java</file>
-            <file>file:/C:/Users/tinti/OneDrive/Escritorio/obligatorio2MazziniTabo/src/clases/Persona.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/ventanaRegistros.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/dominio/Sistema.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/registroContrato.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/ventanaInicio.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/ventanaInfo.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/registroEmpleado.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/registroDepo.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/registroCliente.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/dominio/Persona.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/interfaz/ventanaVisitas.java</file>
+            <file>file:/C:/Users/marti/Desktop/obligatorio2MazziniTabo/src/dominio/Cliente.java</file>
         </group>
-=======
-        <group/>
->>>>>>> e61cb61dc1cdd33602256e9bb87256e08b240bbd
     </open-files>
 </project-private>
