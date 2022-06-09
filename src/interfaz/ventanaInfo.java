@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ventanas;
+package interfaz;
 
 /**
  *
@@ -58,7 +58,7 @@ public class ventanaInfo extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnlPanel);
-        pnlPanel.setBounds(12, 12, 376, 245);
+        pnlPanel.setBounds(12, 12, 0, 0);
 
         setBounds(0, 0, 416, 308);
     }// </editor-fold>//GEN-END:initComponents
