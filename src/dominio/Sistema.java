@@ -80,4 +80,8 @@ public class Sistema {
         }
         return existe;
     }
+    
+    public void alertCedulas(){
+        for(Persona persona : listaPersonas){System.out.println(persona.getCedula());}
+    }
 }

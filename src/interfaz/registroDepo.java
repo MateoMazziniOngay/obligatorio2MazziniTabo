@@ -160,19 +160,19 @@ public class registroDepo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputId_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputId_DActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_inputId_DActionPerformed
 
     private void inputSize_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSize_DActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_inputSize_DActionPerformed
 
     private void comboEstantes_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstantes_DActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_comboEstantes_DActionPerformed
 
     private void comboRefri_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRefri_DActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_comboRefri_DActionPerformed
 
     private void btnCancelarR_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_DActionPerformed
@@ -194,8 +194,8 @@ public class registroDepo extends javax.swing.JFrame {
             this.setVacios(id,tamanio);
             
         }else{
-            
             int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
+            
             if(resp == 0){
                     
                 int idNum = Integer.parseInt(id);
@@ -227,6 +227,8 @@ public class registroDepo extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
             }
+        
+
     }//GEN-LAST:event_btnRegistrar_DActionPerformed
 
     public void setVacios(String arg1, String arg2){
@@ -239,9 +241,34 @@ public class registroDepo extends javax.swing.JFrame {
             this.inputSize_D.setText("");
         }
     }
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registroDepo().setVisible(true);

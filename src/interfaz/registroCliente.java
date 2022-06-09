@@ -193,7 +193,7 @@ public class registroCliente extends javax.swing.JFrame {
             int cedulaNum = Integer.parseInt(cedula);
             int telefonoNum = Integer.parseInt(telefono);
             
-            if(sist.cedulaExistente(Integer.parseInt(cedula))){
+            if(sist.cedulaExistente(cedulaNum)){
                 JOptionPane.showMessageDialog(null, "La cédula ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.inputCi_C.setText("");
                 
@@ -215,6 +215,10 @@ public class registroCliente extends javax.swing.JFrame {
                     this.inputMail_C.setText("");
                     this.inputTel_C.setText("");
                 
+                     //////
+                    sist.alertCedulas();
+                    /////
+            
                 }else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }

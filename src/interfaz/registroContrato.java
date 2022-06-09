@@ -210,7 +210,7 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
-
+        
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
 
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed

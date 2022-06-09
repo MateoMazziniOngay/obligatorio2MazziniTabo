@@ -265,6 +265,10 @@ public class registroEmpleado extends javax.swing.JFrame {
                     this.inputDirCalle_E.setText("");
                     this.inputDirNum_E.setText("");
                 
+                    //////
+                    sist.alertCedulas();
+                    /////
+            
                 }else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
