@@ -72,8 +72,12 @@ public class Sistema {
         
     }
     
-    public static boolean cedulaExistente(int cedula){
-        boolean existe= false;
+    public boolean cedulaExistente(int cedula){
+        boolean existe = false;
+        for(Persona persona : listaPersonas){
+            if(persona.getCedula() == cedula);
+            existe = true;
+        }
         return existe;
     }
 }

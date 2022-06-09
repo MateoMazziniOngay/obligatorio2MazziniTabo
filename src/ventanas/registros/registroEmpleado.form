@@ -63,7 +63,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="InputCi_E" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="inputCi_E" min="-2" pref="73" max="-2" attributes="0"/>
                                       <Component id="inputNombre_E" min="-2" pref="73" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -109,7 +109,7 @@
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblCi_E" min="-2" max="-2" attributes="0"/>
-                      <Component id="InputCi_E" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputCi_E" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -178,9 +178,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNombre_EActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="InputCi_E">
+        <Component class="javax.swing.JTextField" name="inputCi_E">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InputCi_EActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputCi_EActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="inputAnio_E">
