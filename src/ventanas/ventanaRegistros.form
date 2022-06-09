@@ -52,13 +52,10 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                          <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblDepo" min="-2" max="-2" attributes="0"/>
                               <Component id="lblEmple" min="-2" max="-2" attributes="0"/>
@@ -70,11 +67,11 @@
                               <Component id="btnEmple" max="32767" attributes="0"/>
                               <Component id="btnDepo" max="32767" attributes="0"/>
                               <Component id="btnClie" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnContr" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="btnContr" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="63" max="32767" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
