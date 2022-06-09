@@ -6,6 +6,18 @@ public class Empleado extends Persona{
     private String direccion;
     private int anioIngreso;
     
+    public Empleado(){
+        Persona persona = new Persona("",0,0);
+        this.direccion = "";
+        this.anioIngreso = 0;
+    }
+    
+    public Empleado(String unNombre, int unaCedula, int unTelefono, String unaDireccion, int unAnio){
+        Persona persona = new Persona(unNombre,unaCedula,unTelefono);
+        this.setDireccion(unaDireccion);
+        this.setAnioIngreso(unAnio);
+    }
+    
     public String getDireccion() {
         return direccion;
     }
@@ -59,8 +71,7 @@ public class Empleado extends Persona{
                     hayInvalido = true;
                     noNum += ids [i];
                 }
-            }
-            
+            }  
         } 
         if(hayInvalido){
            return noNum; 

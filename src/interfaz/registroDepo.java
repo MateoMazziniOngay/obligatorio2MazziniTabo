@@ -1,7 +1,13 @@
 package interfaz;
 
+import dominio.*;
+import javax.swing.*;
+
 public class registroDepo extends javax.swing.JFrame {
 
+    Sistema sist = new Sistema();
+    Deposito depo = new Deposito();
+    
     public registroDepo() {
         initComponents();
     }
@@ -63,6 +69,11 @@ public class registroDepo extends javax.swing.JFrame {
         });
 
         btnRegistrar_D.setText("Registrar");
+        btnRegistrar_D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar_DActionPerformed(evt);
+            }
+        });
 
         btnCancelarR_D.setText("Cancelar");
         btnCancelarR_D.addActionListener(new java.awt.event.ActionListener() {
@@ -149,53 +160,88 @@ public class registroDepo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputId_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputId_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputId_DActionPerformed
 
     private void inputSize_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSize_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputSize_DActionPerformed
 
     private void comboEstantes_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstantes_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_comboEstantes_DActionPerformed
 
     private void comboRefri_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRefri_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_comboRefri_DActionPerformed
 
     private void btnCancelarR_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_DActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarR_DActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void btnRegistrar_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_DActionPerformed
+        
+        String id = this.inputId_D.getText();
+        String tamanio = this.inputSize_D.getText();
+        String estantes = this.comboEstantes_D.getSelectedItem().toString();;
+        String refri = this.comboRefri_D.getSelectedItem().toString();
+        
+        String noNum = depo.noNum(id,tamanio);
+        
+        if(!noNum.equals("")){
+            
+            JOptionPane.showMessageDialog(null, noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
+            this.setVacios(id,tamanio);
+            
+        }else{
+            
+            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
+            if(resp == 0){
+                    
+                int idNum = Integer.parseInt(id);
+                int tamanioNum = Integer.parseInt(tamanio);
+                    
+                if(estantes.equals("Si")){
+                    estantes = "S";
+                }else{
+                    estantes = "N";
+                }
+                
+                if(refri.equals("Si")){
+                    refri = "S";
+                }else{
+                    refri = "N";
+                }
+                
+                Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
+                sist.agregarDeposito(d);
+                
+                JOptionPane.showMessageDialog(null, "Depósito registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
+                
+                    this.inputId_D.setText("");
+                    this.inputSize_D.setText("");
+                    this.comboEstantes_D.setSelectedIndex(0);
+                    this.comboRefri_D.setSelectedIndex(0);
+                
+                }else{
+                    JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    }//GEN-LAST:event_btnRegistrar_DActionPerformed
 
-        /* Create and display the form */
+    public void setVacios(String arg1, String arg2){
+        
+        if(!sist.esNum(arg1)){
+            this.inputId_D.setText("");
+        }
+        
+        if(!sist.esNum(arg2)){
+            this.inputSize_D.setText("");
+        }
+    }
+
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registroDepo().setVisible(true);
