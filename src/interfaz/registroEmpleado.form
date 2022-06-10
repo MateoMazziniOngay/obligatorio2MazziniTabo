@@ -56,36 +56,27 @@
                       <Component id="lblEmpleado" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblNombre_E" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblCi_E" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="inputCi_E" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Component id="inputNombre_E" min="-2" pref="73" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="lblAnio_E" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNombre_E" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCi_E" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTel_E" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDir_E" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="inputTel_E" min="-2" pref="73" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblAnio_E" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTel_E" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblDir_E" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="inputDirCalle_E" min="-2" pref="73" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="inputTel_E" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Component id="inputAnio_E" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="inputDirCalle_E" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="inputDirNum_E" min="-2" pref="67" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="inputDirNum_E" min="-2" pref="67" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="inputNombre_E" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="inputAnio_E" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="inputCi_E" alignment="1" min="-2" pref="73" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnCancelarR_E" min="-2" pref="95" max="-2" attributes="0"/>
@@ -106,12 +97,12 @@
                       <Component id="lblNombre_E" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="inputNombre_E" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblCi_E" min="-2" max="-2" attributes="0"/>
-                      <Component id="inputCi_E" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblCi_E" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputCi_E" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblAnio_E" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="inputAnio_E" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,12 +113,10 @@
                       <Component id="inputTel_E" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblDir_E" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputDirCalle_E" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputDirNum_E" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="inputDirCalle_E" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputDirNum_E" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDir_E" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
