@@ -2,6 +2,7 @@ package interfaz;
 
 import dominio.*;
 import javax.swing.*;
+
 public class registroCliente extends javax.swing.JFrame {
 
     static Sistema sist = new Sistema();

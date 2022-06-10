@@ -15,6 +15,7 @@ public class ventanaInicio extends javax.swing.JFrame {
         btnRegistros = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
         btnVisitas = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SELF STORAGE");
@@ -46,6 +47,13 @@ public class ventanaInicio extends javax.swing.JFrame {
             }
         });
 
+        btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlInicioLayout = new javax.swing.GroupLayout(pnlInicio);
         pnlInicio.setLayout(pnlInicioLayout);
         pnlInicioLayout.setHorizontalGroup(
@@ -58,9 +66,12 @@ public class ventanaInicio extends javax.swing.JFrame {
                     .addGroup(pnlInicioLayout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addGroup(pnlInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(btnVisitas, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(btnInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVisitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(pnlInicioLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(btnSalir)))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
         pnlInicioLayout.setVerticalGroup(
@@ -68,13 +79,14 @@ public class ventanaInicio extends javax.swing.JFrame {
             .addGroup(pnlInicioLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addComponent(btnRegistros)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnVisitas)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btnSalir))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,6 +127,11 @@ public class ventanaInicio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnInfoActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -127,6 +144,7 @@ public class ventanaInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnRegistros;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVisitas;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlInicio;
