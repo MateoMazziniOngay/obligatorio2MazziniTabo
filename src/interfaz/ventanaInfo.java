@@ -32,22 +32,22 @@ public class ventanaInfo extends javax.swing.JFrame {
         pnlPanelLayout.setHorizontalGroup(
             pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addComponent(btnAtras)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(580, Short.MAX_VALUE))
         );
         pnlPanelLayout.setVerticalGroup(
             pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPanelLayout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
+                .addContainerGap(370, Short.MAX_VALUE)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(25, 25, 25))
         );
 
         getContentPane().add(pnlPanel);
-        pnlPanel.setBounds(12, 12, 381, 280);
+        pnlPanel.setBounds(2, 2, 670, 420);
 
-        setBounds(0, 0, 416, 308);
+        setBounds(0, 0, 686, 459);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
