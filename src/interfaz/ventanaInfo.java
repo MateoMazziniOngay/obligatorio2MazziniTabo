@@ -39,13 +39,13 @@ public class ventanaInfo extends javax.swing.JFrame {
         pnlPanelLayout.setVerticalGroup(
             pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPanelLayout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
+                .addContainerGap(223, Short.MAX_VALUE)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(32, 32, 32))
         );
 
         getContentPane().add(pnlPanel);
-        pnlPanel.setBounds(12, 12, 0, 0);
+        pnlPanel.setBounds(12, 12, 381, 280);
 
         setBounds(0, 0, 416, 308);
     }// </editor-fold>//GEN-END:initComponents
