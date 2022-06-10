@@ -1,7 +1,6 @@
 package interfaz;
 
-import dominio.Sistema;
-import dominio.Cliente;
+import dominio.*;
 import javax.swing.*;
 public class registroCliente extends javax.swing.JFrame {
 
@@ -187,8 +186,8 @@ public class registroCliente extends javax.swing.JFrame {
         if(!hayVacios.equals("") || !noNum.equals("")){
             
             JOptionPane.showMessageDialog(null, hayVacios + "\n" + noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
-            
             this.setVacios(cedula,telefono);
+            
         }else{
             
             int cedulaNum = Integer.parseInt(cedula);
@@ -197,17 +196,14 @@ public class registroCliente extends javax.swing.JFrame {
             if(sist.cedulaExistente(cedulaNum)){
                 JOptionPane.showMessageDialog(null, "La cédula ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.inputCi_C.setText("");
-                cedula = this.inputCi_C.getText();
-                while(!sist.es)
-                while()
                 
             }else{
                 
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
                 if(resp == 0){
                     
-                    Persona p1 = new Persona(nombre,cedulaNum,telefonoNum);
-                    sist.agregarPersona(p1);
+                    Persona pC = new Persona(nombre,cedulaNum,telefonoNum);
+                    sist.agregarPersona(pC);
                     
                     Cliente cl = new Cliente (nombre,cedulaNum,telefonoNum,mail);
                     sist.agregarCliente(cl);
@@ -219,6 +215,10 @@ public class registroCliente extends javax.swing.JFrame {
                     this.inputMail_C.setText("");
                     this.inputTel_C.setText("");
                 
+                     //////
+                    sist.alertCedulas();
+                    /////
+            
                 }else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
@@ -228,14 +228,13 @@ public class registroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
     public void setVacios(String num1, String num2){
+        
         if(!sist.esNum(num1)){
                 this.inputCi_C.setText("");
         }
-            
         if(!sist.esNum(num2)){
             this.inputTel_C.setText("");
-        }
-        
+        }   
     }
     
     public static void main(String args[]) {

@@ -1,7 +1,13 @@
 package interfaz;
 
+import dominio.*;
+import javax.swing.*;
+
 public class registroDepo extends javax.swing.JFrame {
 
+    Sistema sist = new Sistema();
+    Deposito depo = new Deposito();
+    
     public registroDepo() {
         initComponents();
     }
@@ -63,6 +69,11 @@ public class registroDepo extends javax.swing.JFrame {
         });
 
         btnRegistrar_D.setText("Registrar");
+        btnRegistrar_D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar_DActionPerformed(evt);
+            }
+        });
 
         btnCancelarR_D.setText("Cancelar");
         btnCancelarR_D.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +109,7 @@ public class registroDepo extends javax.swing.JFrame {
                             .addComponent(btnCancelarR_D)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRegistrar_D))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,6 +179,68 @@ public class registroDepo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarR_DActionPerformed
 
+    private void btnRegistrar_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_DActionPerformed
+        
+        String id = this.inputId_D.getText();
+        String tamanio = this.inputSize_D.getText();
+        String estantes = this.comboEstantes_D.getSelectedItem().toString();;
+        String refri = this.comboRefri_D.getSelectedItem().toString();
+        
+        String noNum = depo.noNum(id,tamanio);
+        
+        if(!noNum.equals("")){
+            
+            JOptionPane.showMessageDialog(null, noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
+            this.setVacios(id,tamanio);
+            
+        }else{
+            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
+            
+            if(resp == 0){
+                    
+                int idNum = Integer.parseInt(id);
+                int tamanioNum = Integer.parseInt(tamanio);
+                    
+                if(estantes.equals("Si")){
+                    estantes = "S";
+                }else{
+                    estantes = "N";
+                }
+                
+                if(refri.equals("Si")){
+                    refri = "S";
+                }else{
+                    refri = "N";
+                }
+                
+                Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
+                sist.agregarDeposito(d);
+                
+                JOptionPane.showMessageDialog(null, "Depósito registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
+                
+                    this.inputId_D.setText("");
+                    this.inputSize_D.setText("");
+                    this.comboEstantes_D.setSelectedIndex(0);
+                    this.comboRefri_D.setSelectedIndex(0);
+                
+                }else{
+                    JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        
+
+    }//GEN-LAST:event_btnRegistrar_DActionPerformed
+
+    public void setVacios(String arg1, String arg2){
+        
+        if(!sist.esNum(arg1)){
+            this.inputId_D.setText("");
+        }
+        
+        if(!sist.esNum(arg2)){
+            this.inputSize_D.setText("");
+        }
+    }
     /**
      * @param args the command line arguments
      */

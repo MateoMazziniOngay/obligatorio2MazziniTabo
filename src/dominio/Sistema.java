@@ -68,16 +68,20 @@ public class Sistema {
             return true;
         }catch(NumberFormatException e){  
             return false;  
-        }
-        
+        }  
     }
     
     public boolean cedulaExistente(int cedula){
         boolean existe = false;
         for(Persona persona : listaPersonas){
-            if(persona.getCedula() == cedula);
-            existe = true;
+            if(persona.getCedula() == cedula){
+                existe = true;
+            }   
         }
         return existe;
+    }
+    
+    public void alertCedulas(){
+        for(Persona persona : listaPersonas){System.out.println(persona.getCedula());}
     }
 }

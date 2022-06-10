@@ -1,6 +1,6 @@
 package interfaz;
-import dominio.Sistema;
-import dominio.Empleado;
+
+import dominio.*;
 import javax.swing.*;
 
 public class registroEmpleado extends javax.swing.JFrame {
@@ -224,27 +224,37 @@ public class registroEmpleado extends javax.swing.JFrame {
         String numeroCasa = this.inputDirNum_E.getText();
         
         String hayVacios = empl.vacios(nombre,cedula,anio,telefono,calle,numeroCasa);
-        String noNum = empl.noNum(cedula, telefono,numeroCasa,anio);
+        String noNum = empl.noNum(cedula,anio,telefono,numeroCasa);
         
         if(!hayVacios.equals("") || !noNum.equals("")){
             
             JOptionPane.showMessageDialog(null, hayVacios + "\n" + noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
-            
-            this.setVacios(cedula, telefono,numeroCasa,anio);
+            this.setVacios(cedula,anio,telefono,numeroCasa);
             
         }else{
             
             int cedulaNum = Integer.parseInt(cedula);
+            
             if(sist.cedulaExistente(cedulaNum)){
+                
                 JOptionPane.showMessageDialog(null, "La cédula ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.inputCi_E.setText("");
+                
             }else{
                 
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
+                
                 if(resp == 0){
-                    //String direccion = calle + " " + numeroCasa; 
-                    //Empleado e = new Empleado (nombre,cedulaNum,anio,telefono, direccion);
-                    //sist.agregarEmpleado(e);
+                    
+                    String direccion = calle + " " + numeroCasa; 
+                    int telefonoNum = Integer.parseInt(telefono);
+                    int anioNum = Integer.parseInt(anio);
+                    
+                    Persona pE = new Persona(nombre,cedulaNum,telefonoNum);
+                    sist.agregarPersona(pE);
+                    
+                    Empleado e = new Empleado (nombre,cedulaNum,telefonoNum, direccion,anioNum);
+                    sist.agregarEmpleado(e);
                 
                     JOptionPane.showMessageDialog(null, "Empleado registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
                 
@@ -255,6 +265,10 @@ public class registroEmpleado extends javax.swing.JFrame {
                     this.inputDirCalle_E.setText("");
                     this.inputDirNum_E.setText("");
                 
+                    //////
+                    sist.alertCedulas();
+                    /////
+            
                 }else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
@@ -266,34 +280,8 @@ public class registroEmpleado extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarR_EActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registroEmpleado().setVisible(true);

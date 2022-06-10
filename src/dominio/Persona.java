@@ -39,4 +39,5 @@ public class Persona {
     public void setTelefono(int unTelefono) {
         this.telefono = unTelefono;
     }
+    
 }
