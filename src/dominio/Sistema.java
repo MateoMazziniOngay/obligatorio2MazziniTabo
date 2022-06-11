@@ -6,13 +6,21 @@ import java.util.Scanner;
 public class Sistema {
     
     static Scanner teclado = new Scanner(System.in);
-    ArrayList <Deposito> listaDepositos = new ArrayList <Deposito> ();
-    ArrayList <Persona> listaPersonas = new ArrayList <Persona> ();
-    ArrayList <Cliente> listaClientes = new ArrayList <Cliente> ();
-    ArrayList <Empleado> listaEmpleados = new ArrayList <Empleado> ();
-    ArrayList <Contrato> listaContratos = new ArrayList <Contrato> ();
-    ArrayList <Visita> listaVisitas = new ArrayList <Visita> ();
+    private ArrayList <Deposito> listaDepositos;
+    private ArrayList <Persona> listaPersonas;
+    private ArrayList <Cliente> listaClientes;
+    private ArrayList <Empleado> listaEmpleados;
+    private ArrayList <Contrato> listaContratos;
+    private ArrayList <Visita> listaVisitas;
     
+    public Sistema(){
+        this.listaDepositos = new ArrayList();
+        this.listaPersonas = new ArrayList();
+        this.listaClientes = new ArrayList();
+        this.listaEmpleados = new ArrayList();
+        this.listaContratos = new ArrayList();
+        this.listaVisitas = new ArrayList();
+    }
     public ArrayList<Deposito> getListaDepositos() {
         return listaDepositos;
     }
