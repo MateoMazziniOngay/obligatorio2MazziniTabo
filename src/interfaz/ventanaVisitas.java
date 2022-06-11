@@ -51,8 +51,10 @@ public class ventanaVisitas extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setText("Fecha:");
 
+        comboClientes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         comboClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        comboDepositos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         comboDepositos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboDepositos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +62,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
             }
         });
 
+        comboEmpleados.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         comboEmpleados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         inputFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
