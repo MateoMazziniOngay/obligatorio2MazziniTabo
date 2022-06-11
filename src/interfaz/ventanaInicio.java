@@ -10,12 +10,15 @@ public class ventanaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label1 = new java.awt.Label();
         pnlInicio = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         btnRegistros = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
         btnVisitas = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+
+        label1.setText("label1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SELF STORAGE");
@@ -147,6 +150,7 @@ public class ventanaInicio extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistros;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVisitas;
+    private java.awt.Label label1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlInicio;
     // End of variables declaration//GEN-END:variables

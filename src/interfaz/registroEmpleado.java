@@ -239,7 +239,6 @@ public class registroEmpleado extends javax.swing.JFrame {
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
                 
                 if(resp == 0){
-                    
                     String direccion = calle + " " + numeroCasa; 
                     int telefonoNum = Integer.parseInt(telefono);
                     int anioNum = Integer.parseInt(anio);
@@ -258,11 +257,6 @@ public class registroEmpleado extends javax.swing.JFrame {
                     this.inputTel_E.setText("");
                     this.inputDirCalle_E.setText("");
                     this.inputDirNum_E.setText("");
-                
-                    //////
-                    sist.alertCedulas();
-                    /////
-            
                 }else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }

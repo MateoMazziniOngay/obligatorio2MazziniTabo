@@ -81,7 +81,14 @@ public class Sistema {
         return existe;
     }
     
-    public void alertCedulas(){
-        for(Persona persona : listaPersonas){System.out.println(persona.getCedula());}
+    public static boolean contains(int [] arr, int elem){
+        boolean esta = false;
+        
+        for(int i = 0; i < arr.length && !esta; i++){
+            if(arr[i] == elem){
+                esta = true;
+            }
+        }
+        return esta;
     }
 }

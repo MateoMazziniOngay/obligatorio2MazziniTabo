@@ -215,11 +215,6 @@ public class registroCliente extends javax.swing.JFrame {
                     this.inputCi_C.setText("");
                     this.inputMail_C.setText("");
                     this.inputTel_C.setText("");
-                
-                     //////
-                    sist.alertCedulas();
-                    /////
-            
                 }else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }

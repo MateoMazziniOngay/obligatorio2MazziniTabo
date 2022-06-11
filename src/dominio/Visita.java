@@ -46,8 +46,39 @@ public class Visita {
     
     public int getDia() {
         return dia;
-    }
+    }  
     public void setDia(int unDia) {
         this.dia = unDia;
+    }
+    
+    public boolean validarFecha(int unDia, int unMes){
+        boolean valida = true;
+        int [] meses31 = {1,3,5,7,8,10,12};
+        
+        if(!Sistema.contains(meses31,unMes)){
+            valida = (mes30(unDia,unMes) || febrero(unDia,unMes));
+        }
+        
+        
+        return valida;
+    }
+    
+    public boolean mes30 (int unMes, int unDia){
+        boolean ok = false;
+        int [] meses30 = {4,6,9,11};
+        
+        if(Sistema.contains(meses30,unMes) && unDia < 31){
+                ok = true;
+        }
+        return ok; 
+    }
+    
+    public boolean febrero (int unMes, int unDia){
+        boolean ok = false;
+        
+        if(unMes == 02 && unDia <29){
+            ok = true;
+        }
+        return ok;
     }
 }
