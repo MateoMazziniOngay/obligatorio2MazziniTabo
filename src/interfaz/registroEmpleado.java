@@ -271,7 +271,7 @@ public class registroEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrar_EActionPerformed
 
     private void btnCancelarR_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_EActionPerformed
-        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnCancelarR_EActionPerformed
 
     public static void main(String args[]) {

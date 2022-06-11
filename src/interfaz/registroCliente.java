@@ -163,7 +163,7 @@ public class registroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_inputMail_CActionPerformed
 
     private void btnCancelarR_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_CActionPerformed
-        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnCancelarR_CActionPerformed
 
     private void inputCi_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCi_CActionPerformed
@@ -224,8 +224,7 @@ public class registroCliente extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
             }
-        }
-        
+        }   
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
     public void setVacios(String num1, String num2){

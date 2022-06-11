@@ -129,7 +129,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         ventanaInicio vIni = new ventanaInicio();
         vIni.setVisible(true);
-        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void comboDepositosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDepositosActionPerformed

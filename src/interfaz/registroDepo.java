@@ -176,7 +176,7 @@ public class registroDepo extends javax.swing.JFrame {
     }//GEN-LAST:event_comboRefri_DActionPerformed
 
     private void btnCancelarR_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_DActionPerformed
-        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnCancelarR_DActionPerformed
 
     private void btnRegistrar_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_DActionPerformed
