@@ -1,7 +1,9 @@
 package dominio;
 
+import java.io.Serializable;
 
-public class Deposito {
+
+public class Deposito implements Serializable{
     private int id;
     private int tamanio;
     private String estantes;

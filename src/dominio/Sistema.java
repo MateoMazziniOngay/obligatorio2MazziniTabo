@@ -1,9 +1,10 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Sistema {
+public class Sistema implements Serializable{
     
     static Scanner teclado = new Scanner(System.in);
     private ArrayList <Deposito> listaDepositos;
@@ -55,6 +56,10 @@ public class Sistema {
 
     public void agregarCliente(Cliente unCliente) {
         listaClientes.add(unCliente);
+        System.out.println("LOS CLIENTES SON:");
+        for(Cliente cliente : listaClientes){
+        System.out.println(cliente.getNombre());
+        }
     }
 
     public void agregarEmpleado(Empleado unEmpleado) {

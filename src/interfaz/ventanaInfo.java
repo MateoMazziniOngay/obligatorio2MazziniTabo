@@ -51,8 +51,8 @@ public class ventanaInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        ventanaInicio vIni = new ventanaInicio();
-        vIni.setVisible(true);
+       // ventanaInicio vIni = new ventanaInicio();
+       // vIni.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 

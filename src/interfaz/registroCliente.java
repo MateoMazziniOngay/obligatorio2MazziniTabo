@@ -5,10 +5,11 @@ import javax.swing.*;
 
 public class registroCliente extends javax.swing.JFrame {
 
-    static Sistema sist = new Sistema();
     static Cliente clie = new Cliente();
+    private Sistema sist;
     
-    public registroCliente() {
+    public registroCliente(Sistema unSistema) {
+        this.sist = unSistema;
         initComponents();
     }
 
@@ -181,6 +182,17 @@ public class registroCliente extends javax.swing.JFrame {
         String mail = this.inputMail_C.getText();
         String telefono = this.inputTel_C.getText();
         
+        //EMPIEZA PRUEBA
+        
+        
+        Persona p = new Persona(nombre, Integer.parseInt(this.inputCi_C.getText()), Integer.parseInt(this.inputTel_C.getText()));
+        sist.agregarPersona(p);
+                    
+        Cliente c = new Cliente (nombre, Integer.parseInt(this.inputCi_C.getText()), Integer.parseInt(this.inputTel_C.getText()),mail);
+        sist.agregarCliente(c);
+        
+        // TERMINA PRUEBA
+        
         String hayVacios = clie.vacios(nombre,cedula,mail,telefono);
         String noNum = clie.noNum(cedula, telefono);
         
@@ -236,7 +248,7 @@ public class registroCliente extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registroCliente().setVisible(true);
+//                new registroCliente().setVisible(true);
             }
         });
     }

@@ -12,10 +12,10 @@ import java.nio.file.NoSuchFileException;
 */
 
 public class Serializacion {
-    public static void serializar(){
+    public static void serializar(Sistema sist){
         try {
             ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get("datos.ser")));
-                            
+            out.writeObject(sist);
             out.close();
         } catch (IOException e) {
             System.out.println("Error de archivo");

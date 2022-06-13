@@ -1,7 +1,9 @@
 package dominio;
 
+import java.io.Serializable;
 
-public class Empleado extends Persona{
+
+public class Empleado extends Persona implements Serializable{
     
     private String direccion;
     private int anioIngreso;

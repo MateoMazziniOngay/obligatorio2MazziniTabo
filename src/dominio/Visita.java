@@ -1,7 +1,9 @@
 package dominio;
 
+import java.io.Serializable;
 
-public class Visita {
+
+public class Visita implements Serializable{
     private Cliente cliente;
     private Empleado empleado;
     private Contrato contrato;
