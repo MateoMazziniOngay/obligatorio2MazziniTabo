@@ -1,6 +1,7 @@
 package dominio;
+import java.io.Serializable;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable{
 
     private String mail;
 

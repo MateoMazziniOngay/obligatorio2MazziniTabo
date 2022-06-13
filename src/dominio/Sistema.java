@@ -79,6 +79,8 @@ public class Sistema {
         }  
     }
     
+    
+    // TO DO - PASAR METODO A LA CLASE PERSONA
     public boolean cedulaExistente(int cedula){
         boolean existe = false;
         for(Persona persona : listaPersonas){
