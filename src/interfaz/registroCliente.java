@@ -176,22 +176,15 @@ public class registroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_inputTel_CActionPerformed
 
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
-        
+  
+
+/*
         String nombre = this.inputNombre_C.getText();
         String cedula = this.inputCi_C.getText();
         String mail = this.inputMail_C.getText();
         String telefono = this.inputTel_C.getText();
+
         
-        //EMPIEZA PRUEBA
-        
-        
-        Persona p = new Persona(nombre, Integer.parseInt(this.inputCi_C.getText()), Integer.parseInt(this.inputTel_C.getText()));
-        sist.agregarPersona(p);
-                    
-        Cliente c = new Cliente (nombre, Integer.parseInt(this.inputCi_C.getText()), Integer.parseInt(this.inputTel_C.getText()),mail);
-        sist.agregarCliente(c);
-        
-        // TERMINA PRUEBA
         
         String hayVacios = clie.vacios(nombre,cedula,mail,telefono);
         String noNum = clie.noNum(cedula, telefono);
@@ -232,8 +225,10 @@ public class registroCliente extends javax.swing.JFrame {
                 }
             }
         }   
+        */
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
+    /*
     public void setVacios(String num1, String num2){
         
         if(!sist.esNum(num1)){
@@ -252,7 +247,7 @@ public class registroCliente extends javax.swing.JFrame {
             }
         });
     }
-
+*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarR_C;
     private javax.swing.JButton btnRegistrar_C;

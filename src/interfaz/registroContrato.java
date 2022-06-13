@@ -217,6 +217,7 @@ public class registroContrato extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
 
+    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
