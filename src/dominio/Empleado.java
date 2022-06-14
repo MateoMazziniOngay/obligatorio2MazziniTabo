@@ -1,7 +1,9 @@
 package dominio;
 
+import java.io.Serializable;
 
-public class Empleado extends Persona{
+
+public class Empleado extends Persona implements Serializable{
     
     private String direccion;
     private int anioIngreso;
@@ -13,7 +15,9 @@ public class Empleado extends Persona{
     }
     
     public Empleado(String unNombre, int unaCedula, int unTelefono, String unaDireccion, int unAnio){
-        Persona persona = new Persona(unNombre,unaCedula,unTelefono);
+        super.setNombre(unNombre);
+        super.setCedula(unaCedula);
+        super.setTelefono(unTelefono);
         this.setDireccion(unaDireccion);
         this.setAnioIngreso(unAnio);
     }
@@ -30,27 +34,6 @@ public class Empleado extends Persona{
     public void setAnioIngreso(int unAnioIngreso) {
         this.anioIngreso = unAnioIngreso;
     }  
-    
-    public String vacios(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6){
-        
-        String vacios = "Debe completar los siguientes campos: ";
-        boolean hayVacios = false;
-        String args[]  = {arg1,arg2,arg3,arg4,arg5,arg6};
-        String ids[] = {"nombre ","cedula ","año de ingreso ","telefono ", "calle ", "número"};
-        
-        for(int i = 0; i < 6; i ++){
-            if(args[i].equals("")){
-                hayVacios = true;
-                vacios += ids[i];
-            }
-        }
-        if(hayVacios){
-           return vacios; 
-        }
-        else{
-            return "";
-        }
-    }
     
     public String noNum(String num1, String num2, String num3, String num4){
         
@@ -79,5 +62,10 @@ public class Empleado extends Persona{
         else{
             return "";
         }   
+    }
+    
+     @Override
+    public String toString(){
+        return "Empleado: " + super.getNombre() + ", CI: " + super.getCedula() + ", Telefono: " + super.getTelefono() + ", Dirección: " + this.getDireccion() + ", Año de ingreso: " + this.getAnioIngreso();
     }
 }

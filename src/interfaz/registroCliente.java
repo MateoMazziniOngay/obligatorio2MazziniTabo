@@ -5,10 +5,11 @@ import javax.swing.*;
 
 public class registroCliente extends javax.swing.JFrame {
 
-    static Sistema sist = new Sistema();
     static Cliente clie = new Cliente();
+    private Sistema sist;
     
-    public registroCliente() {
+    public registroCliente(Sistema unSistema) {
+        this.sist = unSistema;
         initComponents();
     }
 
@@ -176,10 +177,37 @@ public class registroCliente extends javax.swing.JFrame {
 
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
         
+        // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
         String nombre = this.inputNombre_C.getText();
         String cedula = this.inputCi_C.getText();
         String mail = this.inputMail_C.getText();
         String telefono = this.inputTel_C.getText();
+        
+        // Convertimos la cedula y el telefono en integers.
+        int cedulaNum = Integer.parseInt(cedula);
+        int telefonoNum = Integer.parseInt(telefono);
+        
+        // Agregamos el registro a la lista de personas.
+        Persona pC = new Persona(nombre,cedulaNum,telefonoNum);
+        sist.agregarPersona(pC);
+        
+        // Agregamos el registro a la lista de clientes.
+        Cliente cl = new Cliente (nombre,cedulaNum,telefonoNum,mail);
+        sist.agregarCliente(cl);
+        
+        // Dejamos los text fields en blanco otra vez.
+        this.inputNombre_C.setText("");
+        this.inputCi_C.setText("");
+        this.inputMail_C.setText("");
+        this.inputTel_C.setText("");
+        
+        System.out.println(sist.getListaPersonas());
+        System.out.println(sist.getListaClientes());
+        
+        // Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos en un showMessageDialog
+        String registro = "¡Cliente registrado con exito!" + "\n" + "Cliente: " + cl.getNombre() + "\n" + "Cedula: " + cl.getCedula() + "\n" + "Telefono: " + cl.getTelefono() + "\n" + "Mail: " + cl.getMail();
+        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+/*        
         
         String hayVacios = clie.vacios(nombre,cedula,mail,telefono);
         String noNum = clie.noNum(cedula, telefono);
@@ -220,8 +248,10 @@ public class registroCliente extends javax.swing.JFrame {
                 }
             }
         }   
+        */
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
+    /*
     public void setVacios(String num1, String num2){
         
         if(!sist.esNum(num1)){
@@ -236,11 +266,11 @@ public class registroCliente extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registroCliente().setVisible(true);
+//                new registroCliente().setVisible(true);
             }
         });
     }
-
+*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarR_C;
     private javax.swing.JButton btnRegistrar_C;

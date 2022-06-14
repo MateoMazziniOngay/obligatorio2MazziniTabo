@@ -1,8 +1,10 @@
 
 package dominio;
 
+import java.io.Serializable;
 
-public class Persona {
+
+public class Persona implements Serializable{
     private String nombre;
     private int cedula;
     private int telefono;
@@ -38,6 +40,11 @@ public class Persona {
     }
     public void setTelefono(int unTelefono) {
         this.telefono = unTelefono;
+    }
+    
+    @Override
+    public String toString(){
+        return "Cliente: " + this.getNombre() + ", CI: " + this.getCedula() + ", Telefono: " + this.getTelefono();
     }
     
 }

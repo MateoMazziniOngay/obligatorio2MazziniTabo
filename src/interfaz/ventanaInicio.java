@@ -1,8 +1,13 @@
 package interfaz;
 
-public class ventanaInicio extends javax.swing.JFrame {
+import dominio.Sistema;
 
-    public ventanaInicio() {
+public class ventanaInicio extends javax.swing.JFrame {
+    private Sistema sist;
+    
+    // En el constructor le paso el sistema
+    public ventanaInicio(Sistema unSistema) {
+        this.sist = unSistema;
         initComponents();
     }
 
@@ -114,9 +119,10 @@ public class ventanaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrosActionPerformed
-        ventanaRegistros v = new ventanaRegistros();
+        // 
+        ventanaRegistros v = new ventanaRegistros(sist);
         v.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_btnRegistrosActionPerformed
 
     private void btnVisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitasActionPerformed
@@ -140,7 +146,7 @@ public class ventanaInicio extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ventanaInicio().setVisible(true);
+               // new ventanaInicio().setVisible(true);
             }
         });
     }
