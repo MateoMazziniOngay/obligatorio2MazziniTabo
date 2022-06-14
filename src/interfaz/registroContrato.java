@@ -17,7 +17,7 @@ public class registroContrato extends javax.swing.JFrame {
         initComponents();
         this.cargarListaEmpleados();
         this.cargarListaClientes();
-
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -313,10 +313,27 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_inputMaxSize_ConKeyTyped
 
     //______CARGA DE LISTAS______//
-    
-    
-      
+    private void buscarDepositosGen(){
+        String specs = this.comboEstantes_Con.getSelectedItem().toString() + this.comboRefri_Con.getSelectedItem().toString();
         
+        switch (specs){
+            case "SINO":{
+                
+            }
+            case "NOSI":{
+                
+            }
+            case "NONO":{
+                
+            }
+            case "SISI":{
+                
+            }
+            case " ":{
+                
+            }
+        }
+    }     
     private void cargarListaEmpleados(){
         /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
         modelo1.removeAllElements();
@@ -357,7 +374,7 @@ public class registroContrato extends javax.swing.JFrame {
         
         int max = Integer.parseInt(this.inputMaxSize_Con.getText());
         int min = Integer.parseInt(this.inputMinSize_Con.getText()); 
-        System.out.println(min);System.out.println("\n" + size + "\n");System.out.println(max);  
+
         if(min <= size && size <= max){
             System.out.println(size);
             es = true;

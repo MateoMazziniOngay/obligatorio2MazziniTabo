@@ -70,6 +70,8 @@ public class Sistema implements Serializable{
         listaVisitas.add(unaVisita);
     }
 
+    /*Recorre la lista de personas, comparando las cédulas de 
+    cada Persona con la recibida para saber si ya existe*/
     public boolean cedulaExistente(int unaCedula){
         boolean existe = false;
         for(Persona persona : listaPersonas){
@@ -80,14 +82,27 @@ public class Sistema implements Serializable{
         return existe;
     }
     
-    public boolean idExistente(int unId){
+    /*Recorre la lista de depositos, comparando las ID's de 
+    cada Deposito con la recibida para saber si ya existe*/
+    public boolean idExistente(int unaId){
         boolean existe = false;
         for(Deposito deposito : listaDepositos){
-            if(deposito.getId() == unId){
+            if(deposito.getId() == unaId){
                 existe = true;
             }   
         }
         return existe;
+    }
+    /*Recorre la lista de depositos, comparando las ID's de 
+    cada Deposito con la recibida para encontrarlo y devolverlo*/
+    public Deposito buscarId(int unaId){
+        Deposito ret = new Deposito();
+        for(Deposito deposito : listaDepositos){
+            if(deposito.getId() == unaId){
+                ret = deposito;
+            }   
+        }
+        return ret;
     }
     
     public static boolean contains(int [] arr, int elem){
@@ -100,5 +115,5 @@ public class Sistema implements Serializable{
         }
         return esta;
     }
-    
+
 }
