@@ -170,7 +170,7 @@ public class ventanaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnContrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContrActionPerformed
-        registroContrato vContr = new registroContrato();
+        registroContrato vContr = new registroContrato(sist);
         vContr.setVisible(true);
     }//GEN-LAST:event_btnContrActionPerformed
 

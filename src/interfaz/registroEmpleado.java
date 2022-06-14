@@ -209,9 +209,7 @@ public class registroEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_inputDirNum_EActionPerformed
 
     private void btnRegistrar_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_EActionPerformed
-
-
-/*        
+       
         String nombre = this.inputNombre_E.getText();
         String cedula = this.inputCi_E.getText();
         String anio = this.inputAnio_E.getText();
@@ -264,7 +262,7 @@ public class registroEmpleado extends javax.swing.JFrame {
                 }
             }
         }
-*/
+
     }//GEN-LAST:event_btnRegistrar_EActionPerformed
 
     private void btnCancelarR_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_EActionPerformed
@@ -278,8 +276,7 @@ public class registroEmpleado extends javax.swing.JFrame {
                 new registroEmpleado().setVisible(true);
             }
         });
-    }
-/*    
+    }   
     public void setVacios(String num1, String num2, String num3, String num4){
         
             if(!sist.esNum(num1)){
@@ -298,7 +295,7 @@ public class registroEmpleado extends javax.swing.JFrame {
                 this.inputDirNum_E.setText("");
             }
     }
-*/
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarR_E;
     private javax.swing.JButton btnRegistrar_E;

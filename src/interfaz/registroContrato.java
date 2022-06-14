@@ -1,9 +1,17 @@
 package interfaz;
+import dominio.*;
+import java.util.ArrayList;
+import javax.swing.*;
 
 public class registroContrato extends javax.swing.JFrame {
-
-    public registroContrato() {
+    
+    private Sistema sist;
+    DefaultListModel modelo = new DefaultListModel();
+    
+    public registroContrato(Sistema unSistema) {
+        this.sist = unSistema;
         initComponents();
+        this.cargarListaEmpleados();
     }
 
     @SuppressWarnings("unchecked")
@@ -204,6 +212,16 @@ public class registroContrato extends javax.swing.JFrame {
         setBounds(0, 0, 802, 336);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cargarListaEmpleados(){
+        modelo.removeAllElements();
+        ArrayList <Empleado> lista = sist.getListaEmpleados();
+        for(Empleado empleado : lista){
+            modelo.addElement(empleado);
+        }
+        lstClientes_Con.setModel(modelo);
+        
+    }
+    
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
         this.inputMaxSize_Con.setText("");
         this.inputMinSize_Con.setText("");
@@ -218,11 +236,11 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
 
     
-    public static void main(String args[]) {
+    public void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registroContrato().setVisible(true);
+                new registroContrato(sist).setVisible(true);
             }
         });
     }
