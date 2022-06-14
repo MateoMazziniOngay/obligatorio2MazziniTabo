@@ -171,11 +171,13 @@
         <Component class="javax.swing.JTextField" name="inputCi_C">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputCi_CActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputCi_CKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="inputTel_C">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputTel_CActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputTel_CKeyTyped"/>
           </Events>
         </Component>
       </SubComponents>

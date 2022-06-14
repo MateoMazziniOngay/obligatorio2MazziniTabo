@@ -4,9 +4,10 @@ import dominio.*;
 import javax.swing.*;
 
 public class ventanaInfo extends javax.swing.JFrame {
-
-    public ventanaInfo() {
+    private Sistema sist;
+    public ventanaInfo(Sistema unSistema) {
         initComponents();
+        this.sist = unSistema;
     }
 
     @SuppressWarnings("unchecked")
@@ -55,15 +56,6 @@ public class ventanaInfo extends javax.swing.JFrame {
        // vIni.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
-
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaInfo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;

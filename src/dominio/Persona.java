@@ -44,7 +44,9 @@ public class Persona implements Serializable{
     
     @Override
     public String toString(){
-        return "Cliente: " + this.getNombre() + ", CI: " + this.getCedula() + ", Telefono: " + this.getTelefono();
-    }
-    
+        return 
+            "Nombre: " + this.getNombre() + 
+            ", CI: " + this.getCedula() + 
+            ", Tel: " + this.getTelefono();
+    } 
 }

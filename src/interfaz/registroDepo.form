@@ -151,11 +151,13 @@
         <Component class="javax.swing.JTextField" name="inputId_D">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputId_DActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputId_DKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="inputSize_D">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputSize_DActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputSize_DKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboEstantes_D">

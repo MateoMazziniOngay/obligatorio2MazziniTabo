@@ -28,8 +28,7 @@ public class registroEmpleado extends javax.swing.JFrame {
         inputCi_E = new javax.swing.JTextField();
         inputAnio_E = new javax.swing.JTextField();
         inputTel_E = new javax.swing.JTextField();
-        inputDirCalle_E = new javax.swing.JTextField();
-        inputDirNum_E = new javax.swing.JTextField();
+        inputDir_E = new javax.swing.JTextField();
         btnCancelarR_E = new javax.swing.JButton();
         btnRegistrar_E = new javax.swing.JButton();
 
@@ -59,10 +58,20 @@ public class registroEmpleado extends javax.swing.JFrame {
                 inputCi_EActionPerformed(evt);
             }
         });
+        inputCi_E.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputCi_EKeyTyped(evt);
+            }
+        });
 
         inputAnio_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputAnio_EActionPerformed(evt);
+            }
+        });
+        inputAnio_E.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputAnio_EKeyTyped(evt);
             }
         });
 
@@ -71,18 +80,15 @@ public class registroEmpleado extends javax.swing.JFrame {
                 inputTel_EActionPerformed(evt);
             }
         });
-
-        inputDirCalle_E.setText("Calle");
-        inputDirCalle_E.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputDirCalle_EActionPerformed(evt);
+        inputTel_E.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputTel_EKeyTyped(evt);
             }
         });
 
-        inputDirNum_E.setText("Número");
-        inputDirNum_E.addActionListener(new java.awt.event.ActionListener() {
+        inputDir_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputDirNum_EActionPerformed(evt);
+                inputDir_EActionPerformed(evt);
             }
         });
 
@@ -109,28 +115,28 @@ public class registroEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAnio_E)
-                            .addComponent(lblNombre_E, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCi_E, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTel_E, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDir_E, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputTel_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(inputDirCalle_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAnio_E)
+                                    .addComponent(lblNombre_E, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCi_E, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTel_E, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDir_E, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(inputDirNum_E, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(inputNombre_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(inputAnio_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(inputCi_E, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 6, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCancelarR_E, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegistrar_E, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(inputDir_E)
+                                            .addComponent(inputTel_E)
+                                            .addComponent(inputNombre_E))
+                                        .addComponent(inputAnio_E, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inputCi_E, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCancelarR_E, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRegistrar_E, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 52, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,14 +161,13 @@ public class registroEmpleado extends javax.swing.JFrame {
                     .addComponent(inputTel_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputDirCalle_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputDirNum_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputDir_E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDir_E))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarR_E)
                     .addComponent(btnRegistrar_E))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,11 +183,11 @@ public class registroEmpleado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        setBounds(0, 0, 314, 395);
+        setBounds(0, 0, 314, 399);
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputNombre_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombre_EActionPerformed
@@ -201,103 +206,111 @@ public class registroEmpleado extends javax.swing.JFrame {
         
     }//GEN-LAST:event_inputTel_EActionPerformed
 
-    private void inputDirCalle_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDirCalle_EActionPerformed
+    private void inputDir_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDir_EActionPerformed
         
-    }//GEN-LAST:event_inputDirCalle_EActionPerformed
-
-    private void inputDirNum_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDirNum_EActionPerformed
-        
-    }//GEN-LAST:event_inputDirNum_EActionPerformed
+    }//GEN-LAST:event_inputDir_EActionPerformed
 
     private void btnRegistrar_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_EActionPerformed
-
-        /*        
+       
         // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
-        String nombre = this.inputNombre_E.getText();
-        int cedula = Integer.parseInt(this.inputCi_E.getText());
-        int anio = Integer.parseInt(this.inputAnio_E.getText());
-        int telefono = Integer.parseInt(this.inputTel_E.getText());
-        String direccion = this.inputDirCalle_E.getText() + " " + this.inputDirNum_E.getText();
-        System.out.println(direccion);
-        
-        // Agregamos el registro a la lista de personas.
-        Persona pE = new Persona(nombre,cedula,telefono);
-        sist.agregarPersona(pE);
-        
-        // Agregamos el registro a la lista de clientes.
-        Empleado em = new Empleado (nombre,cedula,anio,direccion,telefono);
-        sist.agregarEmpleado(em);
-        
-        // Dejamos los text fields en blanco otra vez.
-        this.inputNombre_E.setText("");
-        this.inputCi_E.setText("");
-        this.inputAnio_E.setText("");
-        this.inputTel_E.setText("");
-        this.inputDirCalle_E.setText("");
-        this.inputDirNum_E.setText("");
-        
-        // Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos en un showMessageDialog
-        String registro = "¡Cliente registrado con exito!" + "\n" + "Empleado: " + em.getNombre() + "\n" + "Cedula: " + em.getCedula() + "\n" + "Telefono: " + em.getTelefono() + "\n" + "Direccion: " + em.getDireccion() + "\n" + "Año de ingreso: " + em.getAnioIngreso();
-        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);}
-/*        
         String nombre = this.inputNombre_E.getText();
         String cedula = this.inputCi_E.getText();
         String anio = this.inputAnio_E.getText();
         String telefono = this.inputTel_E.getText();
-        String calle = this.inputDirCalle_E.getText();
-        String numeroCasa = this.inputDirNum_E.getText();
+        String direccion = this.inputDir_E.getText();
         
-        String hayVacios = empl.vacios(nombre,cedula,anio,telefono,calle,numeroCasa);
-        String noNum = empl.noNum(cedula,anio,telefono,numeroCasa);
+        // Variables para verificar completitud de los campos
+        boolean vn = nombre.isEmpty();
+        boolean vc = cedula.isEmpty();
+        boolean va = anio.isEmpty();
+        boolean vt = telefono.isEmpty();
+        boolean vd = direccion.isEmpty();
         
-        if(!hayVacios.equals("") || !noNum.equals("")){
-            
-            JOptionPane.showMessageDialog(null, hayVacios + "\n" + noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
-            this.setVacios(cedula,anio,telefono,numeroCasa);
-            
-        }else{
+        //Si hay campos vacíos, se le advierte al usuario y no se procede
+        if(vn || vc || va || vt || vd){
+            JOptionPane.showMessageDialog(null, "No puede dejar campos vacíos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
             
             int cedulaNum = Integer.parseInt(cedula);
+            int anioNum = Integer.parseInt(anio);
+            int telNum = Integer.parseInt(telefono);
             
+            //Validamos que la cedula no haya sido registrada anteriormente previo a registrar a la persona
             if(sist.cedulaExistente(cedulaNum)){
-                
                 JOptionPane.showMessageDialog(null, "La cédula ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.inputCi_E.setText("");
-                
-            }else{
-                
-                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
-                
+            }
+            else{
+                //Pedimos confirmación de registro
+                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
                 if(resp == 0){
-                    String direccion = calle + " " + numeroCasa; 
-                    int telefonoNum = Integer.parseInt(telefono);
-                    int anioNum = Integer.parseInt(anio);
+                    // Agregamos el registro a la lista de personas.
+                    Persona p = new Persona(nombre,cedulaNum,telNum);
+                    sist.agregarPersona(p);
                     
-                    Persona pE = new Persona(nombre,cedulaNum,telefonoNum);
-                    sist.agregarPersona(pE);
-                    
-                    Empleado e = new Empleado (nombre,cedulaNum,telefonoNum, direccion,anioNum);
+                    // Agregamos el registro a la lista de empleados.
+                    Empleado e = new Empleado (nombre,cedulaNum,telNum, direccion,anioNum);
                     sist.agregarEmpleado(e);
-                
-                    JOptionPane.showMessageDialog(null, "Empleado registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
-                
+                    
+                    /*Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
+                    en un showMessageDialog*/
+                    String registro =   "¡Empleado registrado con exito!" + 
+                                        "\n" + "Empleado: " + nombre + 
+                                        "\n" + "Cedula: " + cedulaNum + 
+                                        "\n" + "Telefono: " + telNum + 
+                                        "\n" + "Direccion: " + direccion + 
+                                        "\n" + "Año de ingreso: " + anioNum;
+                    
+                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+                    
+                    // Dejamos los text fields en blanco otra vez.
                     this.inputNombre_E.setText("");
                     this.inputCi_E.setText("");
                     this.inputAnio_E.setText("");
                     this.inputTel_E.setText("");
-                    this.inputDirCalle_E.setText("");
-                    this.inputDirNum_E.setText("");
-                }else{
+                    this.inputDir_E.setText("");     
+                }
+                else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
             }
         }
-*/
     }//GEN-LAST:event_btnRegistrar_EActionPerformed
 
     private void btnCancelarR_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_EActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarR_EActionPerformed
+
+    private void inputCi_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCi_EKeyTyped
+        int ci = evt.getKeyChar();
+
+        boolean numeros = ci >= 48 && ci <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputCi_EKeyTyped
+
+    private void inputAnio_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputAnio_EKeyTyped
+        int anio = evt.getKeyChar();
+
+        boolean numeros = anio >= 48 && anio <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputAnio_EKeyTyped
+
+    private void inputTel_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTel_EKeyTyped
+        int tel = evt.getKeyChar();
+
+        boolean numeros = tel >= 48 && tel <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputTel_EKeyTyped
 
 /*    
     public void setVacios(String num1, String num2, String num3, String num4){
@@ -324,8 +337,7 @@ public class registroEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar_E;
     private javax.swing.JTextField inputAnio_E;
     private javax.swing.JTextField inputCi_E;
-    private javax.swing.JTextField inputDirCalle_E;
-    private javax.swing.JTextField inputDirNum_E;
+    private javax.swing.JTextField inputDir_E;
     private javax.swing.JTextField inputNombre_E;
     private javax.swing.JTextField inputTel_E;
     private javax.swing.JPanel jPanel1;

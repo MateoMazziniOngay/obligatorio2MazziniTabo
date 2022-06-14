@@ -28,7 +28,11 @@ public class Cliente extends Persona implements Serializable{
     
     @Override
     public String toString(){
-        return "Cliente: " + super.getNombre() + ", CI: " + super.getCedula() + ", Telefono: " + super.getTelefono() + ", Mail: " + this.getMail();
+        return 
+            "Nombre: " + super.getNombre() + 
+            ", CI: " + super.getCedula() + 
+            ", Tel: " + super.getTelefono() + 
+            ", Mail: " + this.getMail();
     }
     
 }

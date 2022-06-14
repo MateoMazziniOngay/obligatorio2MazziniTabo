@@ -36,4 +36,11 @@ public class Contrato implements Serializable{
     public void setNumContrato(int unNumContrato) {
         this.numContrato = unNumContrato;
     }
+    public String toString(){
+        return 
+            "Cliente: " + this.getCliente() + 
+            ", Empleado: " + this.getEmpleado() + 
+            ", Deposito: " + this.getDeposito() + 
+            ", Número de Contrato: " + this.getNumContrato();
+    }
 }

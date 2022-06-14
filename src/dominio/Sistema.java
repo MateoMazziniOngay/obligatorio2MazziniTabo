@@ -56,10 +56,6 @@ public class Sistema implements Serializable{
 
     public void agregarCliente(Cliente unCliente) {
         listaClientes.add(unCliente);
-        System.out.println("LOS CLIENTES SON:");
-        for(Cliente cliente : listaClientes){
-        System.out.println(cliente.getNombre());
-        }
     }
 
     public void agregarEmpleado(Empleado unEmpleado) {
@@ -73,23 +69,21 @@ public class Sistema implements Serializable{
     public void agregarVisita(Visita unaVisita) {
         listaVisitas.add(unaVisita);
     }
-    
-    public static boolean esNum(String num){
-        
-        try {  
-            Integer.parseInt(num);  
-            return true;
-        }catch(NumberFormatException e){  
-            return false;  
-        }  
-    }
-    
-    
-    // TO DO - PASAR METODO A LA CLASE PERSONA
-    public boolean cedulaExistente(int cedula){
+
+    public boolean cedulaExistente(int unaCedula){
         boolean existe = false;
         for(Persona persona : listaPersonas){
-            if(persona.getCedula() == cedula){
+            if(persona.getCedula() == unaCedula){
+                existe = true;
+            }   
+        }
+        return existe;
+    }
+    
+    public boolean idExistente(int unId){
+        boolean existe = false;
+        for(Deposito deposito : listaDepositos){
+            if(deposito.getId() == unId){
                 existe = true;
             }   
         }
@@ -106,4 +100,5 @@ public class Sistema implements Serializable{
         }
         return esta;
     }
+    
 }

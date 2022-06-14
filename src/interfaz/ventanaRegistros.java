@@ -185,18 +185,10 @@ public class ventanaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleActionPerformed
 
     private void btnDepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepoActionPerformed
-        registroDepo vDepo = new registroDepo();
+        registroDepo vDepo = new registroDepo(sist);
         vDepo.setVisible(true);
     }//GEN-LAST:event_btnDepoActionPerformed
 
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-              //  new ventanaRegistros().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
