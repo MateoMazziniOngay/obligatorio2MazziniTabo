@@ -8,8 +8,9 @@ public class registroEmpleado extends javax.swing.JFrame {
     Sistema sist = new Sistema();
     Empleado empl = new Empleado();
     
-    public registroEmpleado() {
+    public registroEmpleado(Sistema unSistema) {
         initComponents();
+        this.sist = unSistema;
     }
 
     @SuppressWarnings("unchecked")
@@ -210,7 +211,34 @@ public class registroEmpleado extends javax.swing.JFrame {
 
     private void btnRegistrar_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_EActionPerformed
 
-
+        /*        
+        // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
+        String nombre = this.inputNombre_E.getText();
+        int cedula = Integer.parseInt(this.inputCi_E.getText());
+        int anio = Integer.parseInt(this.inputAnio_E.getText());
+        int telefono = Integer.parseInt(this.inputTel_E.getText());
+        String direccion = this.inputDirCalle_E.getText() + " " + this.inputDirNum_E.getText();
+        System.out.println(direccion);
+        
+        // Agregamos el registro a la lista de personas.
+        Persona pE = new Persona(nombre,cedula,telefono);
+        sist.agregarPersona(pE);
+        
+        // Agregamos el registro a la lista de clientes.
+        Empleado em = new Empleado (nombre,cedula,anio,direccion,telefono);
+        sist.agregarEmpleado(em);
+        
+        // Dejamos los text fields en blanco otra vez.
+        this.inputNombre_E.setText("");
+        this.inputCi_E.setText("");
+        this.inputAnio_E.setText("");
+        this.inputTel_E.setText("");
+        this.inputDirCalle_E.setText("");
+        this.inputDirNum_E.setText("");
+        
+        // Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos en un showMessageDialog
+        String registro = "¡Cliente registrado con exito!" + "\n" + "Empleado: " + em.getNombre() + "\n" + "Cedula: " + em.getCedula() + "\n" + "Telefono: " + em.getTelefono() + "\n" + "Direccion: " + em.getDireccion() + "\n" + "Año de ingreso: " + em.getAnioIngreso();
+        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);}
 /*        
         String nombre = this.inputNombre_E.getText();
         String cedula = this.inputCi_E.getText();
@@ -271,14 +299,6 @@ public class registroEmpleado extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelarR_EActionPerformed
 
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new registroEmpleado().setVisible(true);
-            }
-        });
-    }
 /*    
     public void setVacios(String num1, String num2, String num3, String num4){
         

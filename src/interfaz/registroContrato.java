@@ -6,7 +6,11 @@ import javax.swing.*;
 public class registroContrato extends javax.swing.JFrame {
 
     private Sistema sist;
-    DefaultListModel modelo = new DefaultListModel();
+    
+    /*Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" de la lista.*/
+    DefaultListModel modelo1 = new DefaultListModel();
+    DefaultListModel modelo2 = new DefaultListModel();
+    DefaultListModel modelo3 = new DefaultListModel();
     
     public registroContrato(Sistema unSistema) {
         this.sist = unSistema;
@@ -53,7 +57,6 @@ public class registroContrato extends javax.swing.JFrame {
         lblContratos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblContratos.setText("Registro de Contrato");
 
-        lstEmpleados_Con.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(lstEmpleados_Con);
 
         lblClientes_Con.setText("Clientes");
@@ -194,6 +197,9 @@ public class registroContrato extends javax.swing.JFrame {
                 .addContainerGap(79, Short.MAX_VALUE))
         );
 
+        inputMaxSize_Con.getAccessibleContext().setAccessibleName("");
+        inputMaxSize_Con.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,7 +220,6 @@ public class registroContrato extends javax.swing.JFrame {
         setBounds(0, 0, 802, 336);
     }// </editor-fold>//GEN-END:initComponents
 
-
     
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
         this.inputMaxSize_Con.setText("");
@@ -222,53 +227,56 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
+        Cliente clie = this.lstClientes_Con.getSelectedValue();
+        Empleado empl = this.lstEmpleados_Con.getSelectedValue();
         
+        System.out.println(clie + " " + empl);
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
 
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
 
+    //______CARGA DE LISTAS______//
+    
+    
+      
+        
     private void cargarListaEmpleados(){
-        modelo.removeAllElements();
+        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
+        modelo1.removeAllElements();
+        /*Cargamos un arrayList con la lista a mostrar*/
         ArrayList <Empleado> lista = sist.getListaEmpleados();
-
+        /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
         for(Empleado empleado : lista){
-            modelo.addElement(empleado);
+            modelo1.addElement(empleado/*.getNombre() +" - " + empleado.getCedula()*/);
         }
-        lstEmpleados_Con.setModel(modelo);
+        /*Seteamos nuestro modelo como el modelo de la lista*/
+        lstEmpleados_Con.setModel(modelo1);
     }
 
     private void cargarListaClientes(){
-        modelo.removeAllElements();
-        ArrayList <Cliente> lista = sist.getListaClientes();
-        System.out.println(lista);
-        for(Cliente cliente : lista){
-            modelo.addElement(cliente);
+        modelo2.removeAllElements();
+        ArrayList <Cliente> listaC = sist.getListaClientes();
+        System.out.println(listaC + "  f dsfg ");
+        for(Cliente cliente : listaC){
+            modelo2.addElement(cliente); // .getNombre() +" - " + cliente.getCedula()
         }
-        lstClientes_Con.setModel(modelo);
+        lstClientes_Con.setModel(modelo2);
     }
 
     private void cargarListaDepositos(){
-        modelo.removeAllElements();
+        modelo3.removeAllElements();
         ArrayList <Deposito> lista = sist.getListaDepositos();
+        
         for(Deposito deposito : lista){
-            modelo.addElement(deposito);
+            modelo3.addElement(deposito);
         }
-        lstDepos_Con.setModel(modelo);
+        lstDepos_Con.setModel(modelo3);
     }
     
-   
- /*   
-    public static void main(String args[]) {
+   //______________________________________//
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new registroContrato().setVisible(true);
-            }
-        });
-    }
-*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar_Con;
     private javax.swing.JButton btnBuscar_Con;
@@ -291,8 +299,8 @@ public class registroContrato extends javax.swing.JFrame {
     private javax.swing.JLabel lblMinSize_Con;
     private javax.swing.JLabel lblRefri_Con;
     private javax.swing.JLabel lblSpecsDepo_Con;
-    private javax.swing.JList<String> lstClientes_Con;
+    private javax.swing.JList<Cliente> lstClientes_Con;
     private javax.swing.JList<String> lstDepos_Con;
-    private javax.swing.JList<String> lstEmpleados_Con;
+    private javax.swing.JList<Empleado> lstEmpleados_Con;
     // End of variables declaration//GEN-END:variables
 }
