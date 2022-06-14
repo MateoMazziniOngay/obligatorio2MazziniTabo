@@ -42,4 +42,9 @@ public class Persona implements Serializable{
         this.telefono = unTelefono;
     }
     
+    @Override
+    public String toString(){
+        return "Cliente: " + this.getNombre() + ", CI: " + this.getCedula() + ", Telefono: " + this.getTelefono();
+    }
+    
 }
