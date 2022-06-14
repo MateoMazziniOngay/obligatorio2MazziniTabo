@@ -19,7 +19,10 @@ public class Cliente extends Persona implements Serializable{
     }
     
     public Cliente(String unNombre, int unaCedula, int unTelefono, String unMail){
-        Persona persona = new Persona(unNombre,unaCedula,unTelefono);
+        // Persona persona = new Persona(unNombre,unaCedula,unTelefono);
+        super.setCedula(unaCedula);
+        super.setNombre(unNombre);
+        super.setTelefono(unTelefono);
         this.setMail(unMail);
     }
     
@@ -73,7 +76,10 @@ public class Cliente extends Persona implements Serializable{
             return "";
         }   
     }
-  
-    
+
+    @Override
+    public String toString(){
+        return "Cliente: " + super.getNombre() + ", CI: " + super.getCedula() + ", Telefono: " + super.getTelefono() + ", Mail: " + this.getMail();
+    }
     
 }

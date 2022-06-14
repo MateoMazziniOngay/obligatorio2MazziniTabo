@@ -166,7 +166,7 @@ public class ventanaRegistros extends javax.swing.JFrame {
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         ventanaInicio vIni = new ventanaInicio(sist);
         vIni.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnContrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContrActionPerformed
@@ -180,7 +180,7 @@ public class ventanaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClieActionPerformed
 
     private void btnEmpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleActionPerformed
-        registroEmpleado vEmple = new registroEmpleado();
+        registroEmpleado vEmple = new registroEmpleado(sist);
         vEmple.setVisible(true);
     }//GEN-LAST:event_btnEmpleActionPerformed
 

@@ -8,7 +8,8 @@ public class registroEmpleado extends javax.swing.JFrame {
     Sistema sist = new Sistema();
     Empleado empl = new Empleado();
     
-    public registroEmpleado() {
+    public registroEmpleado(Sistema unSistema) {
+        this.sist = unSistema;
         initComponents();
     }
 
@@ -269,14 +270,14 @@ public class registroEmpleado extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelarR_EActionPerformed
 
-    public static void main(String args[]) {
+    /*public void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registroEmpleado().setVisible(true);
             }
         });
-    }   
+    } */  
     public void setVacios(String num1, String num2, String num3, String num4){
         
             if(!sist.esNum(num1)){

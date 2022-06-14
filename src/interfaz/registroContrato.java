@@ -8,12 +8,14 @@ public class registroContrato extends javax.swing.JFrame {
     private Sistema sist;
     DefaultListModel modelo = new DefaultListModel();
     
+    
     public registroContrato(Sistema unSistema) {
         this.sist = unSistema;
+        
         initComponents();
-        this.cargarListaClientes();
-        this.cargarListaEmpleados();
-        this.cargarListaDepositos();
+        cargarListaClientes();
+        cargarListaEmpleados();
+        cargarListaDepositos();
     }
 
     @SuppressWarnings("unchecked")
@@ -137,7 +139,7 @@ public class registroContrato extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(comboEstantes_Con, javax.swing.GroupLayout.Alignment.TRAILING, 0, 1, Short.MAX_VALUE)
                                         .addComponent(comboRefri_Con, javax.swing.GroupLayout.Alignment.TRAILING, 0, 1, Short.MAX_VALUE)
-                                        .addComponent(inputMinSize_Con, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                                        .addComponent(inputMinSize_Con, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE)
                                         .addComponent(inputMaxSize_Con, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
                             .addComponent(lblSpecsDepo_Con))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
@@ -201,7 +203,7 @@ public class registroContrato extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,10 +218,8 @@ public class registroContrato extends javax.swing.JFrame {
 
     private void cargarListaEmpleados(){
         modelo.removeAllElements();
-        Empleado empleado2 = new Empleado("Martin",0,0,"hola",0);
         ArrayList <Empleado> lista = sist.getListaEmpleados();
-        modelo.addElement(empleado2);
-        lstEmpleados_Con.setModel(modelo);
+
         for(Empleado empleado : lista){
             modelo.addElement(empleado);
         }
@@ -256,16 +256,6 @@ public class registroContrato extends javax.swing.JFrame {
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
-
-    
-    public void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new registroContrato(sist).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar_Con;
