@@ -22,7 +22,7 @@ public class Cliente extends Persona implements Serializable{
         Persona persona = new Persona(unNombre,unaCedula,unTelefono);
         this.setMail(unMail);
     }
-/*    
+    
     public String vacios(String arg1, String arg2, String arg3, String arg4){
         
         String vacios = "Debe completar los siguientes campos: ";
@@ -73,7 +73,7 @@ public class Cliente extends Persona implements Serializable{
             return "";
         }   
     }
-*/  
+  
     
     
 }

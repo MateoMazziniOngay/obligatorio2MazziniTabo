@@ -178,7 +178,6 @@ public class registroCliente extends javax.swing.JFrame {
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
   
 
-/*
         String nombre = this.inputNombre_C.getText();
         String cedula = this.inputCi_C.getText();
         String mail = this.inputMail_C.getText();
@@ -225,10 +224,9 @@ public class registroCliente extends javax.swing.JFrame {
                 }
             }
         }   
-        */
+        
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
-    /*
     public void setVacios(String num1, String num2){
         
         if(!sist.esNum(num1)){
@@ -247,7 +245,7 @@ public class registroCliente extends javax.swing.JFrame {
             }
         });
     }
-*/
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarR_C;
     private javax.swing.JButton btnRegistrar_C;

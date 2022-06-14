@@ -11,7 +11,9 @@ public class registroContrato extends javax.swing.JFrame {
     public registroContrato(Sistema unSistema) {
         this.sist = unSistema;
         initComponents();
+        this.cargarListaClientes();
         this.cargarListaEmpleados();
+        this.cargarListaDepositos();
     }
 
     @SuppressWarnings("unchecked")
@@ -214,12 +216,32 @@ public class registroContrato extends javax.swing.JFrame {
 
     private void cargarListaEmpleados(){
         modelo.removeAllElements();
+        Empleado empleado2 = new Empleado("Martin",0,0,"hola",0);
         ArrayList <Empleado> lista = sist.getListaEmpleados();
+        modelo.addElement(empleado2);
+        lstEmpleados_Con.setModel(modelo);
         for(Empleado empleado : lista){
             modelo.addElement(empleado);
         }
         lstClientes_Con.setModel(modelo);
-        
+    }
+    
+    private void cargarListaClientes(){
+        modelo.removeAllElements();
+        ArrayList <Cliente> lista = sist.getListaClientes();
+        for(Cliente cliente : lista){
+            modelo.addElement(cliente);
+        }
+        lstClientes_Con.setModel(modelo);
+    }
+    
+    private void cargarListaDepositos(){
+        modelo.removeAllElements();
+        ArrayList <Deposito> lista = sist.getListaDepositos();
+        for(Deposito deposito : lista){
+            modelo.addElement(deposito);
+        }
+        lstClientes_Con.setModel(modelo);
     }
     
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
