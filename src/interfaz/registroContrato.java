@@ -1,17 +1,19 @@
 package interfaz;
-import dominio.Sistema;
-//import javax.swing.DefaultListModel;
-//import javax.swing.JList;
+import dominio.*;
+import java.util.ArrayList;
+import javax.swing.*;
 
 public class registroContrato extends javax.swing.JFrame {
 
     private Sistema sist;
+    DefaultListModel modelo = new DefaultListModel();
     
     public registroContrato(Sistema unSistema) {
         this.sist = unSistema;
-        
         initComponents();
-      //  cargarListaClientes();
+        this.cargarListaEmpleados();
+        this.cargarListaClientes();
+        this.cargarListaDepositos();
     }
 
     @SuppressWarnings("unchecked")
@@ -212,6 +214,8 @@ public class registroContrato extends javax.swing.JFrame {
         setBounds(0, 0, 802, 336);
     }// </editor-fold>//GEN-END:initComponents
 
+
+    
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
         this.inputMaxSize_Con.setText("");
         this.inputMinSize_Con.setText("");
@@ -224,17 +228,37 @@ public class registroContrato extends javax.swing.JFrame {
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
-/*
-    // Funcion para cargar la lista de clientes:
-    private void cargarListaClientes() {
-        DefaultListModel model = new DefaultListModel();
-        for ( int i = 0; i < sist.getListaClientes().size(); i++ ){
-            model.addElement( [i].getName() );
-        }
-        JList listd = new JList(demoList);
 
+    private void cargarListaEmpleados(){
+        modelo.removeAllElements();
+        ArrayList <Empleado> lista = sist.getListaEmpleados();
+
+        for(Empleado empleado : lista){
+            modelo.addElement(empleado);
+        }
+        lstEmpleados_Con.setModel(modelo);
     }
- */   
+
+    private void cargarListaClientes(){
+        modelo.removeAllElements();
+        ArrayList <Cliente> lista = sist.getListaClientes();
+        System.out.println(lista);
+        for(Cliente cliente : lista){
+            modelo.addElement(cliente);
+        }
+        lstClientes_Con.setModel(modelo);
+    }
+
+    private void cargarListaDepositos(){
+        modelo.removeAllElements();
+        ArrayList <Deposito> lista = sist.getListaDepositos();
+        for(Deposito deposito : lista){
+            modelo.addElement(deposito);
+        }
+        lstDepos_Con.setModel(modelo);
+    }
+    
+   
  /*   
     public static void main(String args[]) {
 
