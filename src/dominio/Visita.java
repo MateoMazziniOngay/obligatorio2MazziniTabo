@@ -11,6 +11,13 @@ public class Visita implements Serializable{
     private int mes;
     private int dia;
     
+    public Visita(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, Deposito unDeposito, int unDia, int unMes){
+       this.setCliente(unCliente);
+       this.setEmpleado(unEmpleado);
+       this.setContrato(unContrato);
+       this.setDia(unDia);
+       this.setMes(unMes);
+    }
     public Cliente getCliente() {
         return cliente;
     }

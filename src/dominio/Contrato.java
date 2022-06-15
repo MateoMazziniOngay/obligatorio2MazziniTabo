@@ -9,6 +9,13 @@ public class Contrato implements Serializable{
     private Deposito deposito;
     private int numContrato;
     
+    public Contrato(Cliente unCliente, Empleado unEmpleado, Deposito unDeposito, int unNumContrato){
+        this.setCliente(unCliente);
+        this.setEmpleado(unEmpleado);
+        this.setDeposito(unDeposito);
+        this.setNumContrato(unNumContrato);
+    }
+    
     public Cliente getCliente() {
         return cliente;
     }

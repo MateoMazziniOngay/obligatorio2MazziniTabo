@@ -6,12 +6,12 @@ import javax.swing.*;
 public class registroContrato extends javax.swing.JFrame {
 
     private Sistema sist;
-    
+    private Contrato con;
     /*Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" de la lista.*/
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
     DefaultListModel modelo3 = new DefaultListModel();
-    
+  
     public registroContrato(Sistema unSistema) {
         this.sist = unSistema;
         initComponents();
@@ -49,7 +49,7 @@ public class registroContrato extends javax.swing.JFrame {
         btnRegistrar_Con = new javax.swing.JButton();
         btnCancelar_Con = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lstClientes_Con.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(lstClientes_Con);
@@ -269,11 +269,57 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
+        //Tomamos los valores a utilizar en el registro de nuestra ventana
         Cliente clie = this.lstClientes_Con.getSelectedValue();
         Empleado empl = this.lstEmpleados_Con.getSelectedValue();
+        Object[] depo = this.lstDepos_Con.getSelectedValues();
         
-        System.out.println(Arrays.toString(this.lstDepos_Con.getSelectedValues()));
+        //Chequeamos si alguno de los datos requeridos no fue completado/seleccionado
+        boolean vc = clie == null;
+        boolean ve = empl == null;
+        boolean vd = Arrays.toString(depo).isEmpty();
         
+        //Si alguno es vacío, se le alerta al usuario y no se procede
+        if(vc || ve || vd){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado" + 
+                                                " y un depósito", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            //Si no hay ningún vacío, se le pregunta al usuario si quiere confirmar el registro de su/s contrato/s
+            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar contrato/s", 0);
+            /*Si confirma el registro, se crean los contratos 
+            con el cliente, el empleado y el/los deposito/s seleccionado/s*/
+            
+            if(resp == 0){
+                //Recorremos la lista de depósitos seleccionados por el usuario
+                for(Object depos : depo){
+                    
+                    /*El jList nos devuelve un Object, por lo cual debemos castearlo 
+                    a Deposito para poder operar con él*/
+                    Deposito depos2;
+                    depos2 = (Deposito)depos;
+                    
+                    int numContrato = sist.getListaContratos().size()+1;
+                    //Creamos el objeto contrato con los valores dados
+                    Contrato c = new Contrato(clie,empl,depos2,numContrato);
+                    sist.agregarContrato(c);
+                
+                    /*Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
+                    respectivos datos en un showMessageDialog*/
+                    
+                    String registro =   "¡Contrado registrado con éxito!" + 
+                                        "\n" + "Cliente: " + clie.getNombre() + 
+                                        "\n" + "Empleado: " + empl.getNombre() + 
+                                        "\n" + "Deposito N°: " + depos2.getId() + 
+                                        "\n" + "Num Contrato: " + numContrato;
+                    
+                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+            }
+        }    
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
 
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
@@ -315,7 +361,9 @@ public class registroContrato extends javax.swing.JFrame {
     //______CARGA DE LISTAS______//
     private void buscarDepositosGen(){
         String specs = this.comboEstantes_Con.getSelectedItem().toString() + this.comboRefri_Con.getSelectedItem().toString();
-        
+        if(specs.contains("N/A")){
+            
+        }
         switch (specs){
             case "SINO":{
                 
@@ -376,7 +424,6 @@ public class registroContrato extends javax.swing.JFrame {
         int min = Integer.parseInt(this.inputMinSize_Con.getText()); 
 
         if(min <= size && size <= max){
-            System.out.println(size);
             es = true;
         }
         return es;
