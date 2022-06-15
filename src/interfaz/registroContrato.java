@@ -263,8 +263,7 @@ public class registroContrato extends javax.swing.JFrame {
     
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
         
-        this.inputMinSize_Con.setText("");
-        this.inputMaxSize_Con.setText("");        
+        this.borrarCampos();      
         
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
@@ -316,6 +315,7 @@ public class registroContrato extends javax.swing.JFrame {
                                         "\n" + "Num Contrato: " + numContrato;
                     
                     JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+                    
                 }
             }
             else{
@@ -324,6 +324,12 @@ public class registroContrato extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
 
+    private void borrarCampos(){
+        this.inputMinSize_Con.setText("");
+        this.inputMaxSize_Con.setText("");
+        modelo3.removeAllElements();
+        lstDepos_Con.setModel(modelo3);
+    }
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
@@ -337,11 +343,33 @@ public class registroContrato extends javax.swing.JFrame {
             evt.consume();
         }    
     }//GEN-LAST:event_inputMinSize_ConKeyTyped
-
+    public boolean validarTamanio(){
+        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
+        int min = Integer.parseInt(this.inputMinSize_Con.getText());
+        
+        return max > min;
+    }
+    
     private void btnBuscar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_ConActionPerformed
-         this.buscarDepositos();
+        boolean vMax = this.inputMaxSize_Con.getText().isEmpty();
+        boolean vMin = this.inputMinSize_Con.getText().isEmpty();
+        
+        if(vMax || vMin){
+            JOptionPane.showMessageDialog(null, "Debe completar ambos campos de tamaño antes de buscar", 
+                                                "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            if(this.validarTamanio()){
+                this.buscarDepositos();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "El Tamaño máximo debe ser mayor al mínimo", "ERROR", JOptionPane.ERROR_MESSAGE);
+                this.borrarCampos();
+            }
+        }   
     }//GEN-LAST:event_btnBuscar_ConActionPerformed
 
+    
     private void inputMinSize_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinSize_ConActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputMinSize_ConActionPerformed

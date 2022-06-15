@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class ventanaVisitas extends javax.swing.JFrame {
 
-    private Visita vis;
+    private Visita vis = new Visita();
     Sistema sist;
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
@@ -244,7 +244,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
             int diaNum = Integer.parseInt(dia);
             int mesNum = Integer.parseInt(mes);
             
-            if(!vis.validarFecha(diaNum, mesNum)){
+            if(!vis.validarFecha(mesNum, diaNum)){
                 JOptionPane.showMessageDialog(null, "La fecha " + dia+"/"+mes + " no es valida", "ERROR", JOptionPane.ERROR_MESSAGE); 
                 this.comboMes_V.setSelectedIndex(0);
                 this.comboDia_V.setSelectedIndex(0);
@@ -285,14 +285,19 @@ public class ventanaVisitas extends javax.swing.JFrame {
 
     private void btnBuscarContratos_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarContratos_VActionPerformed
         Cliente clie = this.lstClientes_V.getSelectedValue();
-        ArrayList <Contrato> contratosClie = new ArrayList();
-        //System.out.println(clie);
-        for(Contrato contrato : sist.getListaContratos()){
-            if(contrato.getCliente().equals(clie)){
-                contratosClie.add(contrato);
-            }
+        if(clie == null){
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        cargarContratoClientes(contratosClie);
+        else{
+            ArrayList <Contrato> contratosClie = new ArrayList();
+        //System.out.println(clie);
+            for(Contrato contrato : sist.getListaContratos()){
+                if(contrato.getCliente().equals(clie)){
+                    contratosClie.add(contrato);
+                }   
+            }
+            cargarContratoClientes(contratosClie);
+        }  
     }//GEN-LAST:event_btnBuscarContratos_VActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

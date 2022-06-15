@@ -11,6 +11,14 @@ public class Visita implements Serializable{
     private int mes;
     private int dia;
     
+    public Visita(){
+        this.cliente = null;
+        this.empleado = null;
+        this.contrato = null;
+        this.deposito = null;
+        this.mes = 0;
+        this.dia = 0;
+    }
     public Visita(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, Deposito unDeposito, int unDia, int unMes){
        this.setCliente(unCliente);
        this.setEmpleado(unEmpleado);
@@ -60,12 +68,12 @@ public class Visita implements Serializable{
         this.dia = unDia;
     }
     
-    public boolean validarFecha(int unDia, int unMes){
+    public boolean validarFecha(int unMes, int unDia){
         boolean valida = true;
         int [] meses31 = {1,3,5,7,8,10,12};
         
         if(!Sistema.contains(meses31,unMes)){
-            valida = (mes30(unDia,unMes) || febrero(unDia,unMes));
+            valida = (mes30(unMes,unDia) || febrero(unMes,unDia));
         }
         return valida;
     }
