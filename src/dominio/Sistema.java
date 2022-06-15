@@ -56,10 +56,6 @@ public class Sistema implements Serializable{
 
     public void agregarCliente(Cliente unCliente) {
         listaClientes.add(unCliente);
-        System.out.println("LOS CLIENTES SON:");
-        for(Cliente cliente : listaClientes){
-        System.out.println(cliente.getNombre());
-        }
     }
 
     public void agregarEmpleado(Empleado unEmpleado) {
@@ -73,27 +69,40 @@ public class Sistema implements Serializable{
     public void agregarVisita(Visita unaVisita) {
         listaVisitas.add(unaVisita);
     }
-    
-    public static boolean esNum(String num){
-        
-        try {  
-            Integer.parseInt(num);  
-            return true;
-        }catch(NumberFormatException e){  
-            return false;  
-        }  
-    }
-    
-    
-    // TO DO - PASAR METODO A LA CLASE PERSONA
-    public boolean cedulaExistente(int cedula){
+
+    /*Recorre la lista de personas, comparando las cédulas de 
+    cada Persona con la recibida para saber si ya existe*/
+    public boolean cedulaExistente(int unaCedula){
         boolean existe = false;
         for(Persona persona : listaPersonas){
-            if(persona.getCedula() == cedula){
+            if(persona.getCedula() == unaCedula){
                 existe = true;
             }   
         }
         return existe;
+    }
+    
+    /*Recorre la lista de depositos, comparando las ID's de 
+    cada Deposito con la recibida para saber si ya existe*/
+    public boolean idExistente(int unaId){
+        boolean existe = false;
+        for(Deposito deposito : listaDepositos){
+            if(deposito.getId() == unaId){
+                existe = true;
+            }   
+        }
+        return existe;
+    }
+    /*Recorre la lista de depositos, comparando las ID's de 
+    cada Deposito con la recibida para encontrarlo y devolverlo*/
+    public Deposito buscarId(int unaId){
+        Deposito ret = new Deposito();
+        for(Deposito deposito : listaDepositos){
+            if(deposito.getId() == unaId){
+                ret = deposito;
+            }   
+        }
+        return ret;
     }
     
     public static boolean contains(int [] arr, int elem){
@@ -106,4 +115,5 @@ public class Sistema implements Serializable{
         }
         return esta;
     }
+
 }

@@ -8,8 +8,9 @@ public class registroDepo extends javax.swing.JFrame {
     Sistema sist = new Sistema();
     Deposito depo = new Deposito();
     
-    public registroDepo() {
+    public registroDepo(Sistema unSistema) {
         initComponents();
+        this.sist = unSistema;
     }
 
     @SuppressWarnings("unchecked")
@@ -47,10 +48,20 @@ public class registroDepo extends javax.swing.JFrame {
                 inputId_DActionPerformed(evt);
             }
         });
+        inputId_D.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputId_DKeyTyped(evt);
+            }
+        });
 
         inputSize_D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputSize_DActionPerformed(evt);
+            }
+        });
+        inputSize_D.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputSize_DKeyTyped(evt);
             }
         });
 
@@ -186,38 +197,50 @@ public class registroDepo extends javax.swing.JFrame {
         String estantes = this.comboEstantes_D.getSelectedItem().toString();;
         String refri = this.comboRefri_D.getSelectedItem().toString();
         
-        String noNum = depo.noNum(id,tamanio);
+        //Variables para verificar la completitud de los campos.
+        boolean vi = id.isEmpty();
+        boolean vt = tamanio.isEmpty();
         
-        if(!noNum.equals("")){
+        //Si hay campos vacíos, se le advierte al usuario y no se procede.
+        if(vt || vi){
+            JOptionPane.showMessageDialog(null, "No puede dejar campos vacíos", "ERROR", JOptionPane.ERROR_MESSAGE);  
+        }
+        else{
+            int idNum = Integer.parseInt(id);
             
-            JOptionPane.showMessageDialog(null, noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
-            this.setVacios(id,tamanio);
-            
-        }else{
-            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
-            
-            if(resp == 0){
+            //Validamos que la ID no haya sido registrada anteriormente.
+            if(sist.idExistente(idNum)){
+                JOptionPane.showMessageDialog(null, "La ID ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
+                this.inputId_D.setText("");
+            }
+            else{
+                
+                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar depósito", 0);
+                if(resp == 0){
                     
-                int idNum = Integer.parseInt(id);
-                int tamanioNum = Integer.parseInt(tamanio);
+                    //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito,
+                    int tamanioNum = Integer.parseInt(tamanio);
+                    refri = pasarRefri(refri);
+                    estantes = pasarEstantes(estantes);
                     
-                if(estantes.equals("Si")){
-                    estantes = "S";
-                }else{
-                    estantes = "N";
-                }
-                
-                if(refri.equals("Si")){
-                    refri = "S";
-                }else{
-                    refri = "N";
-                }
-                
-                Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
-                sist.agregarDeposito(d);
-                
-                JOptionPane.showMessageDialog(null, "Depósito registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
-                
+                    //Creamos un nuevo depósito y lo agregamos a su lista.
+                    Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
+                    sist.agregarDeposito(d);
+                    
+                    /*Creamos una variable registro para mostrar un mensaje de depósito registrado con exito y sus respectivos datos 
+                    en un showMessageDialog*/
+                    
+                    String registro =   "¡Depósito registrado con exito!" + 
+                                        "\n" + "ID: " + idNum + 
+                                        "\n" + "Tamaño: " + tamanioNum + 
+                                        "\n" + "Estantes: " + estantes +
+                                        "\n" + "Refrigeración: " + refri;
+                            
+                                        
+                    
+                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+                    
+                    // Dejamos los text fields en blanco otra vez.
                     this.inputId_D.setText("");
                     this.inputSize_D.setText("");
                     this.comboEstantes_D.setSelectedIndex(0);
@@ -227,54 +250,49 @@ public class registroDepo extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
             }
-        
-
+        }
     }//GEN-LAST:event_btnRegistrar_DActionPerformed
 
-    public void setVacios(String arg1, String arg2){
-        
-        if(!sist.esNum(arg1)){
-            this.inputId_D.setText("");
+    
+    public String pasarRefri(String sn){
+        if(sn.equals("SI")){
+            sn = "S";
         }
-        
-        if(!sist.esNum(arg2)){
-            this.inputSize_D.setText("");
+        else{
+            sn = "N";
         }
+        return sn;
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registroDepo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    
+    public String pasarEstantes(String sn){
+        if(sn.equals("SI")){
+            sn = "S";
         }
-        //</editor-fold>
+        else{
+            sn = "N";
+        }
+        return sn;
+    }
+    
+    private void inputSize_DKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputSize_DKeyTyped
+        int size = evt.getKeyChar();
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new registroDepo().setVisible(true);
-            }
-        });
-    }
+        boolean numeros = size >= 48 && size <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputSize_DKeyTyped
+
+    private void inputId_DKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputId_DKeyTyped
+        int id = evt.getKeyChar();
+
+        boolean numeros = id >= 48 && id <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputId_DKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarR_D;

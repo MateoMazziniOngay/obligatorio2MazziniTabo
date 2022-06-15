@@ -132,7 +132,7 @@ public class ventanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVisitasActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
-        ventanaInfo v = new ventanaInfo();
+        ventanaInfo v = new ventanaInfo(sist);
         v.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnInfoActionPerformed
@@ -141,15 +141,6 @@ public class ventanaInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
-
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               // new ventanaInicio().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInfo;

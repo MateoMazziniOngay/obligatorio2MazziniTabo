@@ -74,10 +74,20 @@ public class registroCliente extends javax.swing.JFrame {
                 inputCi_CActionPerformed(evt);
             }
         });
+        inputCi_C.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputCi_CKeyTyped(evt);
+            }
+        });
 
         inputTel_C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputTel_CActionPerformed(evt);
+            }
+        });
+        inputTel_C.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputTel_CKeyTyped(evt);
             }
         });
 
@@ -183,94 +193,81 @@ public class registroCliente extends javax.swing.JFrame {
         String mail = this.inputMail_C.getText();
         String telefono = this.inputTel_C.getText();
         
-        // Convertimos la cedula y el telefono en integers.
-        int cedulaNum = Integer.parseInt(cedula);
-        int telefonoNum = Integer.parseInt(telefono);
+        // Variables para verificar completitud de los campos
+        boolean vn = nombre.isEmpty();
+        boolean vc = cedula.isEmpty();
+        boolean vm = mail.isEmpty();
+        boolean vt = telefono.isEmpty();
         
-        // Agregamos el registro a la lista de personas.
-        Persona pC = new Persona(nombre,cedulaNum,telefonoNum);
-        sist.agregarPersona(pC);
-        
-        // Agregamos el registro a la lista de clientes.
-        Cliente cl = new Cliente (nombre,cedulaNum,telefonoNum,mail);
-        sist.agregarCliente(cl);
-        
-        // Dejamos los text fields en blanco otra vez.
-        this.inputNombre_C.setText("");
-        this.inputCi_C.setText("");
-        this.inputMail_C.setText("");
-        this.inputTel_C.setText("");
-        
-        System.out.println(sist.getListaPersonas());
-        System.out.println(sist.getListaClientes());
-        
-        // Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos en un showMessageDialog
-        String registro = "¡Cliente registrado con exito!" + "\n" + "Cliente: " + cl.getNombre() + "\n" + "Cedula: " + cl.getCedula() + "\n" + "Telefono: " + cl.getTelefono() + "\n" + "Mail: " + cl.getMail();
-        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
-/*        
-        
-        String hayVacios = clie.vacios(nombre,cedula,mail,telefono);
-        String noNum = clie.noNum(cedula, telefono);
-        
-        if(!hayVacios.equals("") || !noNum.equals("")){
-            
-            JOptionPane.showMessageDialog(null, hayVacios + "\n" + noNum, "ERROR", JOptionPane.ERROR_MESSAGE);
-            this.setVacios(cedula,telefono);
-            
-        }else{
+        //Si hay campos vacíos, se le advierte al usuario y no se procede
+        if(vn || vc || vm || vt){
+            JOptionPane.showMessageDialog(null, "No puede dejar campos vacíos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
             
             int cedulaNum = Integer.parseInt(cedula);
-            int telefonoNum = Integer.parseInt(telefono);
+            int telNum = Integer.parseInt(telefono);
             
+            //Validamos que la cedula no haya sido registrada anteriormente previo a registrar a la persona
             if(sist.cedulaExistente(cedulaNum)){
                 JOptionPane.showMessageDialog(null, "La cédula ya se encuentra registrada", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.inputCi_C.setText("");
-                
-            }else{
-                
+            }
+            else{
+                //Pedimos confirmación de registro
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
                 if(resp == 0){
+                    // Agregamos el registro a la lista de personas.
+                    Persona p = new Persona(nombre,cedulaNum,telNum);
+                    sist.agregarPersona(p);
                     
-                    Persona pC = new Persona(nombre,cedulaNum,telefonoNum);
-                    sist.agregarPersona(pC);
+                    // Agregamos el registro a la lista de clientes.
+                    Cliente c = new Cliente (nombre,cedulaNum,telNum, mail);
+                    sist.agregarCliente(c);
                     
-                    Cliente cl = new Cliente (nombre,cedulaNum,telefonoNum,mail);
-                    sist.agregarCliente(cl);
-                
-                    JOptionPane.showMessageDialog(null, "Cliente registrado con éxito", "Status", JOptionPane.PLAIN_MESSAGE);
-                
+                    /*Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos 
+                    en un showMessageDialog*/
+                    String registro =   "¡Cliente registrado con exito!" + 
+                                        "\n" + "Cliente: " + nombre + 
+                                        "\n" + "Cedula: " + cedulaNum + 
+                                        "\n" + "Telefono: " + telNum + 
+                                        "\n" + "Mail: " + mail;
+                    
+                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+                    
+                    // Dejamos los text fields en blanco otra vez.
                     this.inputNombre_C.setText("");
                     this.inputCi_C.setText("");
-                    this.inputMail_C.setText("");
                     this.inputTel_C.setText("");
-                }else{
+                    this.inputMail_C.setText("");     
+                }
+                else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
                 }
             }
-        }   
-        */
+        }
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
-    /*
-    public void setVacios(String num1, String num2){
-        
-        if(!sist.esNum(num1)){
-                this.inputCi_C.setText("");
-        }
-        if(!sist.esNum(num2)){
-            this.inputTel_C.setText("");
-        }   
-    }
-    
-    public static void main(String args[]) {
+    private void inputCi_CKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCi_CKeyTyped
+        int ci = evt.getKeyChar();
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-//                new registroCliente().setVisible(true);
-            }
-        });
-    }
-*/
+        boolean numeros = ci >= 48 && ci <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputCi_CKeyTyped
+
+    private void inputTel_CKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTel_CKeyTyped
+        int tel = evt.getKeyChar();
+
+        boolean numeros = tel >= 48 && tel <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputTel_CKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarR_C;
     private javax.swing.JButton btnRegistrar_C;

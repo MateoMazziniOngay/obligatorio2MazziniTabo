@@ -1,6 +1,6 @@
 package interfaz;
 import dominio.*;
-import java.util.ArrayList;
+import java.util.*;
 import javax.swing.*;
 
 public class registroContrato extends javax.swing.JFrame {
@@ -17,7 +17,7 @@ public class registroContrato extends javax.swing.JFrame {
         initComponents();
         this.cargarListaEmpleados();
         this.cargarListaClientes();
-        this.cargarListaDepositos();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -39,8 +39,8 @@ public class registroContrato extends javax.swing.JFrame {
         lblRefri_Con = new javax.swing.JLabel();
         comboRefri_Con = new javax.swing.JComboBox<>();
         comboEstantes_Con = new javax.swing.JComboBox<>();
-        inputMinSize_Con = new javax.swing.JTextField();
         inputMaxSize_Con = new javax.swing.JTextField();
+        inputMinSize_Con = new javax.swing.JTextField();
         btnBuscar_Con = new javax.swing.JButton();
         btnBorrar_Con = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -57,6 +57,7 @@ public class registroContrato extends javax.swing.JFrame {
         lblContratos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblContratos.setText("Registro de Contrato");
 
+        lstEmpleados_Con.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(lstEmpleados_Con);
 
         lblClientes_Con.setText("Clientes");
@@ -65,9 +66,9 @@ public class registroContrato extends javax.swing.JFrame {
 
         lblSpecsDepo_Con.setText("Características del depósito");
 
-        lblMaxSize_Con.setText("Tamaño Máx.");
+        lblMaxSize_Con.setText("Tamaño Min.");
 
-        lblMinSize_Con.setText("Tamaño Min.");
+        lblMinSize_Con.setText("Tamaño Máx.");
 
         lblEstantes_Con.setText("Estantes");
 
@@ -77,7 +78,34 @@ public class registroContrato extends javax.swing.JFrame {
 
         comboEstantes_Con.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO", "N/A" }));
 
+        inputMaxSize_Con.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMaxSize_ConActionPerformed(evt);
+            }
+        });
+        inputMaxSize_Con.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputMaxSize_ConKeyTyped(evt);
+            }
+        });
+
+        inputMinSize_Con.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMinSize_ConActionPerformed(evt);
+            }
+        });
+        inputMinSize_Con.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputMinSize_ConKeyTyped(evt);
+            }
+        });
+
         btnBuscar_Con.setText("Buscar");
+        btnBuscar_Con.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscar_ConActionPerformed(evt);
+            }
+        });
 
         btnBorrar_Con.setText("Borrar");
         btnBorrar_Con.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +114,7 @@ public class registroContrato extends javax.swing.JFrame {
             }
         });
 
+        lstDepos_Con.setToolTipText("");
         jScrollPane2.setViewportView(lstDepos_Con);
 
         lblDepos_Con.setText("Depósitos Encontrados");
@@ -112,136 +141,199 @@ public class registroContrato extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblContratos)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblClientes_Con))
+                            .addComponent(lblEmpleados_Con)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane3))
+                        .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblClientes_Con))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmpleados_Con))
-                        .addGap(54, 54, 54)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnBorrar_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnBuscar_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblMaxSize_Con)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblEstantes_Con)
                                         .addComponent(lblMinSize_Con)
-                                        .addComponent(lblRefri_Con)
-                                        .addComponent(lblMaxSize_Con))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(comboEstantes_Con, javax.swing.GroupLayout.Alignment.TRAILING, 0, 1, Short.MAX_VALUE)
-                                        .addComponent(comboRefri_Con, javax.swing.GroupLayout.Alignment.TRAILING, 0, 1, Short.MAX_VALUE)
-                                        .addComponent(inputMinSize_Con, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE)
-                                        .addComponent(inputMaxSize_Con, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
-                            .addComponent(lblSpecsDepo_Con))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblRefri_Con))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnBorrar_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(2, 2, 2)))
+                                .addGap(53, 53, 53)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(comboRefri_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputMaxSize_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputMinSize_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboEstantes_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscar_Con, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCancelar_Con)
+                                .addGap(7, 7, 7)
+                                .addComponent(lblSpecsDepo_Con)))
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCancelar_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRegistrar_Con))
-                            .addComponent(lblDepos_Con))))
-                .addContainerGap())
+                                .addComponent(btnRegistrar_Con, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(237, 237, 237))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblContratos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDepos_Con)
+                        .addGap(359, 359, 359))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblContratos)
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClientes_Con)
-                    .addComponent(lblEmpleados_Con)
-                    .addComponent(lblSpecsDepo_Con)
-                    .addComponent(lblDepos_Con))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblContratos)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(lblClientes_Con))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSpecsDepo_Con)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblMaxSize_Con)
+                                            .addComponent(inputMinSize_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblMinSize_Con)
+                                            .addComponent(inputMaxSize_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblEstantes_Con)
+                                            .addComponent(comboEstantes_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboRefri_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblRefri_Con)))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblMaxSize_Con)
-                                    .addComponent(inputMaxSize_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnBuscar_Con)
+                                    .addComponent(btnBorrar_Con)
+                                    .addComponent(btnCancelar_Con)
+                                    .addComponent(btnRegistrar_Con)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblMinSize_Con)
-                                    .addComponent(inputMinSize_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblEmpleados_Con)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblEstantes_Con)
-                                    .addComponent(comboEstantes_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblRefri_Con)
-                                    .addComponent(comboRefri_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBorrar_Con)
-                            .addComponent(btnRegistrar_Con)
-                            .addComponent(btnCancelar_Con)
-                            .addComponent(btnBuscar_Con))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblDepos_Con)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        inputMaxSize_Con.getAccessibleContext().setAccessibleName("");
-        inputMaxSize_Con.getAccessibleContext().setAccessibleDescription("");
+        inputMinSize_Con.getAccessibleContext().setAccessibleName("");
+        inputMinSize_Con.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 802, 336);
+        setBounds(0, 0, 1095, 397);
     }// </editor-fold>//GEN-END:initComponents
 
     
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
-        this.inputMaxSize_Con.setText("");
+        
         this.inputMinSize_Con.setText("");
+        this.inputMaxSize_Con.setText("");        
+        
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
         Cliente clie = this.lstClientes_Con.getSelectedValue();
         Empleado empl = this.lstEmpleados_Con.getSelectedValue();
         
-        System.out.println(clie + " " + empl);
+        System.out.println(Arrays.toString(this.lstDepos_Con.getSelectedValues()));
+        
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
 
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
 
-    //______CARGA DE LISTAS______//
-    
-    
-      
+    private void inputMinSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMinSize_ConKeyTyped
+        int min = evt.getKeyChar();
+
+        boolean numeros = min >= 48 && min <= 57;
         
+        if (!numeros){
+            evt.consume();
+        }    
+    }//GEN-LAST:event_inputMinSize_ConKeyTyped
+
+    private void btnBuscar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_ConActionPerformed
+         this.buscarDepositos();
+    }//GEN-LAST:event_btnBuscar_ConActionPerformed
+
+    private void inputMinSize_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinSize_ConActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputMinSize_ConActionPerformed
+
+    private void inputMaxSize_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMaxSize_ConActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputMaxSize_ConActionPerformed
+
+    private void inputMaxSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMaxSize_ConKeyTyped
+        int max = evt.getKeyChar();
+
+        boolean numeros = max >= 48 && max <= 57;
+        
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_inputMaxSize_ConKeyTyped
+
+    //______CARGA DE LISTAS______//
+    private void buscarDepositosGen(){
+        String specs = this.comboEstantes_Con.getSelectedItem().toString() + this.comboRefri_Con.getSelectedItem().toString();
+        
+        switch (specs){
+            case "SINO":{
+                
+            }
+            case "NOSI":{
+                
+            }
+            case "NONO":{
+                
+            }
+            case "SISI":{
+                
+            }
+            case " ":{
+                
+            }
+        }
+    }     
     private void cargarListaEmpleados(){
         /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
         modelo1.removeAllElements();
@@ -249,7 +341,7 @@ public class registroContrato extends javax.swing.JFrame {
         ArrayList <Empleado> lista = sist.getListaEmpleados();
         /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
         for(Empleado empleado : lista){
-            modelo1.addElement(empleado/*.getNombre() +" - " + empleado.getCedula()*/);
+            modelo1.addElement(empleado);
         }
         /*Seteamos nuestro modelo como el modelo de la lista*/
         lstEmpleados_Con.setModel(modelo1);
@@ -258,18 +350,41 @@ public class registroContrato extends javax.swing.JFrame {
     private void cargarListaClientes(){
         modelo2.removeAllElements();
         ArrayList <Cliente> listaC = sist.getListaClientes();
-        System.out.println(listaC + "  f dsfg ");
+        
         for(Cliente cliente : listaC){
-            modelo2.addElement(cliente); // .getNombre() +" - " + cliente.getCedula()
+            modelo2.addElement(cliente);
         }
         lstClientes_Con.setModel(modelo2);
     }
 
-    private void cargarListaDepositos(){
-        modelo3.removeAllElements();
-        ArrayList <Deposito> lista = sist.getListaDepositos();
+    private void buscarDepositos(){
+        ArrayList<Deposito> depos = sist.getListaDepositos();
+        ArrayList<Deposito> validos = new ArrayList();
         
-        for(Deposito deposito : lista){
+        for(Deposito deposito : depos){
+            if(compararSize(deposito.getTamanio())){
+                validos.add(deposito);
+            }
+        }
+        cargarListaDepositos(validos);
+    }
+    
+    private boolean compararSize(int size){
+        boolean es = false;
+        
+        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
+        int min = Integer.parseInt(this.inputMinSize_Con.getText()); 
+
+        if(min <= size && size <= max){
+            System.out.println(size);
+            es = true;
+        }
+        return es;
+    }
+    private void cargarListaDepositos(ArrayList <Deposito> lstDepositos){
+        modelo3.removeAllElements();
+        
+        for(Deposito deposito : lstDepositos){
             modelo3.addElement(deposito);
         }
         lstDepos_Con.setModel(modelo3);
@@ -300,7 +415,7 @@ public class registroContrato extends javax.swing.JFrame {
     private javax.swing.JLabel lblRefri_Con;
     private javax.swing.JLabel lblSpecsDepo_Con;
     private javax.swing.JList<Cliente> lstClientes_Con;
-    private javax.swing.JList<String> lstDepos_Con;
+    private javax.swing.JList<Deposito> lstDepos_Con;
     private javax.swing.JList<Empleado> lstEmpleados_Con;
     // End of variables declaration//GEN-END:variables
 }

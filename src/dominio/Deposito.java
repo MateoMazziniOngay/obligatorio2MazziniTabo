@@ -41,47 +41,25 @@ public class Deposito implements Serializable{
         this.tamanio = unTamanio;
     }
     
-    public String isEstantes() {
+    public String tieneEstantes() {
         return estantes;
     }
     public void setEstantes(String estantes) {
         this.estantes = estantes;
     }
     
-    public String isRefrigeracion() {
+    public String tieneRefrigeracion() {
         return refrigeracion;
     }
     public void setRefrigeracion(String refrigeracion) {
         this.refrigeracion = refrigeracion;
     }
     
-    public String noNum(String num1, String num2){
-        
-        String noNum = "Deben ingresarse NÚMEROS MAYORES A 0 en los siguientes campos: ";
-        boolean hayInvalido = false;
-        String args[]  = {num1,num2};
-        String ids[] = {"ID ","Tamaño"};
-        
-        for(int i = 0; i < 2; i ++){
-            boolean valido = Sistema.esNum(args[i]);
-            
-            if(!valido){
-                hayInvalido = true;
-                noNum += ids[i];
-            }else{
-                int number = Integer.parseInt(args[i]);
-                if(number < 1){
-                    hayInvalido = true;
-                    noNum += ids [i];
-                }
-            }
-            
-        } 
-        if(hayInvalido){
-           return noNum; 
-        }
-        else{
-            return "";
-        }   
+    public String toString(){
+        return 
+            "ID: " + this.getId() + 
+            ", Tamaño: " + this.getTamanio() + 
+            ", Estantes: " + this.tieneEstantes() + 
+            ", Refrigeración: " + this.tieneRefrigeracion();
     }
 }
