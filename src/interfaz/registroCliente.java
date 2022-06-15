@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class registroCliente extends javax.swing.JFrame {
 
-    static Cliente clie;
+    private Cliente clie;
     private Sistema sist;
     
     public registroCliente(Sistema unSistema) {

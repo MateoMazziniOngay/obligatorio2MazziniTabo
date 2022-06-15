@@ -1,14 +1,22 @@
 package interfaz;
 
 import dominio.*;
+import java.util.*;
 import javax.swing.*;
 
 public class ventanaVisitas extends javax.swing.JFrame {
 
-    Visita vis = new Visita();
+    private Visita vis;
+    Sistema sist;
+    DefaultListModel modelo1 = new DefaultListModel();
+    DefaultListModel modelo2 = new DefaultListModel();
+    DefaultListModel modelo3 = new DefaultListModel();
     
-    public ventanaVisitas() {
+    public ventanaVisitas(Sistema unSistema) {
         initComponents();
+        this.sist = unSistema;
+        this.cargarListaClientes();
+        this.cargarListaEmpleados();
     }
 
     @SuppressWarnings("unchecked")
@@ -23,11 +31,11 @@ public class ventanaVisitas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstClientes = new javax.swing.JList<>();
+        lstClientes_V = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lstEmpleados = new javax.swing.JList<>();
+        lstContratos_V = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        lstDepositos = new javax.swing.JList<>();
+        lstEmpleados_V = new javax.swing.JList<>();
         btnRegistrar_V = new javax.swing.JButton();
         comboDia_V = new javax.swing.JComboBox<>();
         comboMes_V = new javax.swing.JComboBox<>();
@@ -50,25 +58,30 @@ public class ventanaVisitas extends javax.swing.JFrame {
         jLabel1.setText("Cliente:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("Depósitos:");
+        jLabel2.setText("Empleado:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Empleado:");
+        jLabel3.setText("Contrato:");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setText("Fecha:");
 
-        lstClientes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        lstClientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(lstClientes);
+        lstClientes_V.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lstClientes_V.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstClientes_V.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstClientes_VValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstClientes_V);
 
-        lstEmpleados.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        lstEmpleados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(lstEmpleados);
+        lstContratos_V.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lstContratos_V.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(lstContratos_V);
 
-        lstDepositos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        lstDepositos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane3.setViewportView(lstDepositos);
+        lstEmpleados_V.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lstEmpleados_V.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane3.setViewportView(lstEmpleados_V);
 
         btnRegistrar_V.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnRegistrar_V.setText("Registrar");
@@ -105,13 +118,13 @@ public class ventanaVisitas extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(comboDia_V, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,20 +172,103 @@ public class ventanaVisitas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
-    private void btnRegistrar_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_VActionPerformed
-        int mes = Integer.parseInt(this.comboMes_V.getSelectedItem().toString());
-        int dia = Integer.parseInt(this.comboDia_V.getSelectedItem().toString());
-        if(!vis.validarFecha(dia, mes)){
-            JOptionPane.showMessageDialog(null, "La fecha " + dia+"/"+mes + " no es valida", "ERROR", JOptionPane.ERROR_MESSAGE);   
+    private void cargarListaEmpleados(){
+        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
+        modelo3.removeAllElements();
+        /*Cargamos un arrayList con la lista a mostrar*/
+        ArrayList <Empleado> lista = sist.getListaEmpleados();
+        /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
+        for(Empleado empleado : lista){
+            modelo3.addElement(empleado);
         }
-        this.comboMes_V.setSelectedIndex(0);
-        this.comboDia_V.setSelectedIndex(0);
+        /*Seteamos nuestro modelo como el modelo de la lista*/
+        lstEmpleados_V.setModel(modelo3);
+    }
+
+    private void cargarListaClientes(){
+        modelo1.removeAllElements();
+        ArrayList <Cliente> listaC = sist.getListaClientes();
         
+        for(Cliente cliente : listaC){
+            modelo1.addElement(cliente);
+        }
+        lstClientes_V.setModel(modelo1);
+    }
+    
+    private void cargarContratoClientes(ArrayList<Contrato> lstContratos){
+        modelo2.removeAllElements();
+
+        for(Contrato contrato : lstContratos){
+            modelo2.addElement(contrato);
+        }
+        lstClientes_V.setModel(modelo2);
+    }
+    private void btnRegistrar_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_VActionPerformed
+        String mes = this.comboMes_V.getSelectedItem().toString();    
+        String dia = this.comboDia_V.getSelectedItem().toString();
+        Cliente clie = this.lstClientes_V.getSelectedValue();
+        Empleado emple = this.lstEmpleados_V.getSelectedValue();
+        Contrato con = this.lstContratos_V.getSelectedValue();
+        
+        boolean vm = mes.isEmpty();
+        boolean vd = dia.isEmpty();
+        boolean vCl = clie == null;
+        boolean ve = emple == null;
+        boolean vc = con == null;
+        
+        if(vm || vd || vCl || ve || vc){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado" + 
+                                                " y un contrato", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+            int diaNum = Integer.parseInt(dia);
+            int mesNum = Integer.parseInt(mes);
+            
+            if(!vis.validarFecha(diaNum, mesNum)){
+                JOptionPane.showMessageDialog(null, "La fecha " + dia+"/"+mes + " no es valida", "ERROR", JOptionPane.ERROR_MESSAGE); 
+                this.comboMes_V.setSelectedIndex(0);
+                this.comboDia_V.setSelectedIndex(0);
+            }
+            else{
+                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
+                if(resp == 0){
+                    Deposito depo = con.getDeposito();
+                    // Agregamos el registro a la lista de personas.
+                    Visita v = new Visita(clie,emple,con,depo,diaNum,mesNum);
+                    sist.agregarVisita(v);
+                    
+                    /*Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
+                    en un showMessageDialog*/
+                    String registro =   "¡Visita registrada con exito!" + 
+                                        "\n" + "Cliente: " + clie.getNombre() + 
+                                        "\n" + "Empleado: " + emple.getNombre() + 
+                                        "\n" + "Contrato N°: " + con.getNumContrato() + 
+                                        "\n" + "Fecha: " + dia+"/"+mes;
+                                            
+                    
+                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);    
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        }
     }//GEN-LAST:event_btnRegistrar_VActionPerformed
 
     private void comboMes_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMes_VActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboMes_VActionPerformed
+
+    private void lstClientes_VValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstClientes_VValueChanged
+        Cliente clie = this.lstClientes_V.getSelectedValue();
+        ArrayList <Contrato> contratosClie = new ArrayList();
+        
+        for(Contrato contrato : sist.getListaContratos()){
+            if(contrato.getCliente().equals(clie)){
+                contratosClie.add(contrato);
+            }
+        }
+        cargarContratoClientes(contratosClie);
+    }//GEN-LAST:event_lstClientes_VValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
@@ -187,9 +283,9 @@ public class ventanaVisitas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblVisitas;
-    private javax.swing.JList<String> lstClientes;
-    private javax.swing.JList<String> lstDepositos;
-    private javax.swing.JList<String> lstEmpleados;
+    private javax.swing.JList<Cliente> lstClientes_V;
+    private javax.swing.JList<Contrato> lstContratos_V;
+    private javax.swing.JList<Empleado> lstEmpleados_V;
     private javax.swing.JPanel pnlPanel;
     // End of variables declaration//GEN-END:variables
 }
