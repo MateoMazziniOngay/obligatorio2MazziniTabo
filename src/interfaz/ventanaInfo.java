@@ -17,7 +17,7 @@ public class ventanaInfo extends javax.swing.JFrame {
         pnlPanel = new javax.swing.JPanel();
         btnAtras = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Informacion");
         getContentPane().setLayout(null);
 

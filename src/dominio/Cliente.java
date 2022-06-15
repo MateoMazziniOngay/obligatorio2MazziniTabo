@@ -19,7 +19,6 @@ public class Cliente extends Persona implements Serializable{
     }
     
     public Cliente(String unNombre, int unaCedula, int unTelefono, String unMail){
-        // Persona persona = new Persona(unNombre,unaCedula,unTelefono);
         super.setCedula(unaCedula);
         super.setNombre(unNombre);
         super.setTelefono(unTelefono);

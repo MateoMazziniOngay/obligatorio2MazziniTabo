@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class registroCliente extends javax.swing.JFrame {
 
-    static Cliente clie = new Cliente();
+    static Cliente clie;
     private Sistema sist;
     
     public registroCliente(Sistema unSistema) {
@@ -30,7 +30,7 @@ public class registroCliente extends javax.swing.JFrame {
         inputCi_C = new javax.swing.JTextField();
         inputTel_C = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblCliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblCliente.setText("REGISTRO DE CLIENTE");
@@ -141,7 +141,7 @@ public class registroCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarR_C)
                     .addComponent(btnRegistrar_C))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -157,11 +157,11 @@ public class registroCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 249, 332);
+        setBounds(0, 0, 249, 355);
     }// </editor-fold>//GEN-END:initComponents
 
     

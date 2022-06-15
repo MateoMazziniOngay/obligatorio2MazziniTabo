@@ -6,12 +6,12 @@ import javax.swing.*;
 public class registroContrato extends javax.swing.JFrame {
 
     private Sistema sist;
-    
+    private Contrato con;
     /*Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" de la lista.*/
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
     DefaultListModel modelo3 = new DefaultListModel();
-    
+  
     public registroContrato(Sistema unSistema) {
         this.sist = unSistema;
         initComponents();
@@ -49,7 +49,7 @@ public class registroContrato extends javax.swing.JFrame {
         btnRegistrar_Con = new javax.swing.JButton();
         btnCancelar_Con = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lstClientes_Con.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(lstClientes_Con);
@@ -271,8 +271,34 @@ public class registroContrato extends javax.swing.JFrame {
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
         Cliente clie = this.lstClientes_Con.getSelectedValue();
         Empleado empl = this.lstEmpleados_Con.getSelectedValue();
+        Object[] depo = this.lstDepos_Con.getSelectedValues();
         
-        System.out.println(Arrays.toString(this.lstDepos_Con.getSelectedValues()));
+        boolean vc = clie.toString().isEmpty();
+        boolean ve = empl.toString().isEmpty();
+        boolean vd = Arrays.toString(depo).isEmpty();
+        if(vd || vc || vd){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado" + 
+                                                " y un depósito", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
+            if(resp == 0){
+                for(Object depos : depo){
+            
+                Deposito depos2;
+                depos2 = (Deposito)depos;
+                
+                Contrato c = new Contrato(clie,empl,depos2,sist.getListaContratos().size()+1);
+                sist.agregarContrato(c);
+                System.out.println(c);
+                }
+            }
+        }
+        
+        
+        ArrayList<Deposito> validos = new ArrayList();
+        //validos.add(lstDepos_Con.getSelectedValues());
+        //System.out.println(Arrays.toString(this.));
         
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
 
@@ -315,7 +341,9 @@ public class registroContrato extends javax.swing.JFrame {
     //______CARGA DE LISTAS______//
     private void buscarDepositosGen(){
         String specs = this.comboEstantes_Con.getSelectedItem().toString() + this.comboRefri_Con.getSelectedItem().toString();
-        
+        if(specs.contains("N/A")){
+            
+        }
         switch (specs){
             case "SINO":{
                 

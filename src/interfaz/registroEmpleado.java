@@ -5,8 +5,8 @@ import javax.swing.*;
 
 public class registroEmpleado extends javax.swing.JFrame {
  
-    Sistema sist = new Sistema();
-    Empleado empl = new Empleado();
+    Sistema sist;
+    Empleado empl;
     
     public registroEmpleado(Sistema unSistema) {
         initComponents();
@@ -32,7 +32,7 @@ public class registroEmpleado extends javax.swing.JFrame {
         btnCancelarR_E = new javax.swing.JButton();
         btnRegistrar_E = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblEmpleado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblEmpleado.setText("REGISTRO DE EMPLEADO");
@@ -167,7 +167,7 @@ public class registroEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarR_E)
                     .addComponent(btnRegistrar_E))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,8 +183,8 @@ public class registroEmpleado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 314, 399);
@@ -242,40 +242,46 @@ public class registroEmpleado extends javax.swing.JFrame {
                 this.inputCi_E.setText("");
             }
             else{
-                //Pedimos confirmación de registro
-                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
-                if(resp == 0){
-                    // Agregamos el registro a la lista de personas.
-                    Persona p = new Persona(nombre,cedulaNum,telNum);
-                    sist.agregarPersona(p);
-                    
-                    // Agregamos el registro a la lista de empleados.
-                    Empleado e = new Empleado (nombre,cedulaNum,telNum, direccion,anioNum);
-                    sist.agregarEmpleado(e);
-                    
-                    /*Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
-                    en un showMessageDialog*/
-                    String registro =   "¡Empleado registrado con exito!" + 
-                                        "\n" + "Empleado: " + nombre + 
-                                        "\n" + "Cedula: " + cedulaNum + 
-                                        "\n" + "Telefono: " + telNum + 
-                                        "\n" + "Direccion: " + direccion + 
-                                        "\n" + "Año de ingreso: " + anioNum;
-                    
-                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
-                    
-                    // Dejamos los text fields en blanco otra vez.
-                    this.inputNombre_E.setText("");
-                    this.inputCi_E.setText("");
+                if(anioNum < 1940){
+                    JOptionPane.showMessageDialog(null, "Ingrese un año mayor a 1940", "ERROR", JOptionPane.ERROR_MESSAGE);
                     this.inputAnio_E.setText("");
-                    this.inputTel_E.setText("");
-                    this.inputDir_E.setText("");     
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+                    //Pedimos confirmación de registro
+                    int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
+                    if(resp == 0){
+                        // Agregamos el registro a la lista de personas.
+                        Persona p = new Persona(nombre,cedulaNum,telNum);
+                        sist.agregarPersona(p);
+                    
+                        // Agregamos el registro a la lista de empleados.
+                        Empleado e = new Empleado (nombre,cedulaNum,telNum, direccion,anioNum);
+                        sist.agregarEmpleado(e);
+                    
+                        /*Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
+                        en un showMessageDialog*/
+                        String registro =   "¡Empleado registrado con exito!" + 
+                                            "\n" + "Empleado: " + nombre + 
+                                            "\n" + "Cedula: " + cedulaNum + 
+                                            "\n" + "Telefono: " + telNum + 
+                                            "\n" + "Direccion: " + direccion + 
+                                            "\n" + "Año de ingreso: " + anioNum;
+                    
+                        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+                    
+                        // Dejamos los text fields en blanco otra vez.
+                        this.inputNombre_E.setText("");
+                        this.inputCi_E.setText("");
+                        this.inputAnio_E.setText("");
+                        this.inputTel_E.setText("");
+                        this.inputDir_E.setText("");     
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+                    }
                 }
             }
-        }
+        }   
     }//GEN-LAST:event_btnRegistrar_EActionPerformed
 
     private void btnCancelarR_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_EActionPerformed

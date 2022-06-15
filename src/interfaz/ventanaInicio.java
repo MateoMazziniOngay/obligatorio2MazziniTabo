@@ -122,19 +122,19 @@ public class ventanaInicio extends javax.swing.JFrame {
         // 
         ventanaRegistros v = new ventanaRegistros(sist);
         v.setVisible(true);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_btnRegistrosActionPerformed
 
     private void btnVisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitasActionPerformed
         ventanaVisitas v = new ventanaVisitas();
         v.setVisible(true);
-        dispose();
+        //dispose();
     }//GEN-LAST:event_btnVisitasActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
         ventanaInfo v = new ventanaInfo(sist);
         v.setVisible(true);
-        dispose();
+        //dispose();
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

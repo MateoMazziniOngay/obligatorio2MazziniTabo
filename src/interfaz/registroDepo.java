@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class registroDepo extends javax.swing.JFrame {
 
-    Sistema sist = new Sistema();
+    Sistema sist;
     Deposito depo = new Deposito();
     
     public registroDepo(Sistema unSistema) {
@@ -30,7 +30,7 @@ public class registroDepo extends javax.swing.JFrame {
         btnRegistrar_D = new javax.swing.JButton();
         btnCancelarR_D = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblDeposito.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblDeposito.setText("REGISTRO DE DEPÓSITO");
@@ -147,7 +147,7 @@ public class registroDepo extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarR_D)
                     .addComponent(btnRegistrar_D))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,8 +163,8 @@ public class registroDepo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 299, 339);
@@ -214,41 +214,48 @@ public class registroDepo extends javax.swing.JFrame {
                 this.inputId_D.setText("");
             }
             else{
-                
-                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar depósito", 0);
-                if(resp == 0){
+                int tamanioNum = Integer.parseInt(tamanio);
+                if(tamanioNum < 1){
+                    JOptionPane.showMessageDialog(null, "Ingrese un tamaño mayor a 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    this.inputSize_D.setText("");
+                }
+                else{
+                    int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar depósito", 0);
+                    if(resp == 0){
                     
-                    //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito,
-                    int tamanioNum = Integer.parseInt(tamanio);
-                    refri = depo.pasarSN(refri);
-                    estantes = depo.pasarSN(estantes);
+                        //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito,
                     
-                    //Creamos un nuevo depósito y lo agregamos a su lista.
-                    Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
-                    sist.agregarDeposito(d);
+                        refri = depo.pasarSN(refri);
+                        estantes = depo.pasarSN(estantes);
                     
-                    /*Creamos una variable registro para mostrar un mensaje de depósito registrado con exito y sus respectivos datos 
-                    en un showMessageDialog*/
+                        //Creamos un nuevo depósito y lo agregamos a su lista.
+                        Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
+                        sist.agregarDeposito(d);
+
+                        /*Creamos una variable registro para mostrar un mensaje de depósito registrado con exito y sus respectivos datos 
+                        en un showMessageDialog*/
                     
-                    String registro =   "¡Depósito registrado con exito!" + 
-                                        "\n" + "ID: " + idNum + 
-                                        "\n" + "Tamaño: " + tamanioNum + 
-                                        "\n" + "Estantes: " + estantes +
-                                        "\n" + "Refrigeración: " + refri;
+                        String registro =   "¡Depósito registrado con exito!" + 
+                                            "\n" + "ID: " + idNum + 
+                                            "\n" + "Tamaño: " + tamanioNum + 
+                                            "\n" + "Estantes: " + estantes +
+                                            "\n" + "Refrigeración: " + refri;
                             
                                         
                     
-                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+                        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
                     
-                    // Dejamos los text fields en blanco otra vez.
-                    this.inputId_D.setText("");
-                    this.inputSize_D.setText("");
-                    this.comboEstantes_D.setSelectedIndex(0);
-                    this.comboRefri_D.setSelectedIndex(0);
+                        // Dejamos los text fields en blanco otra vez.
+                        this.inputId_D.setText("");
+                        this.inputSize_D.setText("");
+                        this.comboEstantes_D.setSelectedIndex(0);
+                        this.comboRefri_D.setSelectedIndex(0);
                 
-                }else{
-                    JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
-                }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+                    } 
+                }  
             }
         }
     }//GEN-LAST:event_btnRegistrar_DActionPerformed

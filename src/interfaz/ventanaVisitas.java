@@ -32,7 +32,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
         comboDia_V = new javax.swing.JComboBox<>();
         comboMes_V = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         btnAtras.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
