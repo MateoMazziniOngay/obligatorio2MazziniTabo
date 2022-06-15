@@ -1,5 +1,6 @@
 package interfaz;
 import dominio.Sistema;
+
 public class ventanaRegistros extends javax.swing.JFrame {
 
     private Sistema sist;    
