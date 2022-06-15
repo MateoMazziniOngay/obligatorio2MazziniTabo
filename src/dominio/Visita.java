@@ -67,8 +67,6 @@ public class Visita implements Serializable{
         if(!Sistema.contains(meses31,unMes)){
             valida = (mes30(unDia,unMes) || febrero(unDia,unMes));
         }
-        
-        
         return valida;
     }
     

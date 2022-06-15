@@ -34,4 +34,13 @@ public class Cliente extends Persona implements Serializable{
             ", Mail: " + this.getMail();
     }
     
+    public boolean equals(Cliente unCliente){
+        boolean ni = this.getNombre().equals(unCliente.getNombre());
+        boolean ci = this.getCedula() == unCliente.getCedula();
+        boolean ti = this.getTelefono() == unCliente.getTelefono();
+        boolean mi = this.getMail().equals(unCliente.getMail());
+        
+        return (ni && ci && ti && mi);
+    }
+    
 }

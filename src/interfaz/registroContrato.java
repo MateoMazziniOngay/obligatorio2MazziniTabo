@@ -272,15 +272,15 @@ public class registroContrato extends javax.swing.JFrame {
         //Tomamos los valores a utilizar en el registro de nuestra ventana
         Cliente clie = this.lstClientes_Con.getSelectedValue();
         Empleado empl = this.lstEmpleados_Con.getSelectedValue();
-        Object[] depo = this.lstDepos_Con.getSelectedValues();
+        Object[] depos = this.lstDepos_Con.getSelectedValues();
         
         //Chequeamos si alguno de los datos requeridos no fue completado/seleccionado
         boolean vc = clie == null;
         boolean ve = empl == null;
-        boolean vd = Arrays.toString(depo).isEmpty();
+        boolean vd = Arrays.toString(depos).equals("[]");
         
         //Si alguno es vacío, se le alerta al usuario y no se procede
-        if(vc || ve || vd){
+        if(vc || ve || vd){ //
             JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado" + 
                                                 " y un depósito", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -292,25 +292,27 @@ public class registroContrato extends javax.swing.JFrame {
             
             if(resp == 0){
                 //Recorremos la lista de depósitos seleccionados por el usuario
-                for(Object depos : depo){
+                for(Object depo : depos){
                     
                     /*El jList nos devuelve un Object, por lo cual debemos castearlo 
                     a Deposito para poder operar con él*/
-                    Deposito depos2;
-                    depos2 = (Deposito)depos;
+                    Deposito depo2;
+                    depo2 = (Deposito)depo;
                     
+                    /*El número de contrato se crea a partir de la cantidad 
+                    de contratos previos en la lista de contratos*/
                     int numContrato = sist.getListaContratos().size()+1;
                     //Creamos el objeto contrato con los valores dados
-                    Contrato c = new Contrato(clie,empl,depos2,numContrato);
+                    Contrato c = new Contrato(clie,empl,depo2,numContrato);
                     sist.agregarContrato(c);
                 
                     /*Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
                     respectivos datos en un showMessageDialog*/
                     
                     String registro =   "¡Contrado registrado con éxito!" + 
-                                        "\n" + "Cliente: " + clie.getNombre() + 
+                                        "\n" + "Cliente: " + (clie.getNombre() + " - " + clie.getCedula()) + 
                                         "\n" + "Empleado: " + empl.getNombre() + 
-                                        "\n" + "Deposito N°: " + depos2.getId() + 
+                                        "\n" + "Deposito N°: " + depo2.getId() + 
                                         "\n" + "Num Contrato: " + numContrato;
                     
                     JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
@@ -385,10 +387,8 @@ public class registroContrato extends javax.swing.JFrame {
     private void cargarListaEmpleados(){
         /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
         modelo1.removeAllElements();
-        /*Cargamos un arrayList con la lista a mostrar*/
-        ArrayList <Empleado> lista = sist.getListaEmpleados();
         /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
-        for(Empleado empleado : lista){
+        for(Empleado empleado : sist.getListaEmpleados()){
             modelo1.addElement(empleado);
         }
         /*Seteamos nuestro modelo como el modelo de la lista*/
@@ -397,19 +397,17 @@ public class registroContrato extends javax.swing.JFrame {
 
     private void cargarListaClientes(){
         modelo2.removeAllElements();
-        ArrayList <Cliente> listaC = sist.getListaClientes();
         
-        for(Cliente cliente : listaC){
+        for(Cliente cliente : sist.getListaClientes()){
             modelo2.addElement(cliente);
         }
         lstClientes_Con.setModel(modelo2);
     }
 
-    private void buscarDepositos(){
-        ArrayList<Deposito> depos = sist.getListaDepositos();
+    public void buscarDepositos(){
         ArrayList<Deposito> validos = new ArrayList();
         
-        for(Deposito deposito : depos){
+        for(Deposito deposito : sist.getListaDepositos()){
             if(compararSize(deposito.getTamanio())){
                 validos.add(deposito);
             }
@@ -417,7 +415,7 @@ public class registroContrato extends javax.swing.JFrame {
         cargarListaDepositos(validos);
     }
     
-    private boolean compararSize(int size){
+    public boolean compararSize(int size){
         boolean es = false;
         
         int max = Integer.parseInt(this.inputMaxSize_Con.getText());
@@ -428,6 +426,7 @@ public class registroContrato extends javax.swing.JFrame {
         }
         return es;
     }
+    
     private void cargarListaDepositos(ArrayList <Deposito> lstDepositos){
         modelo3.removeAllElements();
         
