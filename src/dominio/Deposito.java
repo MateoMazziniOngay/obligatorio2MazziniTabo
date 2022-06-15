@@ -55,6 +55,16 @@ public class Deposito implements Serializable{
         this.refrigeracion = refrigeracion;
     }
     
+    public String pasarSN(String sn){
+        if(sn.equals("SI")){
+            sn = "S";
+        }
+        else{
+            sn = "N";
+        }
+        return sn;
+    }
+    
     public String toString(){
         return 
             "ID: " + this.getId() + 

@@ -220,8 +220,8 @@ public class registroDepo extends javax.swing.JFrame {
                     
                     //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito,
                     int tamanioNum = Integer.parseInt(tamanio);
-                    refri = pasarRefri(refri);
-                    estantes = pasarEstantes(estantes);
+                    refri = depo.pasarSN(refri);
+                    estantes = depo.pasarSN(estantes);
                     
                     //Creamos un nuevo depósito y lo agregamos a su lista.
                     Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
@@ -253,26 +253,6 @@ public class registroDepo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistrar_DActionPerformed
 
-    
-    public String pasarRefri(String sn){
-        if(sn.equals("SI")){
-            sn = "S";
-        }
-        else{
-            sn = "N";
-        }
-        return sn;
-    }
-    
-    public String pasarEstantes(String sn){
-        if(sn.equals("SI")){
-            sn = "S";
-        }
-        else{
-            sn = "N";
-        }
-        return sn;
-    }
     
     private void inputSize_DKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputSize_DKeyTyped
         int size = evt.getKeyChar();
