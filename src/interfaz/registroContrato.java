@@ -269,37 +269,57 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
+        //Tomamos los valores a utilizar en el registro de nuestra ventana
         Cliente clie = this.lstClientes_Con.getSelectedValue();
         Empleado empl = this.lstEmpleados_Con.getSelectedValue();
         Object[] depo = this.lstDepos_Con.getSelectedValues();
         
-        boolean vc = clie.toString().isEmpty();
-        boolean ve = empl.toString().isEmpty();
+        //Chequeamos si alguno de los datos requeridos no fue completado/seleccionado
+        boolean vc = clie == null;
+        boolean ve = empl == null;
         boolean vd = Arrays.toString(depo).isEmpty();
-        if(vd || vc || vd){
+        
+        //Si alguno es vacío, se le alerta al usuario y no se procede
+        if(vc || ve || vd){
             JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado" + 
                                                 " y un depósito", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         else{
-            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
-            if(resp == 0){
-                for(Object depos : depo){
+            //Si no hay ningún vacío, se le pregunta al usuario si quiere confirmar el registro de su/s contrato/s
+            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar contrato/s", 0);
+            /*Si confirma el registro, se crean los contratos 
+            con el cliente, el empleado y el/los deposito/s seleccionado/s*/
             
-                Deposito depos2;
-                depos2 = (Deposito)depos;
+            if(resp == 0){
+                //Recorremos la lista de depósitos seleccionados por el usuario
+                for(Object depos : depo){
+                    
+                    /*El jList nos devuelve un Object, por lo cual debemos castearlo 
+                    a Deposito para poder operar con él*/
+                    Deposito depos2;
+                    depos2 = (Deposito)depos;
+                    
+                    int numContrato = sist.getListaContratos().size()+1;
+                    //Creamos el objeto contrato con los valores dados
+                    Contrato c = new Contrato(clie,empl,depos2,numContrato);
+                    sist.agregarContrato(c);
                 
-                Contrato c = new Contrato(clie,empl,depos2,sist.getListaContratos().size()+1);
-                sist.agregarContrato(c);
-                System.out.println(c);
+                    /*Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
+                    respectivos datos en un showMessageDialog*/
+                    
+                    String registro =   "¡Contrado registrado con éxito!" + 
+                                        "\n" + "Cliente: " + clie.getNombre() + 
+                                        "\n" + "Empleado: " + empl.getNombre() + 
+                                        "\n" + "Deposito N°: " + depos2.getId() + 
+                                        "\n" + "Num Contrato: " + numContrato;
+                    
+                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
                 }
             }
-        }
-        
-        
-        ArrayList<Deposito> validos = new ArrayList();
-        //validos.add(lstDepos_Con.getSelectedValues());
-        //System.out.println(Arrays.toString(this.));
-        
+            else{
+                JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
+            }
+        }    
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
 
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
@@ -404,7 +424,6 @@ public class registroContrato extends javax.swing.JFrame {
         int min = Integer.parseInt(this.inputMinSize_Con.getText()); 
 
         if(min <= size && size <= max){
-            System.out.println(size);
             es = true;
         }
         return es;
