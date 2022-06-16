@@ -147,6 +147,7 @@ public class infoConsContratos extends javax.swing.JFrame {
                                                             "\n" + contratoSelec.toString() , "Confirmar eliminar contrato", 0);
             if(resp == 0){
                 
+                
             }
         }
     }//GEN-LAST:event_btnEliminarContratoActionPerformed
