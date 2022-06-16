@@ -46,9 +46,13 @@ public class Contrato implements Serializable{
     
     public String toString(){
         return 
-            "Cliente: " + this.getCliente() + 
-            ", Empleado: " + this.getEmpleado() + 
-            ", Deposito: " + this.getDeposito() + 
-            ", Número de Contrato: " + this.getNumContrato();
+            "Cliente: " + this.getCliente().getNombre() + 
+            " - " + this.getCliente().getCedula()  +
+                
+            "\n" + "Empleado: " + this.getEmpleado().getNombre() + 
+            " - " + this.getEmpleado().getCedula()  + 
+                
+            "\n" + "Deposito: " + this.getDeposito().getId() + 
+            "\n" + "Número de Contrato: " + this.getNumContrato();
     }
 }

@@ -5,8 +5,8 @@ import javax.swing.*;
 
 public class registroDepo extends javax.swing.JFrame {
 
-    Sistema sist;
-    Deposito depo = new Deposito();
+    private Sistema sist;
+    private Deposito depo = new Deposito();
     
     public registroDepo(Sistema unSistema) {
         initComponents();
@@ -259,14 +259,17 @@ public class registroDepo extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnRegistrar_DActionPerformed
-
-    
+   
     private void inputSize_DKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputSize_DKeyTyped
         int size = evt.getKeyChar();
 
         boolean numeros = size >= 48 && size <= 57;
         
         if (!numeros){
+            evt.consume();
+        }
+        
+        if(this.inputSize_D.getText().length() >= 9){
             evt.consume();
         }
     }//GEN-LAST:event_inputSize_DKeyTyped
@@ -277,6 +280,10 @@ public class registroDepo extends javax.swing.JFrame {
         boolean numeros = id >= 48 && id <= 57;
         
         if (!numeros){
+            evt.consume();
+        }
+        
+        if(this.inputId_D.getText().length() >= 9){
             evt.consume();
         }
     }//GEN-LAST:event_inputId_DKeyTyped

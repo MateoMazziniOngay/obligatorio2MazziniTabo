@@ -256,6 +256,10 @@ public class registroCliente extends javax.swing.JFrame {
         if (!numeros){
             evt.consume();
         }
+        
+        if(this.inputCi_C.getText().length() >= 9){
+            evt.consume();
+        }
     }//GEN-LAST:event_inputCi_CKeyTyped
 
     private void inputTel_CKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTel_CKeyTyped
@@ -264,6 +268,10 @@ public class registroCliente extends javax.swing.JFrame {
         boolean numeros = tel >= 48 && tel <= 57;
         
         if (!numeros){
+            evt.consume();
+        }
+        
+        if(this.inputTel_C.getText().length() >= 9){
             evt.consume();
         }
     }//GEN-LAST:event_inputTel_CKeyTyped
