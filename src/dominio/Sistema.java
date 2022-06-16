@@ -171,4 +171,15 @@ public class Sistema implements Serializable{
         }
         return deposES;
     }
+    
+    public ArrayList visitasContrato(Contrato unContrato){
+        ArrayList<Visita> visitas = new ArrayList();
+        
+        for(Visita visita : this.getListaVisitas()){
+            if(visita.getContrato().equals(unContrato)){
+                visitas.add(visita);
+            }
+        }
+        return visitas;
+    }
 }
