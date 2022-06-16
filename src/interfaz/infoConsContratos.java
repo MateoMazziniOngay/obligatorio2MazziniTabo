@@ -122,13 +122,33 @@ public class infoConsContratos extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(6, 6, 460, 436);
+        jPanel1.setBounds(6, 6, 480, 436);
 
         setBounds(0, 0, 712, 450);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarContratoActionPerformed
-        // TODO add your handling code here:
+        String idSelec = lstContratos_Info.getSelectedValue();
+        boolean vc = idSelec == null;
+        
+        if(vc){
+            JOptionPane.showMessageDialog(null, "Seleccione un contrato para dar de baja","ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            Contrato contratoSelec = new Contrato();
+            int idSelecNum = Integer.parseInt(idSelec.substring(13));
+            
+            for(Contrato contrato : sist.getListaContratos()){
+                if(contrato.getNumContrato() == idSelecNum){
+                    contratoSelec = contrato;
+                }
+            }
+            int resp = JOptionPane.showConfirmDialog(null,  "¿Está seguro de que quiere eliminar este contrato?" + 
+                                                            "\n" + contratoSelec.toString() , "Confirmar eliminar contrato", 0);
+            if(resp == 0){
+                
+            }
+        }
     }//GEN-LAST:event_btnEliminarContratoActionPerformed
 
     private void btnInfoContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoContratoActionPerformed
