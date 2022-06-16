@@ -13,6 +13,48 @@ public class registroEmpleado extends javax.swing.JFrame {
         this.sist = unSistema;
     }
 
+    //Crea los objetos de acuerdo a los datos recibidos.
+    private void completarRegistro(String unNombre, int unaCi, int unTelefono, String unaDireccion, int unAnio){
+        // Agregamos el registro a la lista de personas.
+        Persona p = new Persona(unNombre,unaCi,unTelefono);
+        sist.agregarPersona(p);
+                    
+        // Agregamos el registro a la lista de empleados.
+        Empleado e = new Empleado (unNombre,unaCi,unTelefono, unaDireccion, unAnio);
+        sist.agregarEmpleado(e);
+        
+        this.status(unNombre,unaCi,unTelefono, unaDireccion, unAnio);            
+        this.setVoid();
+    }
+    
+    //Informa al usuario sobre el estado del registro.
+    private void status(String unNombre, int unaCi, int unTelefono, String unaDireccion, int unAnio){
+        /*
+        Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
+        en un showMessageDialog
+        */
+        String registro =   "¡Empleado registrado con exito!" + 
+                            "\n" + "Empleado: " + unNombre + 
+                            "\n" + "Cedula: " + unaCi + 
+                            "\n" + "Telefono: " + unTelefono + 
+                            "\n" + "Direccion: " + unaDireccion + 
+                            "\n" + "Año de ingreso: " + unAnio;
+                    
+        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+    }
+    
+    //Deja los text fields en blanco.
+    private void setVoid(){
+        
+        
+        this.inputNombre_E.setText("");
+        this.inputCi_E.setText("");
+        this.inputAnio_E.setText("");
+        this.inputTel_E.setText("");
+        this.inputDir_E.setText("");
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -212,6 +254,7 @@ public class registroEmpleado extends javax.swing.JFrame {
 
     private void btnRegistrar_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_EActionPerformed
        
+        // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
         // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
         String nombre = this.inputNombre_E.getText();
         String cedula = this.inputCi_E.getText();
@@ -242,42 +285,21 @@ public class registroEmpleado extends javax.swing.JFrame {
                 this.inputCi_E.setText("");
             }
             else{
-                if(anioNum < 1940){
-                    JOptionPane.showMessageDialog(null, "Ingrese un año mayor a 1940", "ERROR", JOptionPane.ERROR_MESSAGE);
+                /*
+                La variable inicioEmpresa, guarda el año en el que se fundó la empresa, este será
+                el valor mínimo de año de ingreso de un empleado.
+                El valor debe ser modificado para cada empresa que utilice el sistema.
+                */
+                int inicioEmpresa = 0;
+                if(anioNum < inicioEmpresa){
+                    JOptionPane.showMessageDialog(null, "Ingrese un año mayor a " + inicioEmpresa, "ERROR", JOptionPane.ERROR_MESSAGE);
                     this.inputAnio_E.setText("");
                 }
                 else{
                     //Pedimos confirmación de registro
                     int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
                     if(resp == 0){
-                        
-                        // Agregamos el registro a la lista de personas.
-                        Persona p = new Persona(nombre,cedulaNum,telNum);
-                        sist.agregarPersona(p);
-                    
-                        // Agregamos el registro a la lista de empleados.
-                        Empleado e = new Empleado (nombre,cedulaNum,telNum, direccion,anioNum);
-                        sist.agregarEmpleado(e);
-                    
-                        /*
-                        Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
-                        en un showMessageDialog
-                        */
-                        String registro =   "¡Empleado registrado con exito!" + 
-                                            "\n" + "Empleado: " + nombre + 
-                                            "\n" + "Cedula: " + cedulaNum + 
-                                            "\n" + "Telefono: " + telNum + 
-                                            "\n" + "Direccion: " + direccion + 
-                                            "\n" + "Año de ingreso: " + anioNum;
-                    
-                        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
-                    
-                        // Dejamos los text fields en blanco otra vez.
-                        this.inputNombre_E.setText("");
-                        this.inputCi_E.setText("");
-                        this.inputAnio_E.setText("");
-                        this.inputTel_E.setText("");
-                        this.inputDir_E.setText("");     
+                        this.completarRegistro(nombre,cedulaNum,telNum,direccion,anioNum);         
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
@@ -286,11 +308,15 @@ public class registroEmpleado extends javax.swing.JFrame {
             }
         }   
     }//GEN-LAST:event_btnRegistrar_EActionPerformed
-
+    
     private void btnCancelarR_EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_EActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarR_EActionPerformed
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputCi_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCi_EKeyTyped
         int ci = evt.getKeyChar();
 
@@ -305,6 +331,10 @@ public class registroEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_inputCi_EKeyTyped
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputAnio_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputAnio_EKeyTyped
         int anio = evt.getKeyChar();
 
@@ -319,6 +349,10 @@ public class registroEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_inputAnio_EKeyTyped
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputTel_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTel_EKeyTyped
         int tel = evt.getKeyChar();
 

@@ -7,7 +7,6 @@ public class Visita implements Serializable{
     private Cliente cliente;
     private Empleado empleado;
     private Contrato contrato;
-    private Deposito deposito;
     private int mes;
     private int dia;
     
@@ -16,13 +15,12 @@ public class Visita implements Serializable{
         this.cliente = null;
         this.empleado = null;
         this.contrato = null;
-        this.deposito = null;
         this.mes = 0;
         this.dia = 0;
     }
     
     // Constructor con parámetros
-    public Visita(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, Deposito unDeposito, int unDia, int unMes){
+    public Visita(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, int unDia, int unMes){
        this.setCliente(unCliente);
        this.setEmpleado(unEmpleado);
        this.setContrato(unContrato);
@@ -55,14 +53,6 @@ public class Visita implements Serializable{
         this.contrato = unContrato;
     }
     
-    public Deposito getDeposito() {
-        return deposito;
-    }
-    
-    public void setDeposito(Deposito unDeposito) {
-        this.deposito = unDeposito;
-    }
-    
     public int getMes() {
         return mes;
     }
@@ -78,9 +68,15 @@ public class Visita implements Serializable{
     public void setDia(int unDia) {
         this.dia = unDia;
     }
+    
     //------------------------------//
     
-    // Métodos utilizados para las fechas
+    // Métodos 
+    
+    /*
+    Si el mes recibido pertenece a la lista de meses31, retorna true.
+    Si no pertenece, se fija que la fecha sea válida para meses de 30 días, o para febrero.
+    */
     public boolean validarFecha(int unMes, int unDia){
         boolean valida = true;
         int [] meses31 = {1,3,5,7,8,10,12};
@@ -101,6 +97,10 @@ public class Visita implements Serializable{
         return ok; 
     }
     
+    /*
+    Método orientado al mes Febrero de un año no bisiesto. 
+    Para años bisiestos se debe cambiar el condicional "<29" de la estructura if() por "<=29".
+    */
     public boolean febrero (int unMes, int unDia){
         boolean ok = false;
         
@@ -109,5 +109,6 @@ public class Visita implements Serializable{
         }
         return ok;
     }
+
     //---------------------------------------------//
 }

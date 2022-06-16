@@ -12,7 +12,42 @@ public class registroCliente extends javax.swing.JFrame {
         this.sist = unSistema;
         initComponents();
     }
-
+    
+    //Deja los textFields en blanco.
+    private void setVoid(){
+        this.inputNombre_C.setText("");
+        this.inputCi_C.setText("");
+        this.inputTel_C.setText("");
+        this.inputMail_C.setText(""); 
+    }
+    
+    //Crea los objetos de acuerdo a los datos recibidos e informa al usuario.
+    private void completarRegistro(String unNombre, int unaCi, int unTelefono, String unMail){
+        // Agregamos el registro a la lista de personas.
+        Persona p = new Persona(unNombre,unaCi,unTelefono);
+        sist.agregarPersona(p);
+                    
+        // Agregamos el registro a la lista de clientes.
+        Cliente c = new Cliente (unNombre,unaCi,unTelefono, unMail);
+        sist.agregarCliente(c);
+        
+        this.status(unNombre, unaCi, unTelefono, unMail);
+        this.setVoid();       
+    }
+    
+    //Informa al usuario sobre el estado del registro.
+    private void status(String unNombre, int unaCi, int unTelefono, String unMail){
+        /*Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos 
+        en un showMessageDialog*/
+        String registro =   "¡Cliente registrado con exito!" + 
+                            "\n" + "Cliente: " + unNombre + 
+                            "\n" + "Cedula: " + unaCi + 
+                            "\n" + "Telefono: " + unTelefono + 
+                            "\n" + "Mail: " + unMail;
+                    
+        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);   
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -163,7 +198,6 @@ public class registroCliente extends javax.swing.JFrame {
 
         setBounds(0, 0, 249, 355);
     }// </editor-fold>//GEN-END:initComponents
-
     
     private void inputNombre_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombre_CActionPerformed
 
@@ -186,7 +220,7 @@ public class registroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_inputTel_CActionPerformed
 
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
-        
+         // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
         // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
         String nombre = this.inputNombre_C.getText();
         String cedula = this.inputCi_C.getText();
@@ -217,29 +251,7 @@ public class registroCliente extends javax.swing.JFrame {
                 //Pedimos confirmación de registro
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
                 if(resp == 0){
-                    // Agregamos el registro a la lista de personas.
-                    Persona p = new Persona(nombre,cedulaNum,telNum);
-                    sist.agregarPersona(p);
-                    
-                    // Agregamos el registro a la lista de clientes.
-                    Cliente c = new Cliente (nombre,cedulaNum,telNum, mail);
-                    sist.agregarCliente(c);
-                    
-                    /*Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos 
-                    en un showMessageDialog*/
-                    String registro =   "¡Cliente registrado con exito!" + 
-                                        "\n" + "Cliente: " + nombre + 
-                                        "\n" + "Cedula: " + cedulaNum + 
-                                        "\n" + "Telefono: " + telNum + 
-                                        "\n" + "Mail: " + mail;
-                    
-                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
-                    
-                    // Dejamos los text fields en blanco otra vez.
-                    this.inputNombre_C.setText("");
-                    this.inputCi_C.setText("");
-                    this.inputTel_C.setText("");
-                    this.inputMail_C.setText("");     
+                    this.completarRegistro(nombre, cedulaNum, telNum, mail);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
@@ -248,6 +260,10 @@ public class registroCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistrar_CActionPerformed
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputCi_CKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCi_CKeyTyped
         int ci = evt.getKeyChar();
 
@@ -262,6 +278,10 @@ public class registroCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_inputCi_CKeyTyped
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputTel_CKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTel_CKeyTyped
         int tel = evt.getKeyChar();
 

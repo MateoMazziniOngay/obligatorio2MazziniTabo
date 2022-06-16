@@ -24,9 +24,7 @@ public class registroContrato extends javax.swing.JFrame {
     }
 
     //______CARGA DE LISTAS______//
-    
-         
-    
+      
     private void cargarListaEmpleados(){
         /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
         modelo1.removeAllElements();
@@ -55,49 +53,65 @@ public class registroContrato extends javax.swing.JFrame {
         }
         lstDepos_Con.setModel(modelo3);
     }
+       
+    //________________________________//
     
-   
-    
+    //Se asegura de que el fotmato del tamaño deseado sea el adecuado
     public boolean validarTamanio(){
         int max = Integer.parseInt(this.inputMaxSize_Con.getText());
         int min = Integer.parseInt(this.inputMinSize_Con.getText());
         
-        return max > min;
+        return max >= min;
     }
     
+    //Se encarga de buscar los depósitos de acuerdo a los parámetros bsolicitados por el usuario.
     private void buscarDepoTipo(){
+        //Toma los valores seleccionados por el usuario y los convierte en Strings.
         String specE = this.comboEstantes_Con.getSelectedItem().toString(); 
         String specR = this.comboRefri_Con.getSelectedItem().toString();
+        //Concatena ambos valores en un único String para su evaluación.
         String specs = specR + specE;
         
+        /*
+        Si al usuario no le importa si es refrigerado, ni si tiene estantes, 
+        únicamente carga la lista de depósitos disponibles de acuerdo al tamaño solicitado
+        */
         if(specs.equals("N/AN/A")){
             this.buscarTamanio(sist.listaDisponibles());
         }
         else{
+            
+            /*
+            Si al usuario no le importa alguno de los parámetros, se fija cuál es 
+            y carga los depósitos de acuerdo al parámetro que sí le importa y al tamaño solicitado.
+            */
             if(specs.contains("N/A")){
                 if(specE.equals("N/A")){
-                    this.buscarTamanio(sist.refriSpec(depo.pasarSN(specR), sist.listaDisponibles()));
+                    this.buscarTamanio(depo.refriSpec(depo.pasarSN(specR), sist.listaDisponibles()));
                 }
                 else{
-                    this.buscarTamanio(sist.estSpec(depo.pasarSN(specE), sist.listaDisponibles()));
+                    this.buscarTamanio(depo.estSpec(depo.pasarSN(specE), sist.listaDisponibles()));
                 }
             }
             else{
+                /*
+                Si le importan ambos parámetros, carga los depósitos de acuerdo a ambos parámetros y al tamaño solicitado.
+                */
                 switch (specs){
                     case "SINO":{
-                        this.buscarTamanio(sist.listaSpecs("SN", sist.listaDisponibles()));
+                        this.buscarTamanio(depo.listaSpecs("SN", sist.listaDisponibles()));
                         break;
                     }
                     case "NOSI":{
-                        this.buscarTamanio(sist.listaSpecs("NS", sist.listaDisponibles()));
+                        this.buscarTamanio(depo.listaSpecs("NS", sist.listaDisponibles()));
                         break;
                     }
                     case "NONO":{
-                        this.buscarTamanio(sist.listaSpecs("NN", sist.listaDisponibles()));
+                        this.buscarTamanio(depo.listaSpecs("NN", sist.listaDisponibles()));
                         break;
                     }
                     case "SISI":{
-                        this.buscarTamanio(sist.listaSpecs("SS", sist.listaDisponibles()));
+                        this.buscarTamanio(depo.listaSpecs("SS", sist.listaDisponibles()));
                         break;
                     }
                 }
@@ -105,6 +119,7 @@ public class registroContrato extends javax.swing.JFrame {
         }   
     }
     
+    //Recibe una lista de depósitos y los filtra de acuerdo a su tamaño.
     public void buscarTamanio(ArrayList<Deposito> depos){
         ArrayList<Deposito> validos = new ArrayList();
         
@@ -118,11 +133,12 @@ public class registroContrato extends javax.swing.JFrame {
                                                 "ERROR", JOptionPane.ERROR_MESSAGE);
             this.borrarCampos();
         }else{
-            cargarListaDepositos(ordenD(validos));
+            cargarListaDepositos(ordenA(validos));
         }
         
     }
     
+    //Recibe un tamaño y nos dice si está comprendido entre los valores ingresados por el usuario.
     public boolean compararSize(int size){
         boolean es = false;
         
@@ -135,18 +151,62 @@ public class registroContrato extends javax.swing.JFrame {
         return es;
     }
     
-    public ArrayList<Deposito> ordenD (ArrayList contratos){
+    //Ordena los depósitos de manera ascendente de acuerdo a su ID.
+    public ArrayList<Deposito> ordenA (ArrayList contratos){
         Collections.sort(contratos, new Criterio());
         
         return contratos;
     }
     
-     private void borrarCampos(){
+    //Borra todos los campos
+    private void borrarCampos(){
         this.inputMinSize_Con.setText("");
         this.inputMaxSize_Con.setText("");
         modelo3.removeAllElements();
         lstDepos_Con.setModel(modelo3);
     }
+    
+    //Crea el Contrato de acuerdo a los datos recibidos.
+    private void completarRegistro(Object[] depos,Cliente unCliente, Empleado unEmpleado){
+        //Recorremos la lista de depósitos seleccionados por el usuario
+        for(Object depo : depos){
+                    
+            /*El jList nos devuelve un Object, por lo cual debemos castearlo 
+            a Deposito para poder operar con él*/
+            Deposito depo2;
+            depo2 = (Deposito)depo;
+                    
+            /*El número de contrato se crea a partir de la cantidad 
+            de contratos previos en la lista de contratos*/
+            int numContrato = sist.getListaContratos().size()+1;
+            //Creamos el objeto contrato con los valores dados
+            Contrato c = new Contrato(unCliente,unEmpleado,depo2,numContrato);
+            sist.agregarContrato(c);
+                
+            /*Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
+            respectivos datos en un showMessageDialog*/
+            
+            String infoCliente = unCliente.getNombre() +  " - " + unCliente.getCedula();
+            String infoEmpleado = unEmpleado.getNombre() + " - " + unEmpleado.getCedula();
+            int depoId = depo2.getId();
+            
+            this.status(infoCliente,infoEmpleado,depoId,numContrato);
+            this.borrarCampos();
+           
+        }
+    }
+    
+    //informa al usuario sobre el registro.
+    private void status(String cliente, String empleado, int numDepo, int numContrato){
+        String registro =   "¡Contrado registrado con éxito!" + 
+                            "\n" +  "Cliente: " + cliente + 
+                            "\n" +  "Empleado: " + empleado +
+                            "\n" + "Deposito N°: " + numDepo  + 
+                            "\n" + "Num Contrato: " + numContrato;
+                    
+        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+    }
+    
    //______________________________________//
     
     @SuppressWarnings("unchecked")
@@ -396,6 +456,7 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
+        // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
         //Tomamos los valores a utilizar en el registro de nuestra ventana
         Cliente clie = this.lstClientes_Con.getSelectedValue();
         Empleado empl = this.lstEmpleados_Con.getSelectedValue();
@@ -414,48 +475,24 @@ public class registroContrato extends javax.swing.JFrame {
         else{
             //Si no hay ningún vacío, se le pregunta al usuario si quiere confirmar el registro de su/s contrato/s
             int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar contrato/s", 0);
-            /*Si confirma el registro, se crean los contratos 
-            con el cliente, el empleado y el/los deposito/s seleccionado/s*/
-            
+                       
             if(resp == 0){
-                //Recorremos la lista de depósitos seleccionados por el usuario
-                for(Object depo : depos){
-                    
-                    /*El jList nos devuelve un Object, por lo cual debemos castearlo 
-                    a Deposito para poder operar con él*/
-                    Deposito depo2;
-                    depo2 = (Deposito)depo;
-                    
-                    /*El número de contrato se crea a partir de la cantidad 
-                    de contratos previos en la lista de contratos*/
-                    int numContrato = sist.getListaContratos().size()+1;
-                    //Creamos el objeto contrato con los valores dados
-                    Contrato c = new Contrato(clie,empl,depo2,numContrato);
-                    sist.agregarContrato(c);
-                
-                    /*Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
-                    respectivos datos en un showMessageDialog*/
-                    
-                    String registro =   "¡Contrado registrado con éxito!" + 
-                                        "\n" + "Cliente: " + (clie.getNombre() + " - " + clie.getCedula()) + 
-                                        "\n" + "Empleado: " + empl.getNombre() + 
-                                        "\n" + "Deposito N°: " + depo2.getId() + 
-                                        "\n" + "Num Contrato: " + numContrato;
-                    
-                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
-                    
-                }
+                this.completarRegistro(depos,clie,empl);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
             }
         }    
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
-  
+   
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputMinSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMinSize_ConKeyTyped
         int min = evt.getKeyChar();
 
@@ -490,13 +527,17 @@ public class registroContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscar_ConActionPerformed
     
     private void inputMinSize_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinSize_ConActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputMinSize_ConActionPerformed
 
     private void inputMaxSize_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMaxSize_ConActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputMaxSize_ConActionPerformed
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputMaxSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMaxSize_ConKeyTyped
         int max = evt.getKeyChar();
 

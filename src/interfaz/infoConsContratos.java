@@ -18,6 +18,9 @@ public class infoConsContratos extends javax.swing.JFrame {
         this.sist = unSistema;
         cargarListaContratos();
     }
+    
+    //______CARGA DE LISTAS______//
+    
     private void cargarListaContratos(){
         /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
         modelo1.removeAllElements();
@@ -135,14 +138,10 @@ public class infoConsContratos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione un contrato para dar de baja","ERROR", JOptionPane.ERROR_MESSAGE);
         }
         else{
-            Contrato contratoSelec = new Contrato();
-            int idSelecNum = Integer.parseInt(idSelec.substring(13));
             
-            for(Contrato contrato : sist.getListaContratos()){
-                if(contrato.getNumContrato() == idSelecNum){
-                    contratoSelec = contrato;
-                }
-            }
+            int idSelecNum = Integer.parseInt(idSelec.substring(13));
+            Contrato contratoSelec = sist.buscarId(idSelecNum);
+            
             int resp = JOptionPane.showConfirmDialog(null,  "¿Está seguro de que quiere eliminar este contrato?" + 
                                                             "\n" + contratoSelec.toString() , "Confirmar eliminar contrato", 0);
             if(resp == 0){

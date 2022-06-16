@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Sistema implements Serializable{
     
-    static Scanner teclado = new Scanner(System.in);
     private ArrayList <Deposito> listaDepositos;
     private ArrayList <Persona> listaPersonas;
     private ArrayList <Cliente> listaClientes;
@@ -72,12 +71,13 @@ public class Sistema implements Serializable{
     public void agregarVisita(Visita unaVisita) {
         listaVisitas.add(unaVisita);
     }
+    
     //------------------------------------------------//
 
     // Métodos
     /*
     Recorre la lista de personas, comparando las cédulas de 
-    cada Persona con la recibida para saber si ya existe
+    cada Persona con la recibida para saber si se encuentra registrada.
     */
     public boolean cedulaExistente(int unaCedula){
         boolean existe = false;
@@ -91,7 +91,7 @@ public class Sistema implements Serializable{
     
     /*
     Recorre la lista de depositos, comparando las ID's de 
-    cada Deposito con la recibida para saber si ya existe
+    cada Depósito con la recibida para saber si se encuentra registrada.
     */
     public boolean idExistente(int unaId){
         boolean existe = false;
@@ -104,19 +104,22 @@ public class Sistema implements Serializable{
     }
     
     /*
-    Recorre la lista de depositos, comparando las ID's de 
-    cada Deposito con la recibida para encontrarlo y devolverlo
+    Recorre la lista de contratos, comparando las ID's de 
+    cada Contrato con la recibida para encontrarlo y devolverlo
     */
-    public Deposito buscarId(int unaId){
-        Deposito ret = new Deposito();
-        for(Deposito deposito : listaDepositos){
-            if(deposito.getId() == unaId){
-                ret = deposito;
+    public Contrato buscarId(int unaId){
+        Contrato ret = new Contrato();
+        
+        for(Contrato contrato : listaContratos){
+            if(contrato.getNumContrato() == unaId){
+                ret = contrato;
             }   
         }
+        
         return ret;
     }
     
+    //Recorre el array recibido en busca de un elemento, si lo encuentra retorna true, de lo contrario, false
     public static boolean contains(int [] arr, int elem){
         boolean esta = false;
         
@@ -128,6 +131,10 @@ public class Sistema implements Serializable{
         return esta;
     }
     
+    /*
+    Recorre la lista de contratos, añadiendo sus depósitos a una lista para saber cuáles se encuentran alquilados.
+    Retorna una lista con los depósitos alquilados.
+    */
     public ArrayList listaAlquilados(){
         ArrayList <Deposito> depoA = new ArrayList();
         
@@ -137,6 +144,11 @@ public class Sistema implements Serializable{
         return depoA;
     }
     
+    /*
+    Recorre la lista de depositos, preguntando si estos pertenecen a la lista de 
+    depositos alquilados, si no pertnecen, los agrega a la lista de disponibles.
+    Retorna una lista con los depósitos disponibles.
+    */
     public ArrayList listaDisponibles(){
         ArrayList <Deposito> depoD = new ArrayList();
         
@@ -148,42 +160,11 @@ public class Sistema implements Serializable{
         return depoD;
     }
     
-    public ArrayList listaSpecs(String spec, ArrayList<Deposito> depos){
-        ArrayList<Deposito> deposSpec = new ArrayList();
-        for(Deposito depo : depos){
-            
-            String depoR = depo.getRefrigeracion();
-            String depoE = depo.getEstantes();
-            
-            if((depoR + depoE).equals(spec)){
-                deposSpec.add(depo);
-            }
-        }
-        return deposSpec;
-    }
-
-    public ArrayList refriSpec(String spec, ArrayList<Deposito> depos){
-        ArrayList<Deposito> deposRS = new ArrayList();
-        for(Deposito depo : depos){
-            
-            if(depo.getRefrigeracion().equals(spec)){
-                deposRS.add(depo);
-            }
-        }
-        return deposRS;
-    }
-    
-    public ArrayList estSpec(String spec, ArrayList<Deposito> depos){
-        ArrayList<Deposito> deposES = new ArrayList();
-        for(Deposito depo : depos){
-            
-            if(depo.getRefrigeracion().equals(spec)){
-                deposES.add(depo);
-            }
-        }
-        return deposES;
-    }
-    
+    /*
+    Recorre la lista de visitas, si el contrato de la visita es igual al recibido, lo 
+    agrega a la lista. 
+    Retorna la lista de visitas de un contrato.
+    */
     public ArrayList visitasContrato(Contrato unContrato){
         ArrayList<Visita> visitas = new ArrayList();
         
@@ -194,4 +175,6 @@ public class Sistema implements Serializable{
         }
         return visitas;
     }
+
+    //---------------------------------------------//
 }
