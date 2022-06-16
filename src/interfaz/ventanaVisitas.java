@@ -290,13 +290,20 @@ public class ventanaVisitas extends javax.swing.JFrame {
         }
         else{
             ArrayList <Contrato> contratosClie = new ArrayList();
-        //System.out.println(clie);
+
             for(Contrato contrato : sist.getListaContratos()){
                 if(contrato.getCliente().equals(clie)){
                     contratosClie.add(contrato);
                 }   
             }
-            cargarContratoClientes(contratosClie);
+            
+            if(contratosClie.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Este cliente no tiene contratos registrados", 
+                                                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+               cargarContratoClientes(contratosClie); 
+            }  
         }  
     }//GEN-LAST:event_btnBuscarContratos_VActionPerformed
 

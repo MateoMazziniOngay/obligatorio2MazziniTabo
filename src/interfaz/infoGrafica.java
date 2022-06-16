@@ -63,10 +63,11 @@ public class infoGrafica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarGrafica(){
-        int cantSiSi = 3; 
-        int cantSiNo = 2;  
-        int cantNoNo = 5;
-        int cantNoSi = 1;
+        
+        int cantSiSi = sist.listaSpecs("SS",sist.listaAlquilados()).size(); 
+        int cantSiNo = sist.listaSpecs("SN",sist.listaAlquilados()).size(); 
+        int cantNoNo = sist.listaSpecs("NN",sist.listaAlquilados()).size(); 
+        int cantNoSi = sist.listaSpecs("NS",sist.listaAlquilados()).size(); 
         
         int total = cantSiSi + cantSiNo + cantNoNo + cantNoSi;
         

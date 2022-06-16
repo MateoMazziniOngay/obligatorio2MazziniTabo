@@ -7,6 +7,7 @@ public class registroContrato extends javax.swing.JFrame {
 
     private Sistema sist;
     private Contrato con;
+    private Deposito depo = new Deposito();
     /*Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" de la lista.*/
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
@@ -20,6 +21,128 @@ public class registroContrato extends javax.swing.JFrame {
         
     }
 
+    //______CARGA DE LISTAS______//
+    
+         
+    
+    private void cargarListaEmpleados(){
+        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
+        modelo1.removeAllElements();
+        /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
+        for(Empleado empleado : sist.getListaEmpleados()){
+            modelo1.addElement(empleado);
+        }
+        /*Seteamos nuestro modelo como el modelo de la lista*/
+        lstEmpleados_Con.setModel(modelo1);
+    }
+
+    private void cargarListaClientes(){
+        modelo2.removeAllElements();
+        
+        for(Cliente cliente : sist.getListaClientes()){
+            modelo2.addElement(cliente);
+        }
+        lstClientes_Con.setModel(modelo2);
+    }
+    
+    private void cargarListaDepositos(ArrayList <Deposito> lstDepositos){
+        modelo3.removeAllElements();
+        
+        for(Deposito deposito : lstDepositos){
+            modelo3.addElement(deposito);
+        }
+        lstDepos_Con.setModel(modelo3);
+    }
+    
+   
+    
+    public boolean validarTamanio(){
+        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
+        int min = Integer.parseInt(this.inputMinSize_Con.getText());
+        
+        return max > min;
+    }
+    
+    private void buscarDepoTipo(){
+        String specE = this.comboEstantes_Con.getSelectedItem().toString(); 
+        String specR = this.comboRefri_Con.getSelectedItem().toString();
+        String specs = specR + specE;
+        
+        if(specs.equals("N/AN/A")){
+            this.buscarTamanio(sist.listaDisponibles());
+        }
+        else{
+            if(specs.contains("N/A")){
+                if(specE.equals("N/A")){
+                    this.buscarTamanio(sist.refriSpec(depo.pasarSN(specR), sist.listaDisponibles()));
+                }
+                else{
+                    this.buscarTamanio(sist.estSpec(depo.pasarSN(specE), sist.listaDisponibles()));
+                }
+            }
+            else{
+                switch (specs){
+                    case "SINO":{
+                        this.buscarTamanio(sist.listaSpecs("SN", sist.listaDisponibles()));
+                        break;
+                    }
+                    case "NOSI":{
+                        this.buscarTamanio(sist.listaSpecs("NS", sist.listaDisponibles()));
+                        break;
+                    }
+                    case "NONO":{
+                        this.buscarTamanio(sist.listaSpecs("NN", sist.listaDisponibles()));
+                        break;
+                    }
+                    case "SISI":{
+                        this.buscarTamanio(sist.listaSpecs("SS", sist.listaDisponibles()));
+                        break;
+                    }
+                }
+            }   
+        }   
+    }
+    
+    public void buscarTamanio(ArrayList<Deposito> depos){
+        ArrayList<Deposito> validos = new ArrayList();
+        
+        for(Deposito deposito : depos){
+            if(compararSize(deposito.getTamanio())){
+                validos.add(deposito);
+            }
+        }
+        if(validos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay depóstos disponibles con esas características", 
+                                                "ERROR", JOptionPane.ERROR_MESSAGE);
+            this.borrarCampos();
+        }else{
+            cargarListaDepositos(validos);
+        }
+        
+    }
+    
+    public boolean compararSize(int size){
+        boolean es = false;
+        
+        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
+        int min = Integer.parseInt(this.inputMinSize_Con.getText()); 
+
+        if(min <= size && size <= max){
+            es = true;
+        }
+        return es;
+    }
+    
+    
+    
+     private void borrarCampos(){
+        this.inputMinSize_Con.setText("");
+        this.inputMaxSize_Con.setText("");
+        modelo3.removeAllElements();
+        lstDepos_Con.setModel(modelo3);
+    }
+   //______________________________________//
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -323,13 +446,7 @@ public class registroContrato extends javax.swing.JFrame {
             }
         }    
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
-
-    private void borrarCampos(){
-        this.inputMinSize_Con.setText("");
-        this.inputMaxSize_Con.setText("");
-        modelo3.removeAllElements();
-        lstDepos_Con.setModel(modelo3);
-    }
+  
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
@@ -343,13 +460,7 @@ public class registroContrato extends javax.swing.JFrame {
             evt.consume();
         }    
     }//GEN-LAST:event_inputMinSize_ConKeyTyped
-    public boolean validarTamanio(){
-        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
-        int min = Integer.parseInt(this.inputMinSize_Con.getText());
-        
-        return max > min;
-    }
-    
+      
     private void btnBuscar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_ConActionPerformed
         boolean vMax = this.inputMaxSize_Con.getText().isEmpty();
         boolean vMin = this.inputMinSize_Con.getText().isEmpty();
@@ -360,7 +471,7 @@ public class registroContrato extends javax.swing.JFrame {
         }
         else{
             if(this.validarTamanio()){
-                this.buscarDepositos();
+                this.buscarDepoTipo();
             }
             else{
                 JOptionPane.showMessageDialog(null, "El Tamaño máximo debe ser mayor al mínimo", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -368,7 +479,6 @@ public class registroContrato extends javax.swing.JFrame {
             }
         }   
     }//GEN-LAST:event_btnBuscar_ConActionPerformed
-
     
     private void inputMinSize_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinSize_ConActionPerformed
         // TODO add your handling code here:
@@ -387,84 +497,6 @@ public class registroContrato extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_inputMaxSize_ConKeyTyped
-
-    //______CARGA DE LISTAS______//
-    private void buscarDepositosGen(){
-        String specs = this.comboEstantes_Con.getSelectedItem().toString() + this.comboRefri_Con.getSelectedItem().toString();
-        if(specs.contains("N/A")){
-            
-        }
-        switch (specs){
-            case "SINO":{
-                
-            }
-            case "NOSI":{
-                
-            }
-            case "NONO":{
-                
-            }
-            case "SISI":{
-                
-            }
-            case " ":{
-                
-            }
-        }
-    }     
-    private void cargarListaEmpleados(){
-        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
-        modelo1.removeAllElements();
-        /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
-        for(Empleado empleado : sist.getListaEmpleados()){
-            modelo1.addElement(empleado);
-        }
-        /*Seteamos nuestro modelo como el modelo de la lista*/
-        lstEmpleados_Con.setModel(modelo1);
-    }
-
-    private void cargarListaClientes(){
-        modelo2.removeAllElements();
-        
-        for(Cliente cliente : sist.getListaClientes()){
-            modelo2.addElement(cliente);
-        }
-        lstClientes_Con.setModel(modelo2);
-    }
-
-    public void buscarDepositos(){
-        ArrayList<Deposito> validos = new ArrayList();
-        
-        for(Deposito deposito : sist.getListaDepositos()){
-            if(compararSize(deposito.getTamanio())){
-                validos.add(deposito);
-            }
-        }
-        cargarListaDepositos(validos);
-    }
-    
-    public boolean compararSize(int size){
-        boolean es = false;
-        
-        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
-        int min = Integer.parseInt(this.inputMinSize_Con.getText()); 
-
-        if(min <= size && size <= max){
-            es = true;
-        }
-        return es;
-    }
-    
-    private void cargarListaDepositos(ArrayList <Deposito> lstDepositos){
-        modelo3.removeAllElements();
-        
-        for(Deposito deposito : lstDepositos){
-            modelo3.addElement(deposito);
-        }
-        lstDepos_Con.setModel(modelo3);
-    }
-    
-   //______________________________________//
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar_Con;
