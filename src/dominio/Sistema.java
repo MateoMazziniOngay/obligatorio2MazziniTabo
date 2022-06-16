@@ -115,5 +115,60 @@ public class Sistema implements Serializable{
         }
         return esta;
     }
+    
+    public ArrayList listaAlquilados(){
+        ArrayList <Deposito> depoA = new ArrayList();
+        
+        for(Contrato contrato : this.getListaContratos()){
+            depoA.add(contrato.getDeposito());
+        }
+        return depoA;
+    }
+    
+    public ArrayList listaDisponibles(){
+        ArrayList <Deposito> depoD = new ArrayList();
+        
+        for(Deposito depo : this.getListaDepositos()){
+            if(!listaAlquilados().contains(depo)){
+                depoD.add(depo);
+            }
+        }
+        return depoD;
+    }
+    
+    public ArrayList listaSpecs(String spec, ArrayList<Deposito> depos){
+        ArrayList<Deposito> deposSpec = new ArrayList();
+        for(Deposito depo : depos){
+            
+            String depoR = depo.getRefrigeracion();
+            String depoE = depo.getEstantes();
+            
+            if((depoR + depoE).equals(spec)){
+                deposSpec.add(depo);
+            }
+        }
+        return deposSpec;
+    }
 
+    public ArrayList refriSpec(String spec, ArrayList<Deposito> depos){
+        ArrayList<Deposito> deposRS = new ArrayList();
+        for(Deposito depo : depos){
+            
+            if(depo.getRefrigeracion().equals(spec)){
+                deposRS.add(depo);
+            }
+        }
+        return deposRS;
+    }
+    
+    public ArrayList estSpec(String spec, ArrayList<Deposito> depos){
+        ArrayList<Deposito> deposES = new ArrayList();
+        for(Deposito depo : depos){
+            
+            if(depo.getRefrigeracion().equals(spec)){
+                deposES.add(depo);
+            }
+        }
+        return deposES;
+    }
 }

@@ -41,14 +41,14 @@ public class Deposito implements Serializable{
         this.tamanio = unTamanio;
     }
     
-    public String tieneEstantes() {
+    public String getEstantes() {
         return estantes;
     }
     public void setEstantes(String estantes) {
         this.estantes = estantes;
     }
     
-    public String tieneRefrigeracion() {
+    public String getRefrigeracion() {
         return refrigeracion;
     }
     public void setRefrigeracion(String refrigeracion) {
@@ -69,7 +69,7 @@ public class Deposito implements Serializable{
         return 
             "ID: " + this.getId() + 
             ", Tamaño: " + this.getTamanio() + 
-            ", Estantes: " + this.tieneEstantes() + 
-            ", Refrigeración: " + this.tieneRefrigeracion();
+            ", Estantes: " + this.getEstantes() + 
+            ", Refrigeración: " + this.getRefrigeracion();
     }
 }
