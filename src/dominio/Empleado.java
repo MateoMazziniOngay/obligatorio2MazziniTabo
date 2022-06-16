@@ -57,5 +57,15 @@ public class Empleado extends Persona implements Serializable{
             ", Año: " + this.getAnioIngreso();
     }
 
+    //equals() de Empleado, nos dice si dos empleados son iguales.
+    public boolean equals(Empleado unEmpleado){
+        boolean ni = this.getNombre().equals(unEmpleado.getNombre());
+        boolean ci = this.getCedula() == unEmpleado.getCedula();
+        boolean ti = this.getTelefono() == unEmpleado.getTelefono();
+        boolean di = this.getDireccion().equals(unEmpleado.getDireccion());
+        boolean ai = this.getAnioIngreso() == unEmpleado.getAnioIngreso();
+        
+        return (ni && ci && ti && di && ai);
+    }
     //---------------------------------------------//
 }
