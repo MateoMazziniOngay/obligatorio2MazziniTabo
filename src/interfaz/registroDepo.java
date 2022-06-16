@@ -223,8 +223,7 @@ public class registroDepo extends javax.swing.JFrame {
                     int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar depósito", 0);
                     if(resp == 0){
                     
-                        //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito,
-                    
+                        //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito.
                         refri = depo.pasarSN(refri);
                         estantes = depo.pasarSN(estantes);
                     
@@ -232,17 +231,16 @@ public class registroDepo extends javax.swing.JFrame {
                         Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
                         sist.agregarDeposito(d);
 
-                        /*Creamos una variable registro para mostrar un mensaje de depósito registrado con exito y sus respectivos datos 
-                        en un showMessageDialog*/
-                    
+                        /*
+                        Creamos una variable registro para mostrar un mensaje de depósito registrado con exito 
+                        y sus respectivos datos en un showMessageDialog
+                        */
                         String registro =   "¡Depósito registrado con exito!" + 
                                             "\n" + "ID: " + idNum + 
                                             "\n" + "Tamaño: " + tamanioNum + 
                                             "\n" + "Estantes: " + estantes +
                                             "\n" + "Refrigeración: " + refri;
-                            
-                                        
-                    
+ 
                         JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
                     
                         // Dejamos los text fields en blanco otra vez.

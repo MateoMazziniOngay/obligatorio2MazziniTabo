@@ -14,6 +14,7 @@ public class Sistema implements Serializable{
     private ArrayList <Contrato> listaContratos;
     private ArrayList <Visita> listaVisitas;
     
+    // Constructor con parámetros
     public Sistema(){
         this.listaDepositos = new ArrayList();
         this.listaPersonas = new ArrayList();
@@ -22,6 +23,8 @@ public class Sistema implements Serializable{
         this.listaContratos = new ArrayList();
         this.listaVisitas = new ArrayList();
     }
+    
+    // Getters y Setters de ArrayLists de las clases 
     public ArrayList<Deposito> getListaDepositos() {
         return listaDepositos;
     }
@@ -69,9 +72,13 @@ public class Sistema implements Serializable{
     public void agregarVisita(Visita unaVisita) {
         listaVisitas.add(unaVisita);
     }
+    //------------------------------------------------//
 
-    /*Recorre la lista de personas, comparando las cédulas de 
-    cada Persona con la recibida para saber si ya existe*/
+    // Métodos
+    /*
+    Recorre la lista de personas, comparando las cédulas de 
+    cada Persona con la recibida para saber si ya existe
+    */
     public boolean cedulaExistente(int unaCedula){
         boolean existe = false;
         for(Persona persona : listaPersonas){
@@ -82,8 +89,10 @@ public class Sistema implements Serializable{
         return existe;
     }
     
-    /*Recorre la lista de depositos, comparando las ID's de 
-    cada Deposito con la recibida para saber si ya existe*/
+    /*
+    Recorre la lista de depositos, comparando las ID's de 
+    cada Deposito con la recibida para saber si ya existe
+    */
     public boolean idExistente(int unaId){
         boolean existe = false;
         for(Deposito deposito : listaDepositos){
@@ -93,8 +102,11 @@ public class Sistema implements Serializable{
         }
         return existe;
     }
-    /*Recorre la lista de depositos, comparando las ID's de 
-    cada Deposito con la recibida para encontrarlo y devolverlo*/
+    
+    /*
+    Recorre la lista de depositos, comparando las ID's de 
+    cada Deposito con la recibida para encontrarlo y devolverlo
+    */
     public Deposito buscarId(int unaId){
         Deposito ret = new Deposito();
         for(Deposito deposito : listaDepositos){
