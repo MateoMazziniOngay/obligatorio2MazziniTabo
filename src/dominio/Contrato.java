@@ -76,5 +76,15 @@ public class Contrato implements Serializable{
             "\n" + "Número de Contrato: " + this.getNumContrato();
     }
     
+    
+    //equals() de Contrato, nos dice si dos contratos son iguales.
+    public boolean equals(Contrato unContrato){
+        boolean ci = this.getCliente().equals(unContrato.getCliente());
+        boolean ei = this.getEmpleado().equals(unContrato.getEmpleado());
+        boolean di = this.getDeposito().getId() == unContrato.getDeposito().getId();
+        boolean ni = this.getNumContrato() == unContrato.getNumContrato();
+        
+        return (ci && ei && di && ni);
+    }
     //---------------------------------------------//
 }
