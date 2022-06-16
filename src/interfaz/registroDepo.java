@@ -13,6 +13,45 @@ public class registroDepo extends javax.swing.JFrame {
         this.sist = unSistema;
     }
 
+    //Crea el Deposito de acuerdo a los datos recibidos.
+    private void completarRegistro(int unId, int unTamanio, String estantes, String refri){
+        //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito.
+        refri = depo.pasarSN(refri);
+        estantes = depo.pasarSN(estantes);
+                    
+        //Creamos un nuevo depósito y lo agregamos a su lista.
+        Deposito d = new Deposito(unId,unTamanio,estantes,refri);
+        sist.agregarDeposito(d);
+
+        this.status(unId,unTamanio,estantes,refri);
+        this.setVoid();
+    }
+    
+    //Informa al usuario sobre el estado del registro.
+    private void status(int unId, int unTamanio, String estantes, String refri){
+        /*
+        Creamos una variable registro para mostrar un mensaje de depósito registrado con exito 
+        y sus respectivos datos en un showMessageDialog
+        */
+        String registro =   "¡Depósito registrado con exito!" + 
+                            "\n" + "ID: " + unId + 
+                            "\n" + "Tamaño: " + unTamanio + 
+                            "\n" + "Estantes: " + estantes +
+                            "\n" + "Refrigeración: " + refri;
+ 
+        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
+    }
+    
+    //Deja en blanco los textFields.
+    private void setVoid(){
+        
+        this.inputId_D.setText("");
+        this.inputSize_D.setText("");
+        this.comboEstantes_D.setSelectedIndex(0);
+        this.comboRefri_D.setSelectedIndex(0);
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -171,19 +210,19 @@ public class registroDepo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputId_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputId_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputId_DActionPerformed
 
     private void inputSize_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSize_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputSize_DActionPerformed
 
     private void comboEstantes_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstantes_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_comboEstantes_DActionPerformed
 
     private void comboRefri_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRefri_DActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_comboRefri_DActionPerformed
 
     private void btnCancelarR_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarR_DActionPerformed
@@ -192,6 +231,8 @@ public class registroDepo extends javax.swing.JFrame {
 
     private void btnRegistrar_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_DActionPerformed
         
+        // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
+        // Obtenemos los datos ingresados y los introducimos en variables para utilizarlos.
         String id = this.inputId_D.getText();
         String tamanio = this.inputSize_D.getText();
         String estantes = this.comboEstantes_D.getSelectedItem().toString();;
@@ -221,34 +262,8 @@ public class registroDepo extends javax.swing.JFrame {
                 }
                 else{
                     int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar depósito", 0);
-                    if(resp == 0){
-                    
-                        //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito.
-                        refri = depo.pasarSN(refri);
-                        estantes = depo.pasarSN(estantes);
-                    
-                        //Creamos un nuevo depósito y lo agregamos a su lista.
-                        Deposito d = new Deposito(idNum,tamanioNum,estantes,refri);
-                        sist.agregarDeposito(d);
-
-                        /*
-                        Creamos una variable registro para mostrar un mensaje de depósito registrado con exito 
-                        y sus respectivos datos en un showMessageDialog
-                        */
-                        String registro =   "¡Depósito registrado con exito!" + 
-                                            "\n" + "ID: " + idNum + 
-                                            "\n" + "Tamaño: " + tamanioNum + 
-                                            "\n" + "Estantes: " + estantes +
-                                            "\n" + "Refrigeración: " + refri;
- 
-                        JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
-                    
-                        // Dejamos los text fields en blanco otra vez.
-                        this.inputId_D.setText("");
-                        this.inputSize_D.setText("");
-                        this.comboEstantes_D.setSelectedIndex(0);
-                        this.comboRefri_D.setSelectedIndex(0);
-                
+                    if(resp == 0){                       
+                        this.completarRegistro(idNum, tamanioNum, estantes, refri);
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
@@ -257,7 +272,11 @@ public class registroDepo extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnRegistrar_DActionPerformed
-   
+    
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */    
     private void inputSize_DKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputSize_DKeyTyped
         int size = evt.getKeyChar();
 
@@ -272,6 +291,10 @@ public class registroDepo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_inputSize_DKeyTyped
 
+    /*
+    Se asegura de que los valores ingresados sean números 
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    */
     private void inputId_DKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputId_DKeyTyped
         int id = evt.getKeyChar();
 

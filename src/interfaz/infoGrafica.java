@@ -1,6 +1,6 @@
 package interfaz;
 
-import dominio.Sistema;
+import dominio.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import org.jfree.chart.ChartFactory;
@@ -8,13 +8,11 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
-/**
- *
- * @author Mateo
- */
+
 public class infoGrafica extends javax.swing.JFrame {
 
     private Sistema sist;
+    private Deposito depo = new Deposito();
     
     public infoGrafica(Sistema unSistema) {
         initComponents();
@@ -63,13 +61,14 @@ public class infoGrafica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarGrafica(){
+        //Setea los valores de cada combinación de parámetros de acuerdo a su cantidad.
+        int cantSiSi = depo.listaSpecs("SS",sist.listaAlquilados()).size(); 
+        int cantSiNo = depo.listaSpecs("SN",sist.listaAlquilados()).size(); 
+        int cantNoNo = depo.listaSpecs("NN",sist.listaAlquilados()).size(); 
+        int cantNoSi = depo.listaSpecs("NS",sist.listaAlquilados()).size(); 
         
-        int cantSiSi = sist.listaSpecs("SS",sist.listaAlquilados()).size(); 
-        int cantSiNo = sist.listaSpecs("SN",sist.listaAlquilados()).size(); 
-        int cantNoNo = sist.listaSpecs("NN",sist.listaAlquilados()).size(); 
-        int cantNoSi = sist.listaSpecs("NS",sist.listaAlquilados()).size(); 
-        
-        int total = cantSiSi + cantSiNo + cantNoNo + cantNoSi;
+        //Setea el total de depósitos a partir del tamaño de la lista de depósitos alquilados.
+        int total = sist.listaAlquilados().size();
         
         // Asignamos valores y nombres a los datos de la gráfica
         DefaultPieDataset datos = new DefaultPieDataset();

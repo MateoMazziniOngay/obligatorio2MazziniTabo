@@ -20,6 +20,78 @@ public class ventanaVisitas extends javax.swing.JFrame {
         this.cargarListaEmpleados();
     }
 
+    
+    //______CARGA DE LISTAS______//
+    
+    private void cargarListaEmpleados(){
+        // Cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos
+        modelo3.removeAllElements();
+
+        // Recorremos el arrayList, añadiendo cada elemento al modelo
+        for(Empleado empleado : sist.getListaEmpleados()){
+            modelo3.addElement(empleado);
+        }
+        // Seteamos nuestro modelo como el modelo de la lista
+        lstEmpleados_V.setModel(modelo3);
+    }
+
+    private void cargarListaClientes(){
+        // cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos
+        modelo1.removeAllElements();
+        
+        // Recorremos el arrayList, añadiendo cada elemento al modelo
+        for(Cliente cliente : sist.getListaClientes()){
+            modelo1.addElement(cliente);
+        }
+        // Seteamos nuestro modelo como el modelo de la lista
+        lstClientes_V.setModel(modelo1);
+    }
+    
+    private void cargarContratoClientes(ArrayList<Contrato> lstContratos){
+        modelo2.removeAllElements();
+
+        for(Contrato contrato : lstContratos){
+            modelo2.addElement(contrato);
+        }
+        lstContratos_V.setModel(modelo2);
+    }
+    
+    //__________________________//
+    
+    //Registra la Visita de acuerdo a los datos ingresados por el usuario.
+    private void completarRegistro(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, int unDia, int unMes){
+        // Agregamos el registro a la lista de Visitas.
+        Visita v = new Visita(unCliente,unEmpleado,unContrato,unDia,unMes);
+        sist.agregarVisita(v);
+        
+        String infoCliente = unCliente.getNombre();
+        String infoEmpleado = unEmpleado.getNombre();
+        int infoContrato = unContrato.getNumContrato();
+        
+        this.status(infoCliente, infoEmpleado, infoContrato, unDia, unMes);
+    }
+    
+    //Informa al usuario sobre el estado del registro.
+    private void status(String infoCliente, String infoEmpleado, int infoContrato, int unDia, int unMes){
+        /*
+        Creamos una variable registro para mostrar un mensaje de visita registrado con exito y sus respectivos datos 
+        en un showMessageDialog
+        */
+        String registro =   "¡Visita registrada con exito!" + 
+                            "\n" + "Cliente: " + infoCliente + 
+                            "\n" + "Empleado: " + infoEmpleado + 
+                            "\n" + "Contrato N°: " + infoContrato + 
+                            "\n" + "Fecha: " + unDia+"/"+ unMes;
+
+                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE); 
+    }
+    
+    //Setea los valores de mes y día en 1.
+    private void reiniciarFecha(){
+        this.comboMes_V.setSelectedIndex(0);
+        this.comboDia_V.setSelectedIndex(0);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -188,88 +260,43 @@ public class ventanaVisitas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-       // ventanaInicio vIni = new ventanaInicio();
-       //vIni.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
-
-    private void cargarListaEmpleados(){
-        // Cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos
-        modelo3.removeAllElements();
-
-        // Recorremos el arrayList, añadiendo cada elemento al modelo
-        for(Empleado empleado : sist.getListaEmpleados()){
-            modelo3.addElement(empleado);
-        }
-        // Seteamos nuestro modelo como el modelo de la lista
-        lstEmpleados_V.setModel(modelo3);
-    }
-
-    private void cargarListaClientes(){
-        // cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos
-        modelo1.removeAllElements();
-        
-        // Recorremos el arrayList, añadiendo cada elemento al modelo
-        for(Cliente cliente : sist.getListaClientes()){
-            modelo1.addElement(cliente);
-        }
-        // Seteamos nuestro modelo como el modelo de la lista
-        lstClientes_V.setModel(modelo1);
-    }
     
-    private void cargarContratoClientes(ArrayList<Contrato> lstContratos){
-        modelo2.removeAllElements();
-
-        for(Contrato contrato : lstContratos){
-            modelo2.addElement(contrato);
-        }
-        lstContratos_V.setModel(modelo2);
-    }
     private void btnRegistrar_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_VActionPerformed
+        
+        //Tomamos los datos seleccionados por el usuario.
         String mes = this.comboMes_V.getSelectedItem().toString();    
         String dia = this.comboDia_V.getSelectedItem().toString();
         Cliente clie = this.lstClientes_V.getSelectedValue();
         Empleado emple = this.lstEmpleados_V.getSelectedValue();
         Contrato con = this.lstContratos_V.getSelectedValue();
         
-        boolean vm = mes.isEmpty();
-        boolean vd = dia.isEmpty();
+        //Nos fijamos si son nulos o no previo a registrar.
         boolean vCl = clie == null;
         boolean ve = emple == null;
         boolean vc = con == null;
         
-        if(vm || vd || vCl || ve || vc){
+        //Nos aseguramos de que todos los campos hayan sido completados.
+        if(vCl || ve || vc){
             JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado" + 
                                                 " y un contrato", "ERROR", JOptionPane.ERROR_MESSAGE);
         }else{
             int diaNum = Integer.parseInt(dia);
             int mesNum = Integer.parseInt(mes);
             
+            //Validamos que el formato de la fecha ingresada sea válido
             if(!vis.validarFecha(mesNum, diaNum)){
                 JOptionPane.showMessageDialog(null, "La fecha " + dia+"/"+mes + " no es valida", "ERROR", JOptionPane.ERROR_MESSAGE); 
-                this.comboMes_V.setSelectedIndex(0);
-                this.comboDia_V.setSelectedIndex(0);
+                this.reiniciarFecha();
             }
             else{
-                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
+                //Pëdimos confirmación del registro de la visita.
+                int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar visita", 0);
                 if(resp == 0){
-                    Deposito depo = con.getDeposito();
                     
-                    // Agregamos el registro a la lista de personas.
-                    Visita v = new Visita(clie,emple,con,depo,diaNum,mesNum);
-                    sist.agregarVisita(v);
-                    
-                    /*
-                    Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
-                    en un showMessageDialog
-                    */
-                    String registro =   "¡Visita registrada con exito!" + 
-                                        "\n" + "Cliente: " + clie.getNombre() + 
-                                        "\n" + "Empleado: " + emple.getNombre() + 
-                                        "\n" + "Contrato N°: " + con.getNumContrato() + 
-                                        "\n" + "Fecha: " + dia+"/"+mes;
-
-                    JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);    
+                    this.completarRegistro(clie,emple,con,diaNum,mesNum);
+                       
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
@@ -279,7 +306,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrar_VActionPerformed
 
     private void comboMes_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMes_VActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_comboMes_VActionPerformed
 
     private void lstClientes_VValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstClientes_VValueChanged
@@ -287,25 +314,30 @@ public class ventanaVisitas extends javax.swing.JFrame {
     }//GEN-LAST:event_lstClientes_VValueChanged
 
     private void btnBuscarContratos_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarContratos_VActionPerformed
+        //Toma el cliente seleccionado por el usuario
         Cliente clie = this.lstClientes_V.getSelectedValue();
         if(clie == null){
             JOptionPane.showMessageDialog(null, "Seleccione un cliente", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        //Si no es nulo:
         else{
             ArrayList <Contrato> contratosClie = new ArrayList();
-
+            
+            //Recorre la lista de clientes en busca de los contratos con ese Cliente registrado
+            
             for(Contrato contrato : sist.getListaContratos()){
                 if(contrato.getCliente().equals(clie)){
                     contratosClie.add(contrato);
                 }   
             }
-            
+            //Si el cliente no tiene contratos registrados se le informa al usuario.
             if(contratosClie.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Este cliente no tiene contratos registrados", 
                                                     "ERROR", JOptionPane.ERROR_MESSAGE);
             }
             else{
-               cargarContratoClientes(contratosClie); 
+                //Carga los contratos del Cliente.
+                cargarContratoClientes(contratosClie); 
             }  
         }  
     }//GEN-LAST:event_btnBuscarContratos_VActionPerformed
