@@ -5,9 +5,11 @@ import javax.swing.*;
 
 public class registroContrato extends javax.swing.JFrame {
 
+    private Criterio crit = new Criterio();
     private Sistema sist;
     private Contrato con;
     private Deposito depo = new Deposito();
+    
     /*Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" de la lista.*/
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
@@ -116,7 +118,7 @@ public class registroContrato extends javax.swing.JFrame {
                                                 "ERROR", JOptionPane.ERROR_MESSAGE);
             this.borrarCampos();
         }else{
-            cargarListaDepositos(validos);
+            cargarListaDepositos(ordenD(validos));
         }
         
     }
@@ -133,7 +135,11 @@ public class registroContrato extends javax.swing.JFrame {
         return es;
     }
     
-    
+    public ArrayList<Deposito> ordenD (ArrayList contratos){
+        Collections.sort(contratos, new Criterio());
+        
+        return contratos;
+    }
     
      private void borrarCampos(){
         this.inputMinSize_Con.setText("");
@@ -383,7 +389,6 @@ public class registroContrato extends javax.swing.JFrame {
         setBounds(0, 0, 1095, 397);
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
         
         this.borrarCampos();      
@@ -459,6 +464,10 @@ public class registroContrato extends javax.swing.JFrame {
         if (!numeros){
             evt.consume();
         }    
+        
+        if(this.inputMinSize_Con.getText().length() >= 9){
+            evt.consume();
+        }
     }//GEN-LAST:event_inputMinSize_ConKeyTyped
       
     private void btnBuscar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_ConActionPerformed
@@ -494,6 +503,10 @@ public class registroContrato extends javax.swing.JFrame {
         boolean numeros = max >= 48 && max <= 57;
         
         if (!numeros){
+            evt.consume();
+        }
+        
+        if(this.inputMaxSize_Con.getText().length() >= 9){
             evt.consume();
         }
     }//GEN-LAST:event_inputMaxSize_ConKeyTyped

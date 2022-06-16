@@ -5,8 +5,8 @@ import javax.swing.*;
 
 public class registroEmpleado extends javax.swing.JFrame {
  
-    Sistema sist;
-    Empleado empl;
+    private Sistema sist;
+    private Empleado empl;
     
     public registroEmpleado(Sistema unSistema) {
         initComponents();
@@ -296,6 +296,10 @@ public class registroEmpleado extends javax.swing.JFrame {
         if (!numeros){
             evt.consume();
         }
+        
+        if(this.inputCi_E.getText().length() >= 9){
+            evt.consume();
+        }
     }//GEN-LAST:event_inputCi_EKeyTyped
 
     private void inputAnio_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputAnio_EKeyTyped
@@ -304,6 +308,10 @@ public class registroEmpleado extends javax.swing.JFrame {
         boolean numeros = anio >= 48 && anio <= 57;
         
         if (!numeros){
+            evt.consume();
+        }
+        
+        if(this.inputAnio_E.getText().length() >= 9){
             evt.consume();
         }
     }//GEN-LAST:event_inputAnio_EKeyTyped
@@ -316,28 +324,12 @@ public class registroEmpleado extends javax.swing.JFrame {
         if (!numeros){
             evt.consume();
         }
+        
+        if(this.inputTel_E.getText().length() >= 9){
+            evt.consume();
+        }
     }//GEN-LAST:event_inputTel_EKeyTyped
 
-/*    
-    public void setVacios(String num1, String num2, String num3, String num4){
-        
-            if(!sist.esNum(num1)){
-                this.inputCi_E.setText("");
-            }
-            
-            if(!sist.esNum(num2)){
-                this.inputAnio_E.setText("");
-            }
-            
-            if(!sist.esNum(num3)){
-                this.inputTel_E.setText("");
-            }
-            
-            if(!sist.esNum(num4)){
-                this.inputDirNum_E.setText("");
-            }
-    }
-*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarR_E;
     private javax.swing.JButton btnRegistrar_E;

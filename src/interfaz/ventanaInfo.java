@@ -45,6 +45,11 @@ public class ventanaInfo extends javax.swing.JFrame {
         });
 
         btnConsulta.setText("Consulta de contratos");
+        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaActionPerformed(evt);
+            }
+        });
 
         btnDepositos.setText("Consulta de depósitos");
 
@@ -104,6 +109,11 @@ public class ventanaInfo extends javax.swing.JFrame {
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
+        infoConsContratos v = new infoConsContratos(sist);
+        v.setVisible(true);
+    }//GEN-LAST:event_btnConsultaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

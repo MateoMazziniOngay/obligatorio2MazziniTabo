@@ -29,6 +29,7 @@ public class Visita implements Serializable{
     public Cliente getCliente() {
         return cliente;
     }
+    
     public void setCliente(Cliente unCliente) {
         this.cliente = unCliente;
     }
@@ -36,6 +37,7 @@ public class Visita implements Serializable{
     public Empleado getEmpleado() {
         return empleado;
     }
+    
     public void setEmpleado(Empleado unEmpleado) {
         this.empleado = unEmpleado;
     }
@@ -43,6 +45,7 @@ public class Visita implements Serializable{
     public Contrato getContrato() {
         return contrato;
     }
+    
     public void setContrato(Contrato unContrato) {
         this.contrato = unContrato;
     }
@@ -50,6 +53,7 @@ public class Visita implements Serializable{
     public Deposito getDeposito() {
         return deposito;
     }
+    
     public void setDeposito(Deposito unDeposito) {
         this.deposito = unDeposito;
     }
@@ -57,13 +61,15 @@ public class Visita implements Serializable{
     public int getMes() {
         return mes;
     }
+    
     public void setMes(int unMes) {
         this.mes = unMes;
     }
     
     public int getDia() {
         return dia;
-    }  
+    } 
+    
     public void setDia(int unDia) {
         this.dia = unDia;
     }
