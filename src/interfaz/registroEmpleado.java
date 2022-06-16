@@ -250,6 +250,7 @@ public class registroEmpleado extends javax.swing.JFrame {
                     //Pedimos confirmación de registro
                     int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
                     if(resp == 0){
+                        
                         // Agregamos el registro a la lista de personas.
                         Persona p = new Persona(nombre,cedulaNum,telNum);
                         sist.agregarPersona(p);
@@ -258,8 +259,10 @@ public class registroEmpleado extends javax.swing.JFrame {
                         Empleado e = new Empleado (nombre,cedulaNum,telNum, direccion,anioNum);
                         sist.agregarEmpleado(e);
                     
-                        /*Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
-                        en un showMessageDialog*/
+                        /*
+                        Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
+                        en un showMessageDialog
+                        */
                         String registro =   "¡Empleado registrado con exito!" + 
                                             "\n" + "Empleado: " + nombre + 
                                             "\n" + "Cedula: " + cedulaNum + 

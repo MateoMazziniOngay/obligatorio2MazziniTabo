@@ -11,6 +11,7 @@ public class Visita implements Serializable{
     private int mes;
     private int dia;
     
+    // Constructor sin parámetros
     public Visita(){
         this.cliente = null;
         this.empleado = null;
@@ -19,6 +20,8 @@ public class Visita implements Serializable{
         this.mes = 0;
         this.dia = 0;
     }
+    
+    // Constructor con parámetros
     public Visita(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, Deposito unDeposito, int unDia, int unMes){
        this.setCliente(unCliente);
        this.setEmpleado(unEmpleado);
@@ -26,6 +29,8 @@ public class Visita implements Serializable{
        this.setDia(unDia);
        this.setMes(unMes);
     }
+    
+    // Getters y Setters
     public Cliente getCliente() {
         return cliente;
     }
@@ -73,7 +78,9 @@ public class Visita implements Serializable{
     public void setDia(int unDia) {
         this.dia = unDia;
     }
+    //------------------------------//
     
+    // Métodos utilizados para las fechas
     public boolean validarFecha(int unMes, int unDia){
         boolean valida = true;
         int [] meses31 = {1,3,5,7,8,10,12};
@@ -102,4 +109,5 @@ public class Visita implements Serializable{
         }
         return ok;
     }
+    //---------------------------------------------//
 }

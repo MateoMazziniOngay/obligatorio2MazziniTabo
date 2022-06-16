@@ -12,6 +12,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
     DefaultListModel modelo2 = new DefaultListModel();
     DefaultListModel modelo3 = new DefaultListModel();
     
+    // Constructor con parámetros
     public ventanaVisitas(Sistema unSistema) {
         initComponents();
         this.sist = unSistema;
@@ -193,26 +194,26 @@ public class ventanaVisitas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void cargarListaEmpleados(){
-        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
+        // Cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos
         modelo3.removeAllElements();
 
-        /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
+        // Recorremos el arrayList, añadiendo cada elemento al modelo
         for(Empleado empleado : sist.getListaEmpleados()){
             modelo3.addElement(empleado);
         }
-        /*Seteamos nuestro modelo como el modelo de la lista*/
+        // Seteamos nuestro modelo como el modelo de la lista
         lstEmpleados_V.setModel(modelo3);
     }
 
     private void cargarListaClientes(){
-        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
+        // cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos
         modelo1.removeAllElements();
         
-        /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
+        // Recorremos el arrayList, añadiendo cada elemento al modelo
         for(Cliente cliente : sist.getListaClientes()){
             modelo1.addElement(cliente);
         }
-        /*Seteamos nuestro modelo como el modelo de la lista*/
+        // Seteamos nuestro modelo como el modelo de la lista
         lstClientes_V.setModel(modelo1);
     }
     
@@ -253,19 +254,21 @@ public class ventanaVisitas extends javax.swing.JFrame {
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar empleado", 0);
                 if(resp == 0){
                     Deposito depo = con.getDeposito();
+                    
                     // Agregamos el registro a la lista de personas.
                     Visita v = new Visita(clie,emple,con,depo,diaNum,mesNum);
                     sist.agregarVisita(v);
                     
-                    /*Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
-                    en un showMessageDialog*/
+                    /*
+                    Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
+                    en un showMessageDialog
+                    */
                     String registro =   "¡Visita registrada con exito!" + 
                                         "\n" + "Cliente: " + clie.getNombre() + 
                                         "\n" + "Empleado: " + emple.getNombre() + 
                                         "\n" + "Contrato N°: " + con.getNumContrato() + 
                                         "\n" + "Fecha: " + dia+"/"+mes;
-                                            
-                    
+
                     JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);    
                 }
                 else{
