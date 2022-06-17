@@ -1,7 +1,8 @@
+// Martín Tabó 227665 - Mateo Mazzini 219372
+
 package dominio;
 
 import java.io.Serializable;
-
 
 public class Visita implements Serializable{
     private Cliente cliente;
