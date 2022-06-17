@@ -134,7 +134,7 @@ public class ventanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        Serializacion.serializar(sist);
+        //Serializacion.serializar(sist);
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 

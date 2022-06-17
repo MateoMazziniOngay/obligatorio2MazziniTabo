@@ -137,7 +137,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
                                                 "ERROR", JOptionPane.ERROR_MESSAGE);
             this.borrarCampos();
         }else{
-            cargarListaDepositos(ordenA(validos));
+            cargarListaDepositos(depo.ordenA(validos));
         }
         
     }
@@ -153,13 +153,6 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
             es = true;
         }
         return es;
-    }
-    
-    //Ordena los depósitos de manera ascendente de acuerdo a su ID.
-    public ArrayList<Deposito> ordenA (ArrayList contratos){
-        Collections.sort(contratos, new CriterioDeposito());
-        
-        return contratos;
     }
     
     //Borra todos los campos

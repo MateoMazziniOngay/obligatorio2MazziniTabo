@@ -283,24 +283,30 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
         String idSelec = lstContratos_Info.getSelectedValue();
         //Chequeamos si el usuario seleccionó o no un contrato a eliminar.
         boolean vc = idSelec == null;
-        
-        //Si no seleccionó un Contrato, se le dice que debe hacerlo antes de presionar el botón "dat de baja".
-        if(vc){
-            JOptionPane.showMessageDialog(null, "Seleccione un contrato para dar de baja","ERROR", JOptionPane.ERROR_MESSAGE);
+        ArrayList<Contrato> contratos = sist.getListaContratos();  
+        //Si no hay ningún contrato registrado, se le advierte al usuario nuevamente.
+        if(contratos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay contratos para dar de baja","ERROR", JOptionPane.ERROR_MESSAGE);
         }
         else{
+        //Si no seleccionó un Contrato, se le dice que debe hacerlo antes de presionar el botón "dar de baja".
+            if(vc){
+                JOptionPane.showMessageDialog(null, "Seleccione un contrato para dar de baja","ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
             
-            int idSelecNum = Integer.parseInt(idSelec.substring(13));
-            Contrato contratoSelec = sist.buscarId(idSelecNum);
+                int idSelecNum = Integer.parseInt(idSelec.substring(13));
+                Contrato contratoSelec = sist.buscarId(idSelecNum);
             
-            /*
-            Se le pide confirmación al usuario previo a borrar el contrato. 
-            Se le muestra la información del contrato a eliminar.
-            */
-            int resp = JOptionPane.showConfirmDialog(null,  "¿Está seguro de que quiere eliminar este contrato?" + 
+                /*
+                Se le pide confirmación al usuario previo a borrar el contrato. 
+                Se le muestra la información del contrato a eliminar.
+                */
+                int resp = JOptionPane.showConfirmDialog(null,  "¿Está seguro de que quiere eliminar este contrato?" + 
                                                             "\n" + contratoSelec.toString() , "Confirmar eliminar contrato", 0);
-            if(resp == 0){
-                this.generarArchivo(contratoSelec);   
+                if(resp == 0){
+                    this.generarArchivo(contratoSelec);   
+                }
             }
         }
     }//GEN-LAST:event_btnEliminarContratoActionPerformed
