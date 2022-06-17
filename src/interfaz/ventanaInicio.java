@@ -1,3 +1,5 @@
+// Martín Tabó 227665 - Mateo Mazzini 219372
+
 package interfaz;
 
 import dominio.Sistema;

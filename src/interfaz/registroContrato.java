@@ -1,4 +1,7 @@
+// Martín Tabó 227665 - Mateo Mazzini 219372
+
 package interfaz;
+
 import dominio.*;
 import java.util.*;
 import javax.swing.*;

@@ -1,4 +1,7 @@
+// Martín Tabó 227665 - Mateo Mazzini 219372
+
 package ejecutar;
+
 import interfaz.*;
 import dominio.Sistema;
 import utilidades.Serializacion;

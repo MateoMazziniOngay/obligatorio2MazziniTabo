@@ -1,8 +1,9 @@
+// Martín Tabó 227665 - Mateo Mazzini 219372
+
 package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Sistema implements Serializable{
     
