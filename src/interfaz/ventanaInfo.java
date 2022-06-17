@@ -34,8 +34,10 @@ public class ventanaInfo extends javax.swing.JFrame {
             }
         });
 
-        lblInfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblInfo.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        lblInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInfo.setText("Información");
+        lblInfo.setToolTipText("");
 
         btnGrafica.setText("Estadística de ocupación");
         btnGrafica.addActionListener(new java.awt.event.ActionListener() {
@@ -52,53 +54,52 @@ public class ventanaInfo extends javax.swing.JFrame {
         });
 
         btnDepositos.setText("Consulta de depósitos");
+        btnDepositos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPanelLayout = new javax.swing.GroupLayout(pnlPanel);
         pnlPanel.setLayout(pnlPanelLayout);
         pnlPanelLayout.setHorizontalGroup(
             pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPanelLayout.createSequentialGroup()
-                .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlPanelLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(lblInfo))
-                    .addGroup(pnlPanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAtras)
-                            .addGroup(pnlPanelLayout.createSequentialGroup()
-                                .addComponent(lblStatsOcup)
-                                .addGap(101, 101, 101))))
-                    .addGroup(pnlPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGrafica)
-                            .addComponent(btnDepositos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDepositos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsulta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(lblStatsOcup)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         pnlPanelLayout.setVerticalGroup(
             pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGrafica)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(pnlPanelLayout.createSequentialGroup()
+                .addGap(139, 139, 139)
                 .addComponent(lblStatsOcup)
-                .addGap(38, 38, 38)
-                .addComponent(btnConsulta)
-                .addGap(42, 42, 42)
-                .addComponent(btnDepositos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(btnGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDepositos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         getContentPane().add(pnlPanel);
-        pnlPanel.setBounds(12, 12, 220, 320);
+        pnlPanel.setBounds(0, 0, 280, 380);
 
-        setBounds(0, 0, 262, 350);
+        setBounds(0, 0, 296, 419);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficaActionPerformed
@@ -111,9 +112,14 @@ public class ventanaInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
-        infoConsContratos v = new infoConsContratos(sist);
-        v.setVisible(true);
+        infoConsContratos vInfoContratos = new infoConsContratos(sist);
+        vInfoContratos.setVisible(true);
     }//GEN-LAST:event_btnConsultaActionPerformed
+
+    private void btnDepositosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositosActionPerformed
+        infoConsDepositos vInfoDepositos = new infoConsDepositos(sist);
+        vInfoDepositos.setVisible(true);
+    }//GEN-LAST:event_btnDepositosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
