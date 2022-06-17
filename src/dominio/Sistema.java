@@ -176,6 +176,17 @@ public class Sistema implements Serializable{
         }
         return visitas;
     }
+    
+    //Recibe un depósito y busca su contrato
+    public Contrato buscarContrato(Deposito unDeposito){
+        Contrato unContrato = new Contrato();
+        for(Contrato contrato : this.getListaContratos()){
+            if(contrato.getDeposito().equals(unDeposito)){
+                unContrato = contrato;
+            }
+        }
+        return unContrato;
+    }
 
     //---------------------------------------------//
 }

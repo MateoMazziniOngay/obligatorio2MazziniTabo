@@ -4,6 +4,7 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Deposito implements Serializable{
@@ -145,5 +146,21 @@ public class Deposito implements Serializable{
             ", Refrigeración: " + this.getRefrigeracion();
     }
 
+    //equals() de Cliente, nos dice si dos clientes son iguales.
+    public boolean equals(Deposito unDeposito){
+        boolean ii = this.getId() == unDeposito.getId();
+        boolean ti = this.getTamanio() == unDeposito.getTamanio();
+        boolean ei = this.getEstantes().equals(unDeposito.getEstantes());
+        boolean ri = this.getRefrigeracion().equals(unDeposito.getRefrigeracion());
+        
+        return (ii && ti && ei && ri);
+    }
+    
+    //Ordena los depósitos de manera ascendente de acuerdo a su ID.
+    public ArrayList<Deposito> ordenA (ArrayList contratos){
+        Collections.sort(contratos, new CriterioDeposito());
+        
+        return contratos;
+    }
     //---------------------------------------------//
 }
