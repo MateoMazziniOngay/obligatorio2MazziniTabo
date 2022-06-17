@@ -7,20 +7,20 @@ public class Visita implements Serializable{
     private Cliente cliente;
     private Empleado empleado;
     private Contrato contrato;
-    private int mes;
-    private int dia;
+    private String mes;
+    private String dia;
     
     // Constructor sin parámetros
     public Visita(){
         this.cliente = null;
         this.empleado = null;
         this.contrato = null;
-        this.mes = 0;
-        this.dia = 0;
+        this.mes = "0";
+        this.dia = "0";
     }
     
     // Constructor con parámetros
-    public Visita(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, int unDia, int unMes){
+    public Visita(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, String unDia, String unMes){
        this.setCliente(unCliente);
        this.setEmpleado(unEmpleado);
        this.setContrato(unContrato);
@@ -53,19 +53,19 @@ public class Visita implements Serializable{
         this.contrato = unContrato;
     }
     
-    public int getMes() {
+    public String getMes() {
         return mes;
     }
     
-    public void setMes(int unMes) {
+    public void setMes(String unMes) {
         this.mes = unMes;
     }
     
-    public int getDia() {
+    public String getDia() {
         return dia;
     } 
     
-    public void setDia(int unDia) {
+    public void setDia(String unDia) {
         this.dia = unDia;
     }
     
@@ -73,6 +73,9 @@ public class Visita implements Serializable{
     
     // Métodos 
     
+    public String getFecha(){
+        return this.getMes() + this.getDia();
+    }
     /*
     Si el mes recibido pertenece a la lista de meses31, retorna true.
     Si no pertenece, se fija que la fecha sea válida para meses de 30 días, o para febrero.

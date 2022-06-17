@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class registroContrato extends javax.swing.JFrame {
 
-    private Criterio crit = new Criterio();
+    private CriterioDeposito crit = new CriterioDeposito();
     private Sistema sist;
     private Contrato con;
     private Deposito depo = new Deposito();
@@ -153,7 +153,7 @@ public class registroContrato extends javax.swing.JFrame {
     
     //Ordena los depósitos de manera ascendente de acuerdo a su ID.
     public ArrayList<Deposito> ordenA (ArrayList contratos){
-        Collections.sort(contratos, new Criterio());
+        Collections.sort(contratos, new CriterioDeposito());
         
         return contratos;
     }

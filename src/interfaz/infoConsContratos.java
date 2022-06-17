@@ -26,7 +26,7 @@ public class infoConsContratos extends javax.swing.JFrame {
     private void cargarVisitas(Contrato unContrato){
            
         //Cargamos un arrayList con las visitas del contrato seleccionado
-        ArrayList<Visita> visitasConSelec = sist.visitasContrato(unContrato);
+        ArrayList<Visita> visitasConSelec = ordenFecha(sist.visitasContrato(unContrato));
         if(visitasConSelec.isEmpty()){
             JOptionPane.showMessageDialog(null, "Este contrato no posee visitas","Status", JOptionPane.PLAIN_MESSAGE);
         }
@@ -87,8 +87,8 @@ public class infoConsContratos extends javax.swing.JFrame {
 
             //Recorremos nuestro arrayList de visitas.
             for(Visita visita : visitas){
-                int dia = visita.getDia();
-                int mes = visita.getMes();
+                String dia = visita.getDia();
+                String mes = visita.getMes();
                 String empleado = visita.getEmpleado().getNombre();
                 
                 //Tomamos la información de cada visita y la ponemos en un String.
@@ -141,6 +141,12 @@ public class infoConsContratos extends javax.swing.JFrame {
                 
     }
     
+    //Ordena los depósitos de manera ascendente de acuerdo a su ID.
+    public ArrayList<Visita> ordenFecha (ArrayList visitas){
+        Collections.sort(visitas, new CriterioVisita());
+        
+        return visitas;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
