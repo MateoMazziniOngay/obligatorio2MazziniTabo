@@ -6,6 +6,9 @@ import java.io.Serializable;
 
 //De esta clase extienden Cliente y Empleado, debido a que comparten atributos.
 public class Persona implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private String nombre;
     private int cedula;
     private int telefono;
