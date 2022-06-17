@@ -2,8 +2,7 @@ package dominio;
 
 import java.util.Comparator;
 
-
-public class Criterio implements Comparator<Deposito>{
+public class CriterioDeposito implements Comparator<Deposito>{
 
     /* 
     Esta clase contiene el método compare utilizado para
@@ -13,5 +12,4 @@ public class Criterio implements Comparator<Deposito>{
     public int compare(Deposito d1, Deposito d2){
         return d1.getId()-d2.getId();
     }
-
 }

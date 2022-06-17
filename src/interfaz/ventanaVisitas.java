@@ -59,7 +59,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
     //__________________________//
     
     //Registra la Visita de acuerdo a los datos ingresados por el usuario.
-    private void completarRegistro(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, int unDia, int unMes){
+    private void completarRegistro(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, String unDia, String unMes){
         // Agregamos el registro a la lista de Visitas.
         Visita v = new Visita(unCliente,unEmpleado,unContrato,unDia,unMes);
         sist.agregarVisita(v);
@@ -72,7 +72,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
     }
     
     //Informa al usuario sobre el estado del registro.
-    private void status(String infoCliente, String infoEmpleado, int infoContrato, int unDia, int unMes){
+    private void status(String infoCliente, String infoEmpleado, int infoContrato, String unDia, String unMes){
         /*
         Creamos una variable registro para mostrar un mensaje de visita registrado con exito y sus respectivos datos 
         en un showMessageDialog
@@ -170,7 +170,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
             }
         });
 
-        comboDia_V.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        comboDia_V.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         comboMes_V.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         comboMes_V.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +301,7 @@ public class ventanaVisitas extends javax.swing.JFrame {
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar visita", 0);
                 if(resp == 0){
                     
-                    this.completarRegistro(clie,emple,con,diaNum,mesNum);
+                    this.completarRegistro(clie,emple,con,dia,mes);
                        
                 }
                 else{
