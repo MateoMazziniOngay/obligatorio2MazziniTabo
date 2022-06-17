@@ -3,9 +3,10 @@
 package interfaz;
 
 import dominio.*;
+import java.io.Serializable;
 import javax.swing.*;
 
-public class registroCliente extends javax.swing.JFrame {
+public class registroCliente extends javax.swing.JFrame implements Serializable{
 
     private Cliente clie;
     private Sistema sist;

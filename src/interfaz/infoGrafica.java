@@ -5,13 +5,14 @@ package interfaz;
 import dominio.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.Serializable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 
-public class infoGrafica extends javax.swing.JFrame {
+public class infoGrafica extends javax.swing.JFrame implements Serializable{
 
     private Sistema sist;
     private Deposito depo = new Deposito();
