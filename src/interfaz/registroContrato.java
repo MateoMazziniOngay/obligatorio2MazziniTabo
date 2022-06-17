@@ -435,7 +435,8 @@ public class registroContrato extends javax.swing.JFrame {
         getContentPane().add(pnlPanel);
         pnlPanel.setBounds(6, 6, 934, 340);
 
-        setBounds(0, 0, 966, 383);
+        setSize(new java.awt.Dimension(966, 383));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed

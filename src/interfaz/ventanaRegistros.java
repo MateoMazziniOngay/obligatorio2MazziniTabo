@@ -125,7 +125,8 @@ public class ventanaRegistros extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 296, 459);
+        setSize(new java.awt.Dimension(296, 459));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed

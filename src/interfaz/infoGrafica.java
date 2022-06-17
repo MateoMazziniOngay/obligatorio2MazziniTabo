@@ -59,7 +59,8 @@ public class infoGrafica extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        setBounds(0, 0, 524, 282);
+        setSize(new java.awt.Dimension(524, 282));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarGrafica(){
