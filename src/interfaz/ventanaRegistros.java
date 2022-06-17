@@ -3,8 +3,9 @@
 package interfaz;
 
 import dominio.Sistema;
+import java.io.Serializable;
 
-public class ventanaRegistros extends javax.swing.JFrame {
+public class ventanaRegistros extends javax.swing.JFrame implements Serializable{
 
     private Sistema sist;    
     

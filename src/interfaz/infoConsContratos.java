@@ -4,11 +4,12 @@ package interfaz;
 
 import dominio.*;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class infoConsContratos extends javax.swing.JFrame {
+public class infoConsContratos extends javax.swing.JFrame implements Serializable {
 
     private Sistema sist;
     

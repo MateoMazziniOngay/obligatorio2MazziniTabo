@@ -3,9 +3,10 @@
 package interfaz;
 
 import dominio.*;
+import java.io.Serializable;
 import javax.swing.*;
 
-public class registroDepo extends javax.swing.JFrame {
+public class registroDepo extends javax.swing.JFrame implements Serializable{
 
     private Sistema sist;
     private Deposito depo = new Deposito();

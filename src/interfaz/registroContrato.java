@@ -3,10 +3,11 @@
 package interfaz;
 
 import dominio.*;
+import java.io.Serializable;
 import java.util.*;
 import javax.swing.*;
 
-public class registroContrato extends javax.swing.JFrame {
+public class registroContrato extends javax.swing.JFrame implements Serializable{
 
     private CriterioDeposito crit = new CriterioDeposito();
     private Sistema sist;

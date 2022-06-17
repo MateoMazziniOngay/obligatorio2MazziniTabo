@@ -3,10 +3,11 @@
 package interfaz;
 
 import dominio.*;
+import java.io.Serializable;
 import java.util.*;
 import javax.swing.*;
 
-public class ventanaVisitas extends javax.swing.JFrame {
+public class ventanaVisitas extends javax.swing.JFrame implements Serializable{
 
     private Visita vis = new Visita();
     Sistema sist;
