@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class Sistema implements Serializable{
     
+    private static final long serialVersionUID = 1L;
+    
     private ArrayList <Deposito> listaDepositos;
     private ArrayList <Persona> listaPersonas;
     private ArrayList <Cliente> listaClientes;
