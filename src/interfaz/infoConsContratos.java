@@ -274,7 +274,8 @@ public class infoConsContratos extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 510, 380);
 
-        setBounds(0, 0, 528, 428);
+        setSize(new java.awt.Dimension(528, 428));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarContratoActionPerformed

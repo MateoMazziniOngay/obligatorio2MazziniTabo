@@ -264,7 +264,8 @@ public class ventanaVisitas extends javax.swing.JFrame {
         getContentPane().add(pnlPanel);
         pnlPanel.setBounds(0, 0, 610, 460);
 
-        setBounds(0, 0, 624, 500);
+        setSize(new java.awt.Dimension(624, 500));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
