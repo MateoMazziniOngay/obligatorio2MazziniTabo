@@ -3,29 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/registroContrato.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/infoGrafica.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/Sistema.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/Persona.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/registroDepo.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/CriterioDeposito.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/Deposito.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/utilidades/Serializacion.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/ventanaInfo.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/infoConsDepositos.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/CriterioVisita.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/ejecutar/Ejecutar.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/Cliente.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/registroCliente.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/registroEmpleado.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/Empleado.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/Visita.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/utilidades/ArchivoGrabacion.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/infoConsContratos.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/dominio/Contrato.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/ventanaVisitas.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/ventanaInicio.java</file>
-            <file>file:/C:/Users/Mateo/Desktop/ORT%202/Programación%202/Obligatorio2Project/src/interfaz/ventanaRegistros.java</file>
+            <file>file:/C:/Users/mmazzini/OneDrive%20-%20ENDAVA/Desktop/Yo/ORT/P2/Proyectos/Obligatorio2/obligatorio2MazziniTabo/src/ejecutar/Ejecutar.java</file>
+            <file>file:/C:/Users/mmazzini/OneDrive%20-%20ENDAVA/Desktop/Yo/ORT/P2/Proyectos/Obligatorio2/obligatorio2MazziniTabo/src/interfaz/registroContrato.java</file>
+            <file>file:/C:/Users/mmazzini/OneDrive%20-%20ENDAVA/Desktop/Yo/ORT/P2/Proyectos/Obligatorio2/obligatorio2MazziniTabo/src/interfaz/ventanaInicio.java</file>
+            <file>file:/C:/Users/mmazzini/OneDrive%20-%20ENDAVA/Desktop/Yo/ORT/P2/Proyectos/Obligatorio2/obligatorio2MazziniTabo/src/dominio/Cliente.java</file>
+            <file>file:/C:/Users/mmazzini/OneDrive%20-%20ENDAVA/Desktop/Yo/ORT/P2/Proyectos/Obligatorio2/obligatorio2MazziniTabo/src/dominio/Persona.java</file>
+            <file>file:/C:/Users/mmazzini/OneDrive%20-%20ENDAVA/Desktop/Yo/ORT/P2/Proyectos/Obligatorio2/obligatorio2MazziniTabo/src/dominio/Sistema.java</file>
         </group>
     </open-files>
 </project-private>
