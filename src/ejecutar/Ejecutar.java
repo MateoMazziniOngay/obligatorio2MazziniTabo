@@ -14,8 +14,7 @@ public class Ejecutar {
     
     
     public static void main(final String[] args) {
-        sistemaGen = Serializacion.deserializar(sistemaGen);
-        ventanaInicio vent = new ventanaInicio(sistemaGen);
+        inicioPrograma vent = new inicioPrograma(sistemaGen);
         vent.setVisible(true);
         
     }
