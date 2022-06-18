@@ -28,7 +28,7 @@ public class ventanaInicio extends javax.swing.JFrame {
 
         label1.setText("label1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("SELF STORAGE");
         setLocation(new java.awt.Point(50, 50));
 
@@ -134,6 +134,8 @@ public class ventanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // Solo está habilitada la funcionalidad de terminar la ejecución a través del botón de salir,
+        // dado que no podemos programar la serialización al apretar la cruz de exit que viene por defecto. 
         Serializacion.serializar(sist);
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
