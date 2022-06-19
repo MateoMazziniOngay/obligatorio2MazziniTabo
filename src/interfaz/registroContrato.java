@@ -1,211 +1,214 @@
 // Martín Tabó 227665 - Mateo Mazzini 219372
-
 package interfaz;
 
 import dominio.*;
+import java.awt.Color;
+import java.awt.Component;
 import java.io.Serializable;
 import java.util.*;
 import javax.swing.*;
 
-public class registroContrato extends javax.swing.JFrame implements Serializable{
+public class registroContrato extends javax.swing.JFrame implements Serializable {
 
     private CriterioDeposito crit = new CriterioDeposito();
     private Sistema sist;
     private Contrato con;
     private Deposito depo = new Deposito();
-    
+
     /*Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" de la lista.*/
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
     DefaultListModel modelo3 = new DefaultListModel();
-  
+
     public registroContrato(Sistema unSistema) {
         this.sist = unSistema;
         initComponents();
         this.cargarListaEmpleados();
         this.cargarListaClientes();
-        
+        this.colores();
+
     }
 
     //______CARGA DE LISTAS______//
-      
-    private void cargarListaEmpleados(){
+    private void cargarListaEmpleados() {
         /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
         modelo1.removeAllElements();
         /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
-        for(Empleado empleado : sist.getListaEmpleados()){
+        for (Empleado empleado : sist.getListaEmpleados()) {
             modelo1.addElement(empleado);
         }
         /*Seteamos nuestro modelo como el modelo de la lista*/
         lstEmpleados_Con.setModel(modelo1);
     }
 
-    private void cargarListaClientes(){
+    private void cargarListaClientes() {
         modelo2.removeAllElements();
-        
-        for(Cliente cliente : sist.getListaClientes()){
+
+        for (Cliente cliente : sist.getListaClientes()) {
             modelo2.addElement(cliente);
         }
         lstClientes_Con.setModel(modelo2);
     }
-    
-    private void cargarListaDepositos(ArrayList <Deposito> lstDepositos){
+
+    private void cargarListaDepositos(ArrayList<Deposito> lstDepositos) {
         modelo3.removeAllElements();
-        
-        for(Deposito deposito : lstDepositos){
+
+        for (Deposito deposito : lstDepositos) {
             modelo3.addElement(deposito);
         }
         lstDepos_Con.setModel(modelo3);
     }
-       
+
     //________________________________//
-    
     //Se asegura de que el fotmato del tamaño deseado sea el adecuado
-    public boolean validarTamanio(){
+    public boolean validarTamanio() {
         int max = Integer.parseInt(this.inputMaxSize_Con.getText());
         int min = Integer.parseInt(this.inputMinSize_Con.getText());
-        
+
         return max >= min;
     }
-    
+
     //Se encarga de buscar los depósitos de acuerdo a los parámetros bsolicitados por el usuario.
-    private void buscarDepoTipo(){
+    private void buscarDepoTipo() {
         //Toma los valores seleccionados por el usuario y los convierte en Strings.
-        String specE = this.comboEstantes_Con.getSelectedItem().toString(); 
+        String specE = this.comboEstantes_Con.getSelectedItem().toString();
         String specR = this.comboRefri_Con.getSelectedItem().toString();
         //Concatena ambos valores en un único String para su evaluación.
         String specs = specR + specE;
-        
+
         /*
         Si al usuario no le importa si es refrigerado, ni si tiene estantes, 
         únicamente carga la lista de depósitos disponibles de acuerdo al tamaño solicitado
-        */
-        if(specs.equals("N/AN/A")){
+         */
+        if (specs.equals("N/AN/A")) {
             this.buscarTamanio(sist.listaDisponibles());
-        }
-        else{
-            
+        } else {
+
             /*
             Si al usuario no le importa alguno de los parámetros, se fija cuál es 
             y carga los depósitos de acuerdo al parámetro que sí le importa y al tamaño solicitado.
-            */
-            if(specs.contains("N/A")){
-                if(specE.equals("N/A")){
+             */
+            if (specs.contains("N/A")) {
+                if (specE.equals("N/A")) {
                     this.buscarTamanio(depo.refriSpec(depo.pasarSN(specR), sist.listaDisponibles()));
-                }
-                else{
+                } else {
                     this.buscarTamanio(depo.estSpec(depo.pasarSN(specE), sist.listaDisponibles()));
                 }
-            }
-            else{
+            } else {
                 /*
                 Si le importan ambos parámetros, carga los depósitos de acuerdo a ambos parámetros y al tamaño solicitado.
-                */
-                switch (specs){
-                    case "SINO":{
+                 */
+                switch (specs) {
+                    case "SINO": {
                         this.buscarTamanio(depo.listaSpecs("SN", sist.listaDisponibles()));
                         break;
                     }
-                    case "NOSI":{
+                    case "NOSI": {
                         this.buscarTamanio(depo.listaSpecs("NS", sist.listaDisponibles()));
                         break;
                     }
-                    case "NONO":{
+                    case "NONO": {
                         this.buscarTamanio(depo.listaSpecs("NN", sist.listaDisponibles()));
                         break;
                     }
-                    case "SISI":{
+                    case "SISI": {
                         this.buscarTamanio(depo.listaSpecs("SS", sist.listaDisponibles()));
                         break;
                     }
                 }
-            }   
-        }   
+            }
+        }
     }
-    
+
     //Recibe una lista de depósitos y los filtra de acuerdo a su tamaño.
-    public void buscarTamanio(ArrayList<Deposito> depos){
+    public void buscarTamanio(ArrayList<Deposito> depos) {
         ArrayList<Deposito> validos = new ArrayList();
-        
-        for(Deposito deposito : depos){
-            if(compararSize(deposito.getTamanio())){
+
+        for (Deposito deposito : depos) {
+            if (compararSize(deposito.getTamanio())) {
                 validos.add(deposito);
             }
         }
-        if(validos.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No hay depóstos disponibles con esas características", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
+        if (validos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay depóstos disponibles con esas características",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
             this.borrarCampos();
-        }else{
+        } else {
             cargarListaDepositos(depo.ordenA(validos));
         }
-        
     }
-    
-    //Recibe un tamaño y nos dice si está comprendido entre los valores ingresados por el usuario.
-    public boolean compararSize(int size){
-        boolean es = false;
-        
-        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
-        int min = Integer.parseInt(this.inputMinSize_Con.getText()); 
 
-        if(min <= size && size <= max){
+    //Recibe un tamaño y nos dice si está comprendido entre los valores ingresados por el usuario.
+    public boolean compararSize(int size) {
+        boolean es = false;
+
+        int max = Integer.parseInt(this.inputMaxSize_Con.getText());
+        int min = Integer.parseInt(this.inputMinSize_Con.getText());
+
+        if (min <= size && size <= max) {
             es = true;
         }
         return es;
     }
-    
+
     //Borra todos los campos
-    private void borrarCampos(){
+    private void borrarCampos() {
         this.inputMinSize_Con.setText("");
         this.inputMaxSize_Con.setText("");
         modelo3.removeAllElements();
         lstDepos_Con.setModel(modelo3);
     }
-    
+
     //Crea el Contrato de acuerdo a los datos recibidos.
-    private void completarRegistro(Object[] depos,Cliente unCliente, Empleado unEmpleado){
+    private void completarRegistro(Object[] depos, Cliente unCliente, Empleado unEmpleado) {
         //Recorremos la lista de depósitos seleccionados por el usuario
-        for(Object depo : depos){
-                    
+        for (Object depo : depos) {
+
             /*El jList nos devuelve un Object, por lo cual debemos castearlo 
             a Deposito para poder operar con él*/
             Deposito depo2;
-            depo2 = (Deposito)depo;
-                    
+            depo2 = (Deposito) depo;
+
             /*El número de contrato se crea a partir de la cantidad 
             de contratos previos en la lista de contratos*/
-            int numContrato = sist.getListaContratos().size()+1;
+            int numContrato = sist.getListaContratos().size() + 1;
             //Creamos el objeto contrato con los valores dados
-            Contrato c = new Contrato(unCliente,unEmpleado,depo2,numContrato);
+            Contrato c = new Contrato(unCliente, unEmpleado, depo2, numContrato);
             sist.agregarContrato(c);
-                
+
             /*Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
             respectivos datos en un showMessageDialog*/
-            
-            String infoCliente = unCliente.getNombre() +  " - " + unCliente.getCedula();
+            String infoCliente = unCliente.getNombre() + " - " + unCliente.getCedula();
             String infoEmpleado = unEmpleado.getNombre() + " - " + unEmpleado.getCedula();
             int depoId = depo2.getId();
-            
-            this.status(infoCliente,infoEmpleado,depoId,numContrato);
+
+            this.status(infoCliente, infoEmpleado, depoId, numContrato);
             this.borrarCampos();
-           
+
         }
     }
-    
+
     //informa al usuario sobre el registro.
-    private void status(String cliente, String empleado, int numDepo, int numContrato){
-        String registro =   "¡Contrado registrado con éxito!" + 
-                            "\n" +  "Cliente: " + cliente + 
-                            "\n" +  "Empleado: " + empleado +
-                            "\n" + "Deposito N°: " + numDepo  + 
-                            "\n" + "Num Contrato: " + numContrato;
-                    
+    private void status(String cliente, String empleado, int numDepo, int numContrato) {
+        String registro = "¡Contrado registrado con éxito!"
+                + "\n" + "Cliente: " + cliente
+                + "\n" + "Empleado: " + empleado
+                + "\n" + "Deposito N°: " + numDepo
+                + "\n" + "Num Contrato: " + numContrato;
+
         JOptionPane.showMessageDialog(null, registro, "Status", JOptionPane.PLAIN_MESSAGE);
     }
-    
-   //______________________________________//
-    
+
+    public void colores() {
+        try {
+            this.lstDepos_Con.setCellRenderer(new BgC<String>());
+            this.lstDepos_Con.setBackground(BgC.WHITE);
+        } catch  (Exception e){
+            
+        }
+    }
+    //______________________________________//
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -434,9 +437,9 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBorrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar_ConActionPerformed
-        
-        this.borrarCampos();      
-        
+
+        this.borrarCampos();
+
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
@@ -445,30 +448,28 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
         Cliente clie = this.lstClientes_Con.getSelectedValue();
         Empleado empl = this.lstEmpleados_Con.getSelectedValue();
         Object[] depos = this.lstDepos_Con.getSelectedValues();
-        
+
         //Chequeamos si alguno de los datos requeridos no fue completado/seleccionado
         boolean vc = clie == null;
         boolean ve = empl == null;
         boolean vd = Arrays.toString(depos).equals("[]");
-        
+
         //Si alguno es vacío, se le alerta al usuario y no se procede
-        if(vc || ve || vd){ //
-            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado" + 
-                                                " y un depósito", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
+        if (vc || ve || vd) { //
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado"
+                    + " y un depósito", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
             //Si no hay ningún vacío, se le pregunta al usuario si quiere confirmar el registro de su/s contrato/s
-            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar contrato/s", 0);
-                       
-            if(resp == 0){
-                this.completarRegistro(depos,clie,empl);
-            }
-            else{
+            int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro", "Confirmar contrato/s", 0);
+
+            if (resp == 0) {
+                this.completarRegistro(depos, clie, empl);
+            } else {
                 JOptionPane.showMessageDialog(null, "Se ha cancelado el registro", "Status", JOptionPane.PLAIN_MESSAGE);
             }
-        }    
+        }
     }//GEN-LAST:event_btnRegistrar_ConActionPerformed
-   
+
     private void btnCancelar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ConActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelar_ConActionPerformed
@@ -476,40 +477,38 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     /*
     Se asegura de que los valores ingresados sean números 
     y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
-    */
+     */
     private void inputMinSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMinSize_ConKeyTyped
         int min = evt.getKeyChar();
 
         boolean numeros = min >= 48 && min <= 57;
-        
-        if (!numeros){
+
+        if (!numeros) {
             evt.consume();
-        }    
-        
-        if(this.inputMinSize_Con.getText().length() >= 9){
+        }
+
+        if (this.inputMinSize_Con.getText().length() >= 9) {
             evt.consume();
         }
     }//GEN-LAST:event_inputMinSize_ConKeyTyped
-      
+
     private void btnBuscar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_ConActionPerformed
         boolean vMax = this.inputMaxSize_Con.getText().isEmpty();
         boolean vMin = this.inputMinSize_Con.getText().isEmpty();
-        
-        if(vMax || vMin){
-            JOptionPane.showMessageDialog(null, "Debe completar ambos campos de tamaño antes de buscar", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-            if(this.validarTamanio()){
+
+        if (vMax || vMin) {
+            JOptionPane.showMessageDialog(null, "Debe completar ambos campos de tamaño antes de buscar",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (this.validarTamanio()) {
                 this.buscarDepoTipo();
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "El Tamaño máximo debe ser mayor al mínimo", "ERROR", JOptionPane.ERROR_MESSAGE);
                 this.borrarCampos();
             }
-        }   
+        }
     }//GEN-LAST:event_btnBuscar_ConActionPerformed
-    
+
     private void inputMinSize_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMinSize_ConActionPerformed
 
     }//GEN-LAST:event_inputMinSize_ConActionPerformed
@@ -521,17 +520,17 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     /*
     Se asegura de que los valores ingresados sean números 
     y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
-    */
+     */
     private void inputMaxSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMaxSize_ConKeyTyped
         int max = evt.getKeyChar();
 
         boolean numeros = max >= 48 && max <= 57;
-        
-        if (!numeros){
+
+        if (!numeros) {
             evt.consume();
         }
-        
-        if(this.inputMaxSize_Con.getText().length() >= 9){
+
+        if (this.inputMaxSize_Con.getText().length() >= 9) {
             evt.consume();
         }
     }//GEN-LAST:event_inputMaxSize_ConKeyTyped
@@ -558,8 +557,47 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     private javax.swing.JLabel lblRefri_Con;
     private javax.swing.JLabel lblSpecsDepo_Con;
     private javax.swing.JList<Cliente> lstClientes_Con;
-    private javax.swing.JList<Deposito> lstDepos_Con;
+    public javax.swing.JList<Deposito> lstDepos_Con;
     private javax.swing.JList<Empleado> lstEmpleados_Con;
     private javax.swing.JPanel pnlPanel;
     // End of variables declaration//GEN-END:variables
+
+    class BgC<String> extends JLabel implements ListCellRenderer {
+
+        private static Color WHITE;
+        private Deposito deposito = new Deposito();
+        public BgC() {
+            super();
+            setOpaque(true);
+        }
+
+        @Override
+        public Component getListCellRendererComponent(JList list, 
+                                                    Object value, 
+                                                    int index, 
+                                                    boolean isSelected, 
+                                                    boolean cellHasFocus){
+            setText(value.toString());
+            ListModel modelo = lstDepos_Con.getModel();
+            Object info = modelo.getElementAt(index);
+            Deposito depo = (Deposito)info;
+            if(deposito.listaSpecs("SS", sist.listaDisponibles()).contains(depo)){
+                setBackground(Color.GREEN);
+            }
+            else{
+                if(deposito.listaSpecs("NS", sist.listaDisponibles()).contains(depo)){
+                    setBackground(Color.ORANGE);
+                }
+                else{
+                    if(deposito.listaSpecs("NN", sist.listaDisponibles()).contains(depo)){
+                        setBackground(Color.CYAN);
+                    }else{
+                        setBackground(Color.YELLOW);
+                    }
+                }
+            }
+            return this;
+        }
+
+    }
 }
