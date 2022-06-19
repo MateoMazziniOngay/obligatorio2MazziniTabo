@@ -1,7 +1,8 @@
 // Martín Tabó 227665 - Mateo Mazzini 219372
 
-package dominio;
+package utilidades;
 
+import dominio.Visita;
 import java.util.Comparator;
 
 public class CriterioVisita implements Comparator<Visita>{

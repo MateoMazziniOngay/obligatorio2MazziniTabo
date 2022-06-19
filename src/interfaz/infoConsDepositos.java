@@ -10,23 +10,28 @@ import java.util.*;
 import javax.swing.*;
 
 public class infoConsDepositos extends javax.swing.JFrame {
-    //private List<JButton> botones;
     private Sistema sist;
-    private int indice;
     private Deposito depo = new Deposito();
 
     public infoConsDepositos(Sistema unSistema) {
         initComponents();
         sist = unSistema;
-        //botones = new ArrayList<>();
         this.crearBotones();
     }
     
     public void crearBotones(){
         
+        //Tomamos la lista de deósitos de sistema y la ordenamos.
+        
         ArrayList<Deposito> depos = depo.ordenA(sist.getListaDepositos());
+        //Para cada depósito, creamos un botón con su número de depósito.
         for(Deposito deposito : depos){
             JButton btnDepo = new JButton("Núm "+ deposito.getId());
+           
+            /*
+            Si el depósito en cuestión pertenece a la lista de alquilados, 
+            el botón será rojo, de lo contrario, será verde.
+            */
             if(sist.listaAlquilados().contains(deposito)){
                 btnDepo.setBackground(Color.RED);
             }
@@ -35,18 +40,19 @@ public class infoConsDepositos extends javax.swing.JFrame {
             }
             btnDepo.setSize(100,50);
             
-            btnDepo.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    if(sist.listaAlquilados().contains(deposito)){
-                        depoAlquilado(deposito);
-                    }else{
-                        depoDisponible(deposito);
-                    }
-            }});
+            /*
+            Definimos el evento del click de acuerdo 
+            al estado del depósito(Alquilado/Disponible).
+            */
+            btnDepo.addActionListener((ActionEvent e) -> {
+                if(sist.listaAlquilados().contains(deposito)){
+                    depoAlquilado(deposito);
+                }else{
+                    depoDisponible(deposito);
+                }
+            });
             
             this.panelBotones.add(btnDepo); 
-            //botones.add(btnDepo);
         }   
     this.panelBotones.updateUI();  
     }

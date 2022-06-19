@@ -16,7 +16,7 @@ public class Sistema implements Serializable{
     private ArrayList <Contrato> listaContratos;
     private ArrayList <Visita> listaVisitas;
     
-    // Constructor con parámetros
+    // Constructor
     public Sistema(){
         this.listaDepositos = new ArrayList();
         this.listaPersonas = new ArrayList();
@@ -122,7 +122,10 @@ public class Sistema implements Serializable{
         return ret;
     }
     
-    //Recorre el array recibido en busca de un elemento, si lo encuentra retorna true, de lo contrario, false
+    /*
+    Recorre el array recibido en busca de un elemento, 
+    si lo encuentra retorna true, de lo contrario, false.
+    */
     public static boolean contains(int [] arr, int elem){
         boolean esta = false;
         
@@ -135,7 +138,8 @@ public class Sistema implements Serializable{
     }
     
     /*
-    Recorre la lista de contratos, añadiendo sus depósitos a una lista para saber cuáles se encuentran alquilados.
+    Recorre la lista de contratos, añadiendo sus depósitos a una lista para saber 
+    cuáles se encuentran alquilados.
     Retorna una lista con los depósitos alquilados.
     */
     public ArrayList listaAlquilados(){
@@ -164,8 +168,8 @@ public class Sistema implements Serializable{
     }
     
     /*
-    Recorre la lista de visitas, si el contrato de la visita es igual al recibido, lo 
-    agrega a la lista. 
+    Recorre la lista de visitas, si el contrato de la visita es igual al recibido, 
+    lo agrega a la lista. 
     Retorna la lista de visitas de un contrato.
     */
     public ArrayList visitasContrato(Contrato unContrato){
@@ -179,7 +183,7 @@ public class Sistema implements Serializable{
         return visitas;
     }
     
-    //Recibe un depósito y busca su contrato
+    //Recibe un depósito y busca a qué contrato está asociado contrato
     public Contrato buscarContrato(Deposito unDeposito){
         Contrato unContrato = new Contrato();
         for(Contrato contrato : this.getListaContratos()){

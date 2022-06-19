@@ -18,6 +18,7 @@ public class registroDepo extends javax.swing.JFrame implements Serializable{
 
     //Crea el Deposito de acuerdo a los datos recibidos.
     private void completarRegistro(int unId, int unTamanio, String estantes, String refri){
+        
         //Convertimos las variables de acuerdo a como debemos pasarlas al crear un depósito.
         refri = depo.pasarSN(refri);
         estantes = depo.pasarSN(estantes);

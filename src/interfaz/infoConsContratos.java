@@ -2,6 +2,7 @@
 
 package interfaz;
 
+import utilidades.CriterioVisita;
 import dominio.*;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
@@ -13,6 +14,10 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
 
     private Sistema sist;
     
+    /*
+    Creamos un modelo para cada una de las listas, el modelo sería el "cuerpo" 
+    de la lista.
+    */
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
     DefaultListModel modelo3 = new DefaultListModel();
@@ -42,7 +47,10 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
             //Cuerpo/texto de la tabla
             String info [][]= new String[cantVisitas][3];
 
-            //Recorre las visitas del contrato y su información en el cuerpo de la tabla.
+            /*
+            Recorre las visitas del contrato y carga su información 
+            en el array que será cuerpo de la tabla.
+            */
             for(Visita visita : visitasConSelec){
                 
                 info[fila][0]= visita.getDia()+"";
@@ -57,7 +65,10 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
     }
     
     private void cargarListaContratos(){
-        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
+        /*
+        Cada vez que cargamos una lista, borramos el contenido de su modelo 
+        para no cargar elementos repetidos.
+        */
         modelo1.removeAllElements(); 
         ArrayList<Contrato> contratos = sist.getListaContratos();    
         boolean vc = contratos.isEmpty();
@@ -67,16 +78,17 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
             modelo1.addElement("No hay contratos registrados");
         }
         else{
-            /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
+            //Recorremos el arrayList, añadiendo cada elemento al modelo
             for(Contrato contrato : contratos){
                 modelo1.addElement("Contrato N°: " + contrato.getNumContrato());
             }
         }
         
-        /*Seteamos nuestro modelo como el modelo de la lista*/
+        //Seteamos nuestro modelo como el modelo de la lista
         lstContratos_Info.setModel(modelo1);
     }
    
+    //Crea el archivo con la información del contrato que quiere ser dado de baja.
     private void generarArchivo(Contrato unContrato){
         //Definimos el nombre de nuestro archivo.
         String titulo = unContrato.getCliente().getNombre() + " " + unContrato.getNumContrato() +".txt";
@@ -108,6 +120,7 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
         this.eliminarDatos(unContrato);
     }
     
+    //Elimina los datos del contrato seleccionado.
     private void eliminarDatos(Contrato unContrato){
         ArrayList<Visita> visitasC = sist.visitasContrato(unContrato);
         ArrayList<Visita> visitasS = sist.getListaVisitas();
@@ -132,12 +145,14 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
         borrarTextos();    
     }
 
+    //Deja en blanco la tabla de visitas y la información del contrato.
     private void borrarTextos(){
         
         //Le damos un cuerpo vacío a la tabla y no le ponemos header.
         String colHead [] = {""};
         String info [][]= new String[0][0];
         this.tablaInfo.setModel(new DefaultTableModel(info, null));
+        
         //Ponemos un string vacío como texto del txtArea.
         this.txtAreaInfoContrato.setText("");
                 

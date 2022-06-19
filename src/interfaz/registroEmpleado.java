@@ -34,7 +34,7 @@ public class registroEmpleado extends javax.swing.JFrame implements Serializable
     private void status(String unNombre, int unaCi, int unTelefono, String unaDireccion, int unAnio){
         /*
         Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
-        en un showMessageDialog
+        en un showMessageDialog.
         */
         String registro =   "¡Empleado registrado con exito!" + 
                             "\n" + "Empleado: " + unNombre + 
@@ -264,11 +264,11 @@ public class registroEmpleado extends javax.swing.JFrame implements Serializable
        
         // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
         // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
-        String nombre = this.inputNombre_E.getText();
+        String nombre = this.inputNombre_E.getText().trim();
         String cedula = this.inputCi_E.getText();
         String anio = this.inputAnio_E.getText();
         String telefono = this.inputTel_E.getText();
-        String direccion = this.inputDir_E.getText();
+        String direccion = this.inputDir_E.getText().trim();
         
         // Variables para verificar completitud de los campos
         boolean vn = nombre.isEmpty();
@@ -323,7 +323,7 @@ public class registroEmpleado extends javax.swing.JFrame implements Serializable
 
     /*
     Se asegura de que los valores ingresados sean números 
-    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
     */
     private void inputCi_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCi_EKeyTyped
         int ci = evt.getKeyChar();
@@ -341,7 +341,7 @@ public class registroEmpleado extends javax.swing.JFrame implements Serializable
 
     /*
     Se asegura de que los valores ingresados sean números 
-    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
     */
     private void inputAnio_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputAnio_EKeyTyped
         int anio = evt.getKeyChar();
@@ -359,7 +359,7 @@ public class registroEmpleado extends javax.swing.JFrame implements Serializable
 
     /*
     Se asegura de que los valores ingresados sean números 
-    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
     */
     private void inputTel_EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTel_EKeyTyped
         int tel = evt.getKeyChar();

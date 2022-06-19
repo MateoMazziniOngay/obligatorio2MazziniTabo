@@ -11,7 +11,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
-
+//FUENTE: https://www.youtube.com/watch?v=ra1h_GSWp4Q 
 public class infoGrafica extends javax.swing.JFrame implements Serializable{
 
     private Sistema sist;
@@ -74,7 +74,7 @@ public class infoGrafica extends javax.swing.JFrame implements Serializable{
         //Setea el total de depósitos a partir del tamaño de la lista de depósitos alquilados.
         int total = sist.listaAlquilados().size();
         
-        // Asignamos valores y nombres a los datos de la gráfica
+        //Asignamos valores y nombres a los datos de la gráfica.
         DefaultPieDataset datos = new DefaultPieDataset();
         datos.setValue("Refrigerados Con Estantes: " + cantSiSi, cantSiSi);
         datos.setValue("Refrigerados Sin Estantes: " + cantSiNo, cantSiNo);
@@ -86,7 +86,7 @@ public class infoGrafica extends javax.swing.JFrame implements Serializable{
         ChartPanel panel = new ChartPanel(grafico_circular);
         panel.setPreferredSize(new Dimension(400, 200));
         
-        // Asignamos grafica a panel
+        //Asignamos gráfica a panel.
         pnlGrafica.setLayout(new BorderLayout());
         pnlGrafica.add(panel,BorderLayout.NORTH);
         
