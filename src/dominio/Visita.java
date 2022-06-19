@@ -76,7 +76,7 @@ public class Visita implements Serializable{
     //------------------------------//
     
     // Métodos 
-    
+    //Devuelve un String que contiene el mes y el día.
     public String getFecha(){
         return this.getMes() + this.getDia();
     }

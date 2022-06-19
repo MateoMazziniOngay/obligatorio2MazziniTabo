@@ -8,11 +8,13 @@ import utilidades.Serializacion;
 
 public class Ejecutar {
     
-    // Creamos la instancia estatica de sistema en esta clase para que se inicie cada vez que se ejecute el programa y asi poder usarla 
-    // desde todas las clases.
+    /*
+    Creamos la instancia estática de sistema en esta clase para 
+    que se inicie cada vez que se ejecute el programa, y así poder usarla 
+    desde todas las clases.
+    */
     public static Sistema sistemaGen = new Sistema();
-    
-    
+       
     public static void main(final String[] args) {
         inicioPrograma vent = new inicioPrograma(sistemaGen);
         vent.setVisible(true);

@@ -1,7 +1,8 @@
 // Martín Tabó 227665 - Mateo Mazzini 219372
 
-package dominio;
+package utilidades;
 
+import dominio.Deposito;
 import java.util.Comparator;
 
 public class CriterioDeposito implements Comparator<Deposito>{

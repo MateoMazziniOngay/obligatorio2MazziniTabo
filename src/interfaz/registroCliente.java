@@ -42,7 +42,7 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
     private void status(String unNombre, int unaCi, int unTelefono, String unMail){
         /*Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos 
         en un showMessageDialog*/
-        String registro =   "¡Cliente registrado con exito!" + 
+        String registro =   "¡Cliente registrado con éxito!" + 
                             "\n" + "Cliente: " + unNombre + 
                             "\n" + "Cedula: " + unaCi + 
                             "\n" + "Telefono: " + unTelefono + 
@@ -221,9 +221,9 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
          // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
         // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
-        String nombre = this.inputNombre_C.getText();
+        String nombre = this.inputNombre_C.getText().trim();
         String cedula = this.inputCi_C.getText();
-        String mail = this.inputMail_C.getText();
+        String mail = this.inputMail_C.getText().trim();
         String telefono = this.inputTel_C.getText();
         
         // Variables para verificar completitud de los campos
@@ -261,7 +261,7 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
 
     /*
     Se asegura de que los valores ingresados sean números 
-    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
     */
     private void inputCi_CKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCi_CKeyTyped
         int ci = evt.getKeyChar();
@@ -279,7 +279,7 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
 
     /*
     Se asegura de que los valores ingresados sean números 
-    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
     */
     private void inputTel_CKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTel_CKeyTyped
         int tel = evt.getKeyChar();

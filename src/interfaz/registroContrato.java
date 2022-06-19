@@ -1,6 +1,7 @@
 // Martín Tabó 227665 - Mateo Mazzini 219372
 package interfaz;
 
+import utilidades.CriterioDeposito;
 import dominio.*;
 import java.awt.Color;
 import java.awt.Component;
@@ -15,7 +16,10 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     private Contrato con;
     private Deposito depo = new Deposito();
 
-    /*Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" de la lista.*/
+    /*
+    Creamos un modelo para cada una de las listas, el modelo seria el "cuerpo" 
+    de la lista.
+     */
     DefaultListModel modelo1 = new DefaultListModel();
     DefaultListModel modelo2 = new DefaultListModel();
     DefaultListModel modelo3 = new DefaultListModel();
@@ -31,36 +35,55 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
 
     //______CARGA DE LISTAS______//
     private void cargarListaEmpleados() {
-        /*cada vez que cargamos una lista, borramos el contenido de su modelo, para no cargar elementos repetidos*/
+        /*
+        Cada vez que cargamos una lista, borramos el contenido de su 
+        modelo, para no cargar elementos repetidos.
+         */
         modelo1.removeAllElements();
-        /*Recorremos el arrayList, añadiendo cada elemento al modelo*/
+
+        //Recorremos el arrayList, añadiendo cada elemento al modelo.
         for (Empleado empleado : sist.getListaEmpleados()) {
             modelo1.addElement(empleado);
         }
-        /*Seteamos nuestro modelo como el modelo de la lista*/
+
+        //Seteamos nuestro modelo como el modelo de la lista.
         lstEmpleados_Con.setModel(modelo1);
     }
 
     private void cargarListaClientes() {
+        /*
+        Cada vez que cargamos una lista, borramos el contenido de su 
+        modelo, para no cargar elementos repetidos.
+         */
         modelo2.removeAllElements();
 
+        //Recorremos el arrayList, añadiendo cada elemento al modelo.
         for (Cliente cliente : sist.getListaClientes()) {
             modelo2.addElement(cliente);
         }
+
+        //Seteamos nuestro modelo como el modelo de la lista.
         lstClientes_Con.setModel(modelo2);
     }
 
     private void cargarListaDepositos(ArrayList<Deposito> lstDepositos) {
+        /*
+        Cada vez que cargamos una lista, borramos el contenido de su 
+        modelo, para no cargar elementos repetidos.
+         */
         modelo3.removeAllElements();
 
+        //Recorremos el arrayList, añadiendo cada elemento al modelo.
         for (Deposito deposito : lstDepositos) {
             modelo3.addElement(deposito);
         }
+
+        //Seteamos nuestro modelo como el modelo de la lista.
         lstDepos_Con.setModel(modelo3);
     }
 
     //________________________________//
-    //Se asegura de que el fotmato del tamaño deseado sea el adecuado
+    //Se asegura de que el fotmato del tamaño deseado sea el adecuado.
     public boolean validarTamanio() {
         int max = Integer.parseInt(this.inputMaxSize_Con.getText());
         int min = Integer.parseInt(this.inputMinSize_Con.getText());
@@ -68,7 +91,10 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
         return max >= min;
     }
 
-    //Se encarga de buscar los depósitos de acuerdo a los parámetros bsolicitados por el usuario.
+    /*
+    Se encarga de buscar los depósitos de acuerdo a los parámetros 
+    solicitados por el usuario.
+     */
     private void buscarDepoTipo() {
         //Toma los valores seleccionados por el usuario y los convierte en Strings.
         String specE = this.comboEstantes_Con.getSelectedItem().toString();
@@ -151,7 +177,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
         return es;
     }
 
-    //Borra todos los campos
+    //Borra todos los campos.
     private void borrarCampos() {
         this.inputMinSize_Con.setText("");
         this.inputMaxSize_Con.setText("");
@@ -203,8 +229,8 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
         try {
             this.lstDepos_Con.setCellRenderer(new BgC<String>());
             this.lstDepos_Con.setBackground(BgC.WHITE);
-        } catch  (Exception e){
-            
+        } catch (Exception e) {
+
         }
     }
     //______________________________________//
@@ -476,7 +502,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
 
     /*
     Se asegura de que los valores ingresados sean números 
-    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
      */
     private void inputMinSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMinSize_ConKeyTyped
         int min = evt.getKeyChar();
@@ -519,7 +545,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
 
     /*
     Se asegura de que los valores ingresados sean números 
-    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int
+    y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
      */
     private void inputMaxSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMaxSize_ConKeyTyped
         int max = evt.getKeyChar();
@@ -562,39 +588,54 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     private javax.swing.JPanel pnlPanel;
     // End of variables declaration//GEN-END:variables
 
+    //Clase utilizada para dar color a las celdas.
     class BgC<String> extends JLabel implements ListCellRenderer {
 
         private static Color WHITE;
         private Deposito deposito = new Deposito();
+
         public BgC() {
             super();
             setOpaque(true);
         }
 
+        /*
+        FUENTES:
+        https://stackoverflow.com/questions/1576853/how-to-change-background-color-of-the-selected-item-in-jlist-dynamically
+        https://www.youtube.com/watch?v=hZN3BTLNuXg&ab_channel=Java-Desktop
+        ____________________________________________
+        */
         @Override
-        public Component getListCellRendererComponent(JList list, 
-                                                    Object value, 
-                                                    int index, 
-                                                    boolean isSelected, 
-                                                    boolean cellHasFocus){
+        public Component getListCellRendererComponent(JList list,
+                Object value,
+                int index,
+                boolean isSelected,
+                boolean cellHasFocus) {
+
+           
+            /*
+            Toma los depósitos de la lista de depósitos cargados 
+            y los colorea de acuerdo a sus características.
+             */
             setText(value.toString());
             ListModel modelo = lstDepos_Con.getModel();
             Object info = modelo.getElementAt(index);
-            Deposito depo = (Deposito)info;
-            if(deposito.listaSpecs("SS", sist.listaDisponibles()).contains(depo)){
+            Deposito depo = (Deposito) info;
+            if (deposito.listaSpecs("SS", sist.listaDisponibles()).contains(depo)) {
                 setBackground(Color.GREEN);
-            }
-            else{
-                if(deposito.listaSpecs("NS", sist.listaDisponibles()).contains(depo)){
+            } else {
+                if (deposito.listaSpecs("NS", sist.listaDisponibles()).contains(depo)) {
                     setBackground(Color.ORANGE);
-                }
-                else{
-                    if(deposito.listaSpecs("NN", sist.listaDisponibles()).contains(depo)){
+                } else {
+                    if (deposito.listaSpecs("NN", sist.listaDisponibles()).contains(depo)) {
                         setBackground(Color.CYAN);
-                    }else{
+                    } else {
                         setBackground(Color.YELLOW);
                     }
                 }
+            }
+            if (isSelected) {
+                setBackground(Color.BLUE);
             }
             return this;
         }

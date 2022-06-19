@@ -2,6 +2,7 @@
 
 package dominio;
 
+import utilidades.CriterioDeposito;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -141,6 +142,7 @@ public class Deposito implements Serializable{
     }
     
     //toString() de Deposito
+    @Override
     public String toString(){
         return 
             "ID: " + this.getId() + 

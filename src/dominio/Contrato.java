@@ -68,6 +68,7 @@ public class Contrato implements Serializable{
     // Métodos
     
     //toString() de Contrato.
+    @Override
     public String toString(){
         return 
             "Cliente: " + this.getCliente().getNombre() + 
