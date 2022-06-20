@@ -33,6 +33,7 @@ public class registroDepo extends javax.swing.JFrame implements Serializable{
     
     //Informa al usuario sobre el estado del registro.
     private void status(int unId, int unTamanio, String estantes, String refri){
+        
         /*
         Creamos una variable registro para mostrar un mensaje de depósito registrado con exito 
         y sus respectivos datos en un showMessageDialog

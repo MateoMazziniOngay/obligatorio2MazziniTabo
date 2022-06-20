@@ -25,28 +25,42 @@ public class SelectorArchivos extends javax.swing.JFrame {
     }
     
     private void crear(String unPath){
+        
+        //Define la ruta recibida como el archivo a leer.
         ArchivoLectura arch = new ArchivoLectura(unPath);
+        
+        //Chequeamos que el archivo tenga más contenido.
         boolean hay = arch.hayMasLineas();
         
         while(hay){
+            
+            /*
+            Separamos la línea en "#", cada uno de los espacios del Array 
+            contendrá un parámetro del depósito.
+            */
             String [] linea = arch.linea().split("#");
             int numDeposito = Integer.parseInt(linea[0]);
             int size = Integer.parseInt(linea[1]);
             String estantes = linea[2];
             String refri = linea[3];
             
+            //Creamos un depósito y lo añadimos a la lista.
             Deposito depo = new Deposito(numDeposito,size,estantes,refri);
             sist.agregarDeposito(depo);
+            
+            /*
+            Volvemos a chequear que hayan más líneas en el archivo 
+            para seguir avanzando.
+            */
             hay = arch.hayMasLineas();
         }
+        //Luego de cargados todos los depósitos, se llama a la ventana de inicio.
         this.llamarInicio();
     }
     
     private void llamarInicio(){
-        inicioPrograma vInicioProg = new inicioPrograma(sist);
-        ventanaInicio vInicio = new ventanaInicio(sist);
         
-        vInicioProg.setVisible(false);
+        ventanaInicio vInicio = new ventanaInicio(sist);
         vInicio.setVisible(true);
         dispose();
     }
@@ -70,8 +84,8 @@ public class SelectorArchivos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(selectorArch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addComponent(selectorArch, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,16 +96,30 @@ public class SelectorArchivos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectorArchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorArchActionPerformed
+       
+        //Tomamos el archivo seleccionado por el usuario.
         File archivo = this.selectorArch.getSelectedFile();
+        
+        //Chequeamos que haya escogido algún archivo al clickear "Open".
         if(!(archivo == null)){
+            
+            //Guarda la ruta del archivo en un String.
             String path = archivo.getAbsolutePath();
             crear(path);
         }
         else{
-           dispose();
+            
+            /*
+            Si clickea Cancel, no toma el path del archivo, cierra 
+            la ventana y muestra el selector de sistema.
+            */
+            inicioPrograma vInicioProg = new inicioPrograma(sist);
+            vInicioProg.setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_selectorArchActionPerformed
 

@@ -5,7 +5,6 @@ package interfaz;
 import dominio.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
 
@@ -26,7 +25,7 @@ public class infoConsDepositos extends javax.swing.JFrame {
         ArrayList<Deposito> depos = depo.ordenA(sist.getListaDepositos());
         //Para cada depósito, creamos un botón con su número de depósito.
         for(Deposito deposito : depos){
-            JButton btnDepo = new JButton("Núm "+ deposito.getId());
+            JButton btnDepo = new JButton("Núm: "+ deposito.getId());
            
             /*
             Si el depósito en cuestión pertenece a la lista de alquilados, 
@@ -38,7 +37,6 @@ public class infoConsDepositos extends javax.swing.JFrame {
             else{
                 btnDepo.setBackground(Color.GREEN);
             }
-           //btnDepo.setSize(100,50);
             
             /*
             Definimos el evento del click de acuerdo 
@@ -84,6 +82,7 @@ public class infoConsDepositos extends javax.swing.JFrame {
         panelBotones = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de depósitos");
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -92,9 +91,10 @@ public class infoConsDepositos extends javax.swing.JFrame {
         jScrollPane2.setViewportView(panelBotones);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 10, 550, 290);
+        jScrollPane2.setBounds(10, 10, 550, 270);
 
-        setBounds(0, 0, 582, 324);
+        setSize(new java.awt.Dimension(582, 324));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 

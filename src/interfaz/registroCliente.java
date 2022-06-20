@@ -8,7 +8,6 @@ import javax.swing.*;
 
 public class registroCliente extends javax.swing.JFrame implements Serializable{
 
-    private Cliente clie;
     private Sistema sist;
     
     public registroCliente(Sistema unSistema) {
@@ -26,6 +25,7 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
     
     //Crea los objetos de acuerdo a los datos recibidos e informa al usuario.
     private void completarRegistro(String unNombre, int unaCi, int unTelefono, String unMail){
+        
         // Agregamos el registro a la lista de personas.
         Persona p = new Persona(unNombre,unaCi,unTelefono);
         sist.agregarPersona(p);
@@ -40,6 +40,7 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
     
     //Informa al usuario sobre el estado del registro.
     private void status(String unNombre, int unaCi, int unTelefono, String unMail){
+        
         /*Creamos una variable registro para mostrar un mensaje de cliente registrado con exito y sus respectivos datos 
         en un showMessageDialog*/
         String registro =   "¡Cliente registrado con éxito!" + 
@@ -219,7 +220,8 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
     }//GEN-LAST:event_inputTel_CActionPerformed
 
     private void btnRegistrar_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_CActionPerformed
-         // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
+         
+        // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
         // Obtenemos los datos de los text fields y los introducimos en variables para utilizarlos.
         String nombre = this.inputNombre_C.getText().trim();
         String cedula = this.inputCi_C.getText();
@@ -247,6 +249,7 @@ public class registroCliente extends javax.swing.JFrame implements Serializable{
                 this.inputCi_C.setText("");
             }
             else{
+                
                 //Pedimos confirmación de registro
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar cliente", 0);
                 if(resp == 0){

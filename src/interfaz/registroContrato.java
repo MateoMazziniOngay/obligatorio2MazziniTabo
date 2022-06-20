@@ -13,7 +13,6 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
 
     private CriterioDeposito crit = new CriterioDeposito();
     private Sistema sist;
-    private Contrato con;
     private Deposito depo = new Deposito();
 
     /*
@@ -34,11 +33,13 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     }
 
     //______CARGA DE LISTAS______//
+    
     private void cargarListaEmpleados() {
+        
         /*
         Cada vez que cargamos una lista, borramos el contenido de su 
         modelo, para no cargar elementos repetidos.
-         */
+        */
         modelo1.removeAllElements();
 
         //Recorremos el arrayList, añadiendo cada elemento al modelo.
@@ -51,10 +52,11 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     }
 
     private void cargarListaClientes() {
+        
         /*
         Cada vez que cargamos una lista, borramos el contenido de su 
         modelo, para no cargar elementos repetidos.
-         */
+        */
         modelo2.removeAllElements();
 
         //Recorremos el arrayList, añadiendo cada elemento al modelo.
@@ -67,10 +69,11 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     }
 
     private void cargarListaDepositos(ArrayList<Deposito> lstDepositos) {
+       
         /*
         Cada vez que cargamos una lista, borramos el contenido de su 
         modelo, para no cargar elementos repetidos.
-         */
+        */
         modelo3.removeAllElements();
 
         //Recorremos el arrayList, añadiendo cada elemento al modelo.
@@ -83,6 +86,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     }
 
     //________________________________//
+    
     //Se asegura de que el fotmato del tamaño deseado sea el adecuado.
     public boolean validarTamanio() {
         int max = Integer.parseInt(this.inputMaxSize_Con.getText());
@@ -96,9 +100,11 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     solicitados por el usuario.
      */
     private void buscarDepoTipo() {
+        
         //Toma los valores seleccionados por el usuario y los convierte en Strings.
         String specE = this.comboEstantes_Con.getSelectedItem().toString();
         String specR = this.comboRefri_Con.getSelectedItem().toString();
+        
         //Concatena ambos valores en un único String para su evaluación.
         String specs = specR + specE;
 
@@ -121,9 +127,10 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
                     this.buscarTamanio(depo.estSpec(depo.pasarSN(specE), sist.listaDisponibles()));
                 }
             } else {
+                
                 /*
                 Si le importan ambos parámetros, carga los depósitos de acuerdo a ambos parámetros y al tamaño solicitado.
-                 */
+                */
                 switch (specs) {
                     case "SINO": {
                         this.buscarTamanio(depo.listaSpecs("SN", sist.listaDisponibles()));
@@ -187,23 +194,31 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
 
     //Crea el Contrato de acuerdo a los datos recibidos.
     private void completarRegistro(Object[] depos, Cliente unCliente, Empleado unEmpleado) {
+        
         //Recorremos la lista de depósitos seleccionados por el usuario
         for (Object depo : depos) {
 
-            /*El jList nos devuelve un Object, por lo cual debemos castearlo 
-            a Deposito para poder operar con él*/
+            /*
+            El jList nos devuelve un Object, por lo cual debemos castearlo 
+            a Deposito para poder operar con él.
+            */
             Deposito depo2;
             depo2 = (Deposito) depo;
 
-            /*El número de contrato se crea a partir de la cantidad 
-            de contratos previos en la lista de contratos*/
+            /*
+            El número de contrato se crea a partir de la cantidad 
+            de contratos previos en la lista de contratos.
+            */
             int numContrato = sist.getListaContratos().size() + 1;
+            
             //Creamos el objeto contrato con los valores dados
             Contrato c = new Contrato(unCliente, unEmpleado, depo2, numContrato);
             sist.agregarContrato(c);
 
-            /*Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
-            respectivos datos en un showMessageDialog*/
+            /*
+            Creamos una variable registro para mostrar un mensaje de deposito registrado con exito y sus 
+            respectivos datos en un showMessageDialog.
+            */
             String infoCliente = unCliente.getNombre() + " - " + unCliente.getCedula();
             String infoEmpleado = unEmpleado.getNombre() + " - " + unEmpleado.getCedula();
             int depoId = depo2.getId();
@@ -469,6 +484,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     }//GEN-LAST:event_btnBorrar_ConActionPerformed
 
     private void btnRegistrar_ConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar_ConActionPerformed
+        
         // --- EN ESTE MÉTODO ÚNICAMENTE VALIDAMOS LOS DATOS TOMADOS AL ACCIONAR EL BOTÓN REGISTRAR --- //
         //Tomamos los valores a utilizar en el registro de nuestra ventana
         Cliente clie = this.lstClientes_Con.getSelectedValue();
@@ -485,6 +501,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
             JOptionPane.showMessageDialog(null, "Debe seleccionar al menos: un cliente, un empleado"
                     + " y un depósito", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
+            
             //Si no hay ningún vacío, se le pregunta al usuario si quiere confirmar el registro de su/s contrato/s
             int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro", "Confirmar contrato/s", 0);
 
@@ -546,7 +563,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
     /*
     Se asegura de que los valores ingresados sean números 
     y limita su tamaño a 9 dígitos, para no pasar al valor máximo de Int.
-     */
+    */
     private void inputMaxSize_ConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputMaxSize_ConKeyTyped
         int max = evt.getKeyChar();
 
@@ -616,7 +633,7 @@ public class registroContrato extends javax.swing.JFrame implements Serializable
             /*
             Toma los depósitos de la lista de depósitos cargados 
             y los colorea de acuerdo a sus características.
-             */
+            */
             setText(value.toString());
             ListModel modelo = lstDepos_Con.getModel();
             Object info = modelo.getElementAt(index);
