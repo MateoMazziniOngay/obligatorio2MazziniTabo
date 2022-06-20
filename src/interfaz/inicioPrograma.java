@@ -44,6 +44,11 @@ public class inicioPrograma extends javax.swing.JFrame {
         });
 
         btnCargarDepositos.setText("Cargar depósitos");
+        btnCargarDepositos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarDepositosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,6 +110,11 @@ public class inicioPrograma extends javax.swing.JFrame {
         vInicio.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnContinuarSistemaActionPerformed
+
+    private void btnCargarDepositosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDepositosActionPerformed
+        SelectorArchivos vArch = new SelectorArchivos(sist);
+        vArch.setVisible(true);
+    }//GEN-LAST:event_btnCargarDepositosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarDepositos;
