@@ -9,7 +9,6 @@ import javax.swing.*;
 public class registroEmpleado extends javax.swing.JFrame implements Serializable{
  
     private Sistema sist;
-    private Empleado empl;
     
     public registroEmpleado(Sistema unSistema) {
         initComponents();
@@ -18,6 +17,7 @@ public class registroEmpleado extends javax.swing.JFrame implements Serializable
 
     //Crea los objetos de acuerdo a los datos recibidos.
     private void completarRegistro(String unNombre, int unaCi, int unTelefono, String unaDireccion, int unAnio){
+        
         // Agregamos el registro a la lista de personas.
         Persona p = new Persona(unNombre,unaCi,unTelefono);
         sist.agregarPersona(p);
@@ -32,6 +32,7 @@ public class registroEmpleado extends javax.swing.JFrame implements Serializable
     
     //Informa al usuario sobre el estado del registro.
     private void status(String unNombre, int unaCi, int unTelefono, String unaDireccion, int unAnio){
+       
         /*
         Creamos una variable registro para mostrar un mensaje de empleado registrado con exito y sus respectivos datos 
         en un showMessageDialog.

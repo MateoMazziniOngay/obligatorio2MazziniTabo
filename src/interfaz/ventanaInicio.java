@@ -134,6 +134,7 @@ public class ventanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        
         // Solo está habilitada la funcionalidad de terminar la ejecución a través del botón de salir,
         // dado que no podemos programar la serialización al apretar la cruz de exit que viene por defecto. 
         Serializacion.serializar(sist);

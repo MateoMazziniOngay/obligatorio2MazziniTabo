@@ -24,6 +24,7 @@ public class inicioPrograma extends javax.swing.JFrame {
         btnCargarDepositos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Selector inicio");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,6 +97,7 @@ public class inicioPrograma extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewSistemaActionPerformed
@@ -114,6 +116,7 @@ public class inicioPrograma extends javax.swing.JFrame {
     private void btnCargarDepositosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDepositosActionPerformed
         SelectorArchivos vArch = new SelectorArchivos(sist);
         vArch.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnCargarDepositosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

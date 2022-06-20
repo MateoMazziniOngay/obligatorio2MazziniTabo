@@ -63,6 +63,7 @@ public class ventanaVisitas extends javax.swing.JFrame implements Serializable{
     
     //Registra la Visita de acuerdo a los datos ingresados por el usuario.
     private void completarRegistro(Cliente unCliente, Empleado unEmpleado, Contrato unContrato, String unDia, String unMes){
+        
         // Agregamos el registro a la lista de Visitas.
         Visita v = new Visita(unCliente,unEmpleado,unContrato,unDia,unMes);
         sist.agregarVisita(v);
@@ -76,6 +77,7 @@ public class ventanaVisitas extends javax.swing.JFrame implements Serializable{
     
     //Informa al usuario sobre el estado del registro.
     private void status(String infoCliente, String infoEmpleado, int infoContrato, String unDia, String unMes){
+       
         /*
         Creamos una variable registro para mostrar un mensaje de visita registrado con exito y sus respectivos datos 
         en un showMessageDialog
@@ -299,6 +301,7 @@ public class ventanaVisitas extends javax.swing.JFrame implements Serializable{
                 this.reiniciarFecha();
             }
             else{
+                
                 //Pëdimos confirmación del registro de la visita.
                 int resp = JOptionPane.showConfirmDialog(null, "Confirmar registro" , "Confirmar visita", 0);
                 if(resp == 0){
@@ -322,28 +325,31 @@ public class ventanaVisitas extends javax.swing.JFrame implements Serializable{
     }//GEN-LAST:event_lstClientes_VValueChanged
 
     private void btnBuscarContratos_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarContratos_VActionPerformed
+       
         //Toma el cliente seleccionado por el usuario
         Cliente clie = this.lstClientes_V.getSelectedValue();
         if(clie == null){
             JOptionPane.showMessageDialog(null, "Seleccione un cliente", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        
         //Si no es nulo:
         else{
             ArrayList <Contrato> contratosClie = new ArrayList();
             
-            //Recorre la lista de clientes en busca de los contratos con ese Cliente registrado
-            
+            //Recorre la lista de clientes en busca de los contratos con ese Cliente registrado            
             for(Contrato contrato : sist.getListaContratos()){
                 if(contrato.getCliente().equals(clie)){
                     contratosClie.add(contrato);
                 }   
             }
+            
             //Si el cliente no tiene contratos registrados se le informa al usuario.
             if(contratosClie.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Este cliente no tiene contratos registrados", 
                                                     "ERROR", JOptionPane.ERROR_MESSAGE);
             }
             else{
+                
                 //Carga los contratos del Cliente.
                 cargarContratoClientes(contratosClie); 
             }  

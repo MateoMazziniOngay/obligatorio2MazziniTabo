@@ -38,12 +38,16 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
             JOptionPane.showMessageDialog(null, "Este contrato no posee visitas","Status", JOptionPane.PLAIN_MESSAGE);
         }
         else{
+            
             //Contador para ir avanzando en las filas de nuestra tabla.
             int fila = 0;
+            
             //Cantidad de filas de nuestra tabla.
             int cantVisitas = visitasConSelec.size();
+            
             //Header de la tabla.
             String colHead [] = {"Día","Mes","Empleado"};
+            
             //Cuerpo/texto de la tabla
             String info [][]= new String[cantVisitas][3];
 
@@ -59,12 +63,14 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
                 
                 fila++;
             }
+            
             //Seteamos el cuerpo y el header de la tabla.
             tablaInfo.setModel(new DefaultTableModel(info, colHead));
         }            
     }
     
     private void cargarListaContratos(){
+        
         /*
         Cada vez que cargamos una lista, borramos el contenido de su modelo 
         para no cargar elementos repetidos.
@@ -78,6 +84,7 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
             modelo1.addElement("No hay contratos registrados");
         }
         else{
+            
             //Recorremos el arrayList, añadiendo cada elemento al modelo
             for(Contrato contrato : contratos){
                 modelo1.addElement("Contrato N°: " + contrato.getNumContrato());
@@ -90,14 +97,19 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
    
     //Crea el archivo con la información del contrato que quiere ser dado de baja.
     private void generarArchivo(Contrato unContrato){
+        
         //Definimos el nombre de nuestro archivo.
         String titulo = unContrato.getCliente().getNombre() + " " + unContrato.getNumContrato() +".txt";
+        
         //Cargamos un arrayList con las visitas de nuestro contrato.
         ArrayList<Visita> visitas = sist.visitasContrato(unContrato);
         try{
+            
             //Creamos el archivo con el nombre definido anteriormente.
             Formatter arch = new Formatter(titulo);
-            // Ingreso de datos al archivo   
+            
+            
+            // --Ingreso de datos al archivo--   
 
             //Recorremos nuestro arrayList de visitas.
             for(Visita visita : visitas){
@@ -107,6 +119,7 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
                 
                 //Tomamos la información de cada visita y la ponemos en un String.
                 String texto = "Dia: " + dia + " Mes: " + mes + " Empleado: " + empleado; 
+                
                 //Creamos una nueva línea en el archivo de texto con el texto anteriormente creado.
                 arch.format("%s%n", texto);
             }
@@ -127,11 +140,13 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
         
         //Recorremos la lista de visitas.
         for(int i = 0; i < visitasS.size(); i++){
+            
             //Si la visita pertenece a la lista de visitas del contrato a eliminar, la quitamos de la lista de visitas.
             if(visitasC.contains(visitasS.get(i))){
                 visitasS.remove(visitasS.get(i));
             }
         }
+        
         //Previo a eliminar el contrato, mostramos una ventana con la información del contrato que se eliminó.
         JOptionPane.showMessageDialog(null, "El contrato " + 
                                             "\n" + unContrato.toString() + 
@@ -139,8 +154,10 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
                                     "Status", JOptionPane.PLAIN_MESSAGE);
         //Eliminamos el contrato.
         sist.getListaContratos().remove(unContrato);
+        
         //Cargamos nuevamente la lista de contratos.
         this.cargarListaContratos();
+        
         //Ponemos en blanco el txtArea y la tabla de visitas.
         borrarTextos();    
     }
@@ -149,7 +166,6 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
     private void borrarTextos(){
         
         //Le damos un cuerpo vacío a la tabla y no le ponemos header.
-        String colHead [] = {""};
         String info [][]= new String[0][0];
         this.tablaInfo.setModel(new DefaultTableModel(info, null));
         
@@ -296,14 +312,17 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
 
     private void btnEliminarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarContratoActionPerformed
         String idSelec = lstContratos_Info.getSelectedValue();
+        
         //Chequeamos si el usuario seleccionó o no un contrato a eliminar.
         boolean vc = idSelec == null;
         ArrayList<Contrato> contratos = sist.getListaContratos();  
+        
         //Si no hay ningún contrato registrado, se le advierte al usuario nuevamente.
         if(contratos.isEmpty()){
             JOptionPane.showMessageDialog(null, "No hay contratos para dar de baja","ERROR", JOptionPane.ERROR_MESSAGE);
         }
         else{
+            
         //Si no seleccionó un Contrato, se le dice que debe hacerlo antes de presionar el botón "dar de baja".
             if(vc){
                 JOptionPane.showMessageDialog(null, "Seleccione un contrato para dar de baja","ERROR", JOptionPane.ERROR_MESSAGE);
@@ -327,12 +346,15 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
     }//GEN-LAST:event_btnEliminarContratoActionPerformed
 
     private void btnInfoContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoContratoActionPerformed
+        
         //Borramos cualquier información que haya quedado de un contrato mostrado anteriormente.
         this.borrarTextos();
         String idSelec = lstContratos_Info.getSelectedValue();
+        
         //Nos aseguramos de que el usuario seleccione un contrato.
         boolean vc = idSelec == null;
         ArrayList<Contrato> contratos = sist.getListaContratos();  
+        
         //Si no hay ningún contrato registrado, se le advierte al usuario nuevamente.
         if(contratos.isEmpty()){
             JOptionPane.showMessageDialog(null, "No hay contratos registrados","ERROR", JOptionPane.ERROR_MESSAGE);
@@ -346,12 +368,15 @@ public class infoConsContratos extends javax.swing.JFrame implements Serializabl
                 JOptionPane.showMessageDialog(null, "Seleccione un contrato","ERROR", JOptionPane.ERROR_MESSAGE);
             }
             else{
+                
                 //Tomamos la ID del contrato de la línea seleccionada por el usuario.
                 int idSelecNum = Integer.parseInt(idSelec.substring(13));
                 for(Contrato contrato : sist.getListaContratos()){
                     if(contrato.getNumContrato() == idSelecNum){
+                        
                         //Cargamos la información del contrato seleccionado en el txtArea.
                         this.txtAreaInfoContrato.setText(contrato.toString());
+                        
                         //Cargamos las visitas del contrato.
                         this.cargarVisitas(contrato);
                     }
