@@ -38,7 +38,7 @@ public class infoConsDepositos extends javax.swing.JFrame {
             else{
                 btnDepo.setBackground(Color.GREEN);
             }
-            btnDepo.setSize(100,50);
+           //btnDepo.setSize(100,50);
             
             /*
             Definimos el evento del click de acuerdo 
@@ -88,11 +88,11 @@ public class infoConsDepositos extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         panelBotones.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        panelBotones.setLayout(new java.awt.GridLayout(0, 5));
+        panelBotones.setLayout(new java.awt.GridLayout(0, 5, 10, 10));
         jScrollPane2.setViewportView(panelBotones);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 10, 500, 250);
+        jScrollPane2.setBounds(10, 10, 550, 290);
 
         setBounds(0, 0, 582, 324);
     }// </editor-fold>//GEN-END:initComponents
